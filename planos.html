@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planos e Serviços - KOLIBRA SOLUTIONS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="img/LOGO COLOR.png" type="image/png">
+    <style>
+        :root {
+            --primary-color: #004494;
+            --secondary-color: #FF7F00;
+            --light-color: #ffffff;
+            --dark-color: #333333;
+            --gray-color: #f5f5f5;
+            --gray-dark: #666666;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            color: var(--gray-dark);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--secondary-color);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .mt-5 {
+            margin-top: 50px;
+        }
+        
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Botões */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #003370;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e67300;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 127, 0, 0.3);
+        }
+        
+        .btn-light {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-light:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-sm {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* Navegação */
+        .navbar {
+            background-color: var(--primary-color);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: block;
+        }
+        
+        .logo img {
+            height: 70px;
+            width: auto;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            color: var(--light-color);
+            font-weight: 500;
+        }
+        
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--secondary-color);
+        }
+        
+        .btn-nav {
+            background-color: var(--secondary-color);
+            color: var(--light-color) !important;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        
+        .btn-nav:hover {
+            background-color: #e67300;
+            color: var(--light-color) !important;
+        }
+        
+        .nav-toggle {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .nav-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-color);
+            margin: 5px 0;
+            transition: var(--transition);
+        }
+        
+        /* Header da Página */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0066cc 100%);
+            color: var(--light-color);
+            padding: 150px 0 100px;
+            position: relative;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            color: var(--light-color);
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .header-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        
+        .header-wave svg {
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 70px;
+        }
+        
+        /* Planos Mensais */
+        .plans-section {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .plan-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .plan-card.featured {
+            border: 2px solid var(--secondary-color);
+            transform: scale(1.05);
+        }
+        
+        .plan-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .plan-badge {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            padding: 5px 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transform: rotate(45deg);
+        }
+        
+        .plan-header {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .plan-header h3 {
+            font-size: 1.5rem;
+            color: var(--light-color);
+            margin-bottom: 15px;
+        }
+        
+        .plan-price {
+            font-size: 1.2rem;
+        }
+        
+        .plan-price .currency {
+            font-size: 1.5rem;
+            vertical-align: top;
+            position: relative;
+            top: 5px;
+        }
+        
+        .plan-price .amount {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+        
+        .plan-price .period {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .plan-features {
+            padding: 30px;
+            flex-grow: 1;
+        }
+        
+        .plan-features ul li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .plan-features ul li i {
+            color: var(--secondary-color);
+            margin-right: 10px;
+        }
+        
+        .plan-footer {
+            padding: 0 30px 30px;
+            text-align: center;
+        }
+        
+        .plans-cta {
+            text-align: center;
+        }
+        
+        .plans-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Serviços Individuais */
+        .services-section {
+            padding: 80px 0;
+            background-color: var(--gray-color);
+        }
+        
+        .services-tabs {
+            margin-top: 50px;
+        }
+        
+        .tabs-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 12px 25px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gray-dark);
+            cursor: pointer;
+            transition: var(--transition);
+            margin: 0 10px 10px;
+        }
+        
+        .tab-btn:hover {
+            color: var(--primary-color);
+        }
+        
+        .tab-btn.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--secondary-color);
+        }
+        
+        .tab-pane {
+            display: none;
+        }
+        
+        .tab-pane.active {
+            display: block;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-item {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-icon {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-color);
+        }
+        
+        .service-icon i {
+            font-size: 40px;
+            color: var(--light-color);
+        }
+        
+        .service-details {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .service-details h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .service-details p {
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .service-price {
+            margin-bottom: 20px;
+        }
+        
+        .service-price span {
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .service-price strong {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        /* Formulário de Solicitação de Plano */
+        .plan-request-form {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-top: 50px;
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .form-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .form-header p {
+            color: var(--gray-dark);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 68, 148, 0.1);
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .form-check {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .form-check input {
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        
+        .form-check label {
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+        }
+        
+        .form-submit {
+            text-align: center;
+        }
+        
+        .form-submit button {
+            padding: 12px 40px;
+            font-size: 1.1rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0066cc 100%);
+            color: var(--light-color);
+            text-align: center;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            color: var(--light-color);
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .cta-buttons .btn-outline {
+            border-color: var(--light-color);
+            color: var(--light-color);
+        }
+        
+        .cta-buttons .btn-outline:hover {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #222;
+            color: var(--light-color);
+            padding: 70px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo img {
+            height: 70px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .footer-col h4 {
+            color: var(--light-color);
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 30px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-col ul li a {
+            color: #bbb;
+            transition: var(--transition);
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .footer-col ul li i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .footer-social {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+        
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--light-color);
+            transition: var(--transition);
+        }
+        
+        .footer-social a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-bottom p {
+            color: #bbb;
+            margin-bottom: 0;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .footer-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-social {
+                justify-content: flex-start;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .plan-card.featured {
+                transform: none;
+            }
+            
+            .plan-card.featured:hover {
+                transform: translateY(-10px);
+            }
+            
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
+            
+            .navbar {
+                padding: 15px 0;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--primary-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: var(--transition);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            .nav-toggle {
+                display: block;
+            }
+            
+            .nav-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .nav-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegação -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="img/LOGO COLOR.png" alt="KOLIBRA SOLUTIONS">
+            </a>
+            
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="planos.html" class="active">Planos</a></li>
+                <li><a href="portfolio.html">Portfólio</a></li>
+                <li><a href="orcamento.html" class="btn-nav">Orçamento</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Header da Página -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Planos e Serviços</h1>
+            <p>Soluções personalizadas para o crescimento do seu negócio</p>
+        </div>
+        
+        <div class="header-wave">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill" fill="#ffffff"></path>
+            </svg>
+        </div>
+    </header>
+    
+    <!-- Planos Mensais -->
+    <section class="plans-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nossos Planos Mensais</h2>
+                <p>Escolha o plano ideal para o seu negócio e comece a transformar sua presença digital</p>
+            </div>
+            
+            <div class="plans-grid">
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Plano Starter</h3>
+                        <div class="plan-price">
+                            <span class="currency">R$</span>
+                            <span class="amount">199</span>
+                            <span class="period">/mês</span>
+                        </div>
+                    </div>
+                    
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Identidade Visual Básica</li>
+                            <li><i class="fas fa-check"></i> Site Institucional (5 páginas)</li>
+                            <li><i class="fas fa-check"></i> Suporte por E-mail</li>
+                            <li><i class="fas fa-check"></i> 1 Rede Social</li>
+                            <li><i class="fas fa-check"></i> Relatório Mensal</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="plan-footer">
+                        <a href="#solicitar-plano" class="btn btn-outline" data-plan="starter">Solicitar Plano</a>
+                    </div>
+                </div>
+                
+                <div class="plan-card featured">
+                    <div class="plan-badge">Mais Popular</div>
+                    
+                    <div class="plan-header">
+                        <h3>Plano Business</h3>
+                        <div class="plan-price">
+                            <span class="currency">R$</span>
+                            <span class="amount">399</span>
+                            <span class="period">/mês</span>
+                        </div>
+                    </div>
+                    
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Identidade Visual Completa</li>
+                            <li><i class="fas fa-check"></i> Site Institucional (10 páginas)</li>
+                            <li><i class="fas fa-check"></i> Suporte Prioritário</li>
+                            <li><i class="fas fa-check"></i> 3 Redes Sociais</li>
+                            <li><i class="fas fa-check"></i> Blog Integrado</li>
+                            <li><i class="fas fa-check"></i> SEO Básico</li>
+                            <li><i class="fas fa-check"></i> Relatórios Semanais</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="plan-footer">
+                        <a href="#solicitar-plano" class="btn btn-secondary" data-plan="business">Solicitar Plano</a>
+                    </div>
+                </div>
+                
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Plano Premium</h3>
+                        <div class="plan-price">
+                            <span class="currency">R$</span>
+                            <span class="amount">799</span>
+                            <span class="period">/mês</span>
+                        </div>
+                    </div>
+                    
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Identidade Visual Premium</li>
+                            <li><i class="fas fa-check"></i> Site Institucional (15+ páginas)</li>
+                            <li><i class="fas fa-check"></i> Suporte 24/7</li>
+                            <li><i class="fas fa-check"></i> Todas as Redes Sociais</li>
+                            <li><i class="fas fa-check"></i> Blog Integrado</li>
+                            <li><i class="fas fa-check"></i> E-commerce Básico</li>
+                            <li><i class="fas fa-check"></i> SEO Avançado</li>
+                            <li><i class="fas fa-check"></i> Google Ads (Budget não incluso)</li>
+                            <li><i class="fas fa-check"></i> Relatórios Personalizados</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="plan-footer">
+                        <a href="#solicitar-plano" class="btn btn-outline" data-plan="premium">Solicitar Plano</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="plans-cta">
+                <p>Não encontrou o plano ideal para o seu negócio?</p>
+                <a href="construtor.html" class="btn btn-primary">Construir Plano Personalizado</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Serviços Individuais -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Serviços Individuais</h2>
+                <p>Soluções específicas para atender às necessidades pontuais do seu negócio</p>
+            </div>
+            
+            <div class="services-tabs">
+                <div class="tabs-nav">
+                    <button class="tab-btn active" data-tab="design">Design</button>
+                    <button class="tab-btn" data-tab="web">Web</button>
+                    <button class="tab-btn" data-tab="marketing">Marketing</button>
+                    <button class="tab-btn" data-tab="consultoria">Consultoria</button>
+                </div>
+                
+                <div class="tab-content">
+                    <div class="tab-pane active" id="design">
+                        <div class="services-grid">
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fas fa-paint-brush"></i>
+                                </div>
+                                <div class="service-details">
+                                    <h3>Logo Profissional</h3>
+                                    <p>Criação de logo profissional com manual de identidade visual básico.</p>
+                                    <div class="service-price">
+                                        <span>Preço a partir de</span>
+                                        <strong>R$ 500,00</strong>
+                                    </div>
+                                    <a href="#solicitar-plano" class="btn btn-sm btn-outline" data-service="logo">Solicitar Serviço</a>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fas fa-palette"></i>
+                                </div>
+                                <div class="service-details">
+                                    <h3>Identidade Visual Completa</h3>
+                                    <p>Desenvolvimento de identidade visual completa, incluindo logo, cores, tipografia e aplicações.</p>
+                                    <div class="service-price">
+                                        <span>Preço a partir de</span>
+                                        <strong>R$ 1.200,00</strong>
+                                    </div>
+                                    <a href="#solicitar-plano" class="btn btn-sm btn-outline" data-service="identidade">Solicitar Serviço</a>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fas fa-images"></i>
+                                </div>
+                                <div class="service-details">
+                                    <h3>Design para Redes Sociais</h3>
+                                    <p>Criação de templates personalizados para suas redes sociais.</p>
+                                    <div class="service-price">
+                                        <span>Preço a partir de</span>
+                                        <strong>R$ 300,00</strong>
+                                    </div>
+                                    <a href="#solicitar-plano" class="btn btn-sm btn-outline" data-service="social_media_design">Solicitar Serviço</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="web">
+                        <div class="services-grid">
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fas fa-laptop-code"></i>
+                                </div>
+                                <div class="service-details">
+                                    <h3>Site Institucional</h3>
+                                    <p>Desenvolvimento de site institucional responsivo e otimizado para SEO.</p>
+                                    <div class="service-price">
+                                        <span>Preço a partir de</span>
+                                        <strong>R$ 1.500,00</strong>
+                                    </div>
+                                    <a href="#solicitar-plano" class="btn btn-sm btn-outline" data-service="site">Solicitar Serviço</a>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <div class="service-details">
+                                    <h3>E-commerce</h3>
+                                    <p>Desenvolvimento de loja virtual completa com sistema de pagamento e gestão de produtos.</p>
+                                    <div class="service-price">
+                                        <span>Preço a partir de</span>
+                                        <strong>R$ 3.500,00</strong>
+                                    </div>
+                                    <a href="#solicitar-plano" class="btn btn-sm btn-outline" data-service="ecommerce">Solicitar Serviço</a>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div class="service-details">
+                                    <h3>Landing Page</h3>
+                                    <p>Criação de página de conversão otimizada para campanhas específicas.</p>
+                                    <div class="service-price">
+                                        <span>Preço a partir de</span>
+                                        <strong>R$ 800,00</strong>
+                                    </div>
+                                    <a href="#solicitar-plano" class="btn btn-sm btn-outline" data-service="landing">Solicitar Serviço</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="marketing">
+                        <div class="services-grid">
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <div class="service-details">
+                                    <h3>SEO</h3>
+                                    <p>Otimização do seu site para mecanismos de busca, melhorando seu posicionamento no Google.</p>
+                                    <div class="service-price">
+                                        <span>Preço a partir de</span>
+                                        <strong>R$ 600,00/mês</strong>
+                                    </div>
+                                    <a href="#solicitar-plano" class="btn btn-sm btn-outline" data-service="seo">Solicitar Serviço</a>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fas fa-hashtag"></i>
+                                </div>
+                                <div class="service-details">
+                                    <h3>Gestão de Redes Sociais</h3>
+                                    <p>Criação e gestão de conteúdo para suas redes sociais, aumentando o engajamento com seu público.</p>
+                                    <div class="service-price">
+                                        <span>Preço a partir de</span>
+                                        <strong>R$ 800,00/mês</strong>
+                                    </div>
+                                    <a href="#solicitar-plano" class="btn btn-sm btn-outline" data-service="social">Solicitar Serviço</a>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fas fa-ad"></i>
+                                </div>
+                                <div class="service-details">
+                                    <h3>Google Ads</h3>
+                                    <p>Criação e gestão de campanhas no Google Ads para aumentar a visibilidade do seu negócio.</p>
+                                    <div class="service-price">
+                                        <span>Preço a partir de</span>
+                                        <strong>R$ 500,00/mês</strong>
+                                    </div>
+                                    <a href="#solicitar-plano" class="btn btn-sm btn-outline" data-service="ads">Solicitar Serviço</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="consultoria">
+                        <div class="services-grid">
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="service-details">
+                                    <h3>Consultoria de Marketing Digital</h3>
+                                    <p>Análise e planejamento estratégico para melhorar sua presença digital e resultados de marketing.</p>
+                                    <div class="service-price">
+                                        <span>Preço a partir de</span>
+                                        <strong>R$ 1.200,00</strong>
+                                    </div>
+                                    <a href="#solicitar-plano" class="btn btn-sm btn-outline" data-service="consultoria_marketing">Solicitar Serviço</a>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="service-details">
+                                    <h3>Treinamento de Equipe</h3>
+                                    <p>Capacitação da sua equipe em marketing digital, redes sociais e ferramentas digitais.</p>
+                                    <div class="service-price">
+                                        <span>Preço a partir de</span>
+                                        <strong>R$ 1.500,00</strong>
+                                    </div>
+                                    <a href="#solicitar-plano" class="btn btn-sm btn-outline" data-service="treinamento">Solicitar Serviço</a>
+                                </div>
+                            </div>
+                            
+                            <div class="service-item">
+                                <div class="service-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div class="service-details">
+                                    <h3>Diagnóstico de Negócio</h3>
+                                    <p>Análise completa do seu negócio, identificando pontos fortes, fracos e oportunidades de melhoria.</p>
+                                    <div class="service-price">
+                                        <span>Preço a partir de</span>
+                                        <strong>R$ 900,00</strong>
+                                    </div>
+                                    <a href="#solicitar-plano" class="btn btn-sm btn-outline" data-service="diagnostico">Solicitar Serviço</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Formulário de Solicitação de Plano -->
+    <section id="solicitar-plano" class="plans-section">
+        <div class="container">
+            <div class="plan-request-form">
+                <div class="form-header">
+                    <h3>Solicite seu Plano ou Serviço</h3>
+                    <p>Preencha o formulário abaixo e entraremos em contato para discutir os detalhes e elaborar uma proposta personalizada.</p>
+                </div>
+                
+                <form id="planRequestForm" action="https://formsubmit.co/kolibrasolutions@gmail.com" method="POST">
+                    <!-- Campo oculto para redirecionamento após envio -->
+                    <input type="hidden" name="_next" value="https://kolibrasolutions.vercel.app/obrigado.html">
+                    
+                    <!-- Campo oculto para assunto do e-mail -->
+                    <input type="hidden" name="_subject" value="Nova solicitação de plano/serviço">
+                    
+                    <!-- Campo oculto para armazenar o plano/serviço selecionado -->
+                    <input type="hidden" id="selectedItem" name="selected_item" value="">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Nome Completo *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">E-mail *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Telefone *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company">Empresa</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="interest">Interesse *</label>
+                            <select id="interest" name="interest" required>
+                                <option value="" selected disabled>Selecione...</option>
+                                <option value="plano_starter">Plano Starter</option>
+                                <option value="plano_business">Plano Business</option>
+                                <option value="plano_premium">Plano Premium</option>
+                                <option value="plano_personalizado">Plano Personalizado</option>
+                                <option value="servico_design">Serviço de Design</option>
+                                <option value="servico_web">Serviço Web</option>
+                                <option value="servico_marketing">Serviço de Marketing</option>
+                                <option value="servico_consultoria">Serviço de Consultoria</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="budget">Orçamento Aproximado</label>
+                            <select id="budget" name="budget">
+                                <option value="" selected disabled>Selecione...</option>
+                                <option value="ate_1000">Até R$ 1.000</option>
+                                <option value="1000_3000">R$ 1.000 a R$ 3.000</option>
+                                <option value="3000_5000">R$ 3.000 a R$ 5.000</option>
+                                <option value="5000_10000">R$ 5.000 a R$ 10.000</option>
+                                <option value="acima_10000">Acima de R$ 10.000</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensagem *</label>
+                        <textarea id="message" name="message" placeholder="Descreva suas necessidades e objetivos..." required></textarea>
+                    </div>
+                    
+                    <div class="form-check">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">Concordo em receber contato da KOLIBRA SOLUTIONS para discutir minha solicitação de plano/serviço.</label>
+                    </div>
+                    
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-secondary">Enviar Solicitação</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Pronto para transformar seu negócio?</h2>
+                <p>Entre em contato conosco hoje mesmo e descubra como podemos ajudar a impulsionar o crescimento do seu negócio.</p>
+                <div class="cta-buttons">
+                    <a href="orcamento.html" class="btn btn-secondary">Solicitar Orçamento</a>
+                    <a href="construtor.html" class="btn btn-outline">Construir Plano Personalizado</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col footer-logo">
+                    <img src="img/LOGO COLOR.png" alt="KOLIBRA SOLUTIONS">
+                    <p>Soluções inovadoras para o crescimento do seu negócio.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Empresa</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="planos.html">Planos</a></li>
+                            <li><a href="portfolio.html">Portfólio</a></li>
+                            <li><a href="orcamento.html">Orçamento</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h4>Serviços</h4>
+                        <ul>
+                            <li><a href="#">Identidade Visual</a></li>
+                            <li><a href="#">Desenvolvimento Web</a></li>
+                            <li><a href="#">Marketing Digital</a></li>
+                            <li><a href="#">Consultoria</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h4>Contato</h4>
+                        <ul>
+                            <li><i class="fas fa-envelope"></i> <a href="mailto:contato@kolibrasolutions.com">contato@kolibrasolutions.com</a></li>
+                            <li><i class="fas fa-phone"></i> <a href="tel:+5511999999999">(11) 99999-9999</a></li>
+                            <li><i class="fas fa-map-marker-alt"></i> <a href="#">São Paulo, SP</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 KOLIBRA SOLUTIONS. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navegação Mobile
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (navToggle) {
+                navToggle.addEventListener('click', function() {
+                    navToggle.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Tabs de Serviços
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remover classe active de todos os botões
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Adicionar classe active ao botão clicado
+                    this.classList.add('active');
+                    
+                    // Mostrar o painel correspondente
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    tabPanes.forEach(pane => pane.classList.remove('active'));
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Capturar plano/serviço selecionado
+            const planLinks = document.querySelectorAll('[data-plan]');
+            const serviceLinks = document.querySelectorAll('[data-service]');
+            const selectedItemField = document.getElementById('selectedItem');
+            const interestSelect = document.getElementById('interest');
+            
+            // Função para rolar até o formulário
+            function scrollToForm() {
+                document.getElementById('solicitar-plano').scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            // Adicionar evento para links de planos
+            planLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const planType = this.getAttribute('data-plan');
+                    selectedItemField.value = `plano_${planType}`;
+                    
+                    // Selecionar opção correspondente no select
+                    if (planType === 'starter') {
+                        interestSelect.value = 'plano_starter';
+                    } else if (planType === 'business') {
+                        interestSelect.value = 'plano_business';
+                    } else if (planType === 'premium') {
+                        interestSelect.value = 'plano_premium';
+                    }
+                    
+                    scrollToForm();
+                });
+            });
+            
+            // Adicionar evento para links de serviços
+            serviceLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const serviceType = this.getAttribute('data-service');
+                    selectedItemField.value = `servico_${serviceType}`;
+                    
+                    // Determinar categoria do serviço
+                    let category = '';
+                    if (['logo', 'identidade', 'social_media_design'].includes(serviceType)) {
+                        category = 'design';
+                    } else if (['site', 'ecommerce', 'landing'].includes(serviceType)) {
+                        category = 'web';
+                    } else if (['seo', 'social', 'ads'].includes(serviceType)) {
+                        category = 'marketing';
+                    } else {
+                        category = 'consultoria';
+                    }
+                    
+                    // Selecionar opção correspondente no select
+                    interestSelect.value = `servico_${category}`;
+                    
+                    scrollToForm();
+                });
+            });
+            
+            // Formulário de Solicitação
+            const planRequestForm = document.getElementById('planRequestForm');
+            
+            planRequestForm.addEventListener('submit', function(e) {
+                // Validação adicional pode ser adicionada aqui se necessário
+            });
+        });
+    </script>
+<script src="js/menu-padronizado.js"></script>
+<script src="js/form-fix.js"></script>
+<script src="js/form-update.js"></script>
+<script src="js/emailjs-integration.js"></script>
+</body>
+</html>

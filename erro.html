@@ -1,0 +1,120 @@
+<?php
+// Página de erro para formulários
+header('Content-Type: text/html; charset=utf-8');
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOLIBRA SOLUTIONS - Erro no Envio</title>
+    <style>
+        :root {
+            --primary-color: #004494;
+            --secondary-color: #FF7F00;
+            --light-color: #ffffff;
+            --dark-color: #333333;
+            --gray-color: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--gray-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .message-container {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: var(--primary-color);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo img {
+            max-width: 150px;
+            height: auto;
+        }
+        
+        h1 {
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .icon {
+            font-size: 64px;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #003370;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="img/LOGO COLOR.png" alt="KOLIBRA SOLUTIONS">
+        </div>
+        
+        <div class="message-container">
+            <div class="icon">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <h1>Ocorreu um erro no envio</h1>
+            <p>Infelizmente, não foi possível enviar sua mensagem neste momento.</p>
+            <p>Por favor, tente novamente mais tarde ou entre em contato conosco diretamente pelo e-mail <strong>kolibrasolutions@gmail.com</strong> ou pelo WhatsApp.</p>
+            
+            <a href="index.html" class="btn">Voltar para o Início</a>
+        </div>
+    </div>
+    
+    <script src="js/menu-padronizado.js"></script>
+<script src="js/form-update.js"></script>
+<script src="js/emailjs-integration.js"></script>
+</body>
+</html>

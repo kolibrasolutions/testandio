@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOLIBRA SOLUTIONS - Finalizar Pedido</title>
+    <style>
+        :root {
+            --primary-color: #004494;
+            --secondary-color: #FF7F00;
+            --light-color: #ffffff;
+            --dark-color: #333333;
+            --gray-color: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--gray-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .form-container {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: var(--primary-color);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo img {
+            max-width: 150px;
+            height: auto;
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .form-intro {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 68, 148, 0.1);
+        }
+        
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 600px) {
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        
+        .radio-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-item input[type="radio"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+        }
+        
+        .form-section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .form-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #003370;
+            transform: translateY(-2px);
+        }
+        
+        button.secondary {
+            background-color: #e0e0e0;
+            color: var(--dark-color);
+        }
+        
+        button.secondary:hover {
+            background-color: #d0d0d0;
+        }
+        
+        .success-message {
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.5s;
+        }
+        
+        .success-message.active {
+            display: block;
+        }
+        
+        .icon-container {
+            font-size: 64px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .cta-button {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .cta-button:hover {
+            background-color: #e67300;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .form-tip {
+            background-color: rgba(0, 68, 148, 0.05);
+            border-left: 3px solid var(--primary-color);
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .form-tip p {
+            margin-bottom: 0;
+            font-size: 14px;
+        }
+        
+        .kit-summary {
+            background-color: var(--gray-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .kit-summary h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .kit-summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .kit-summary-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .kit-summary-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px solid var(--primary-color);
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .kit-summary-total .price {
+            color: var(--primary-color);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="img/LOGO COLOR.png" alt="KOLIBRA SOLUTIONS">
+        </div>
+        
+        <div class="form-container">
+            <div class="form-intro">
+                <h1>Finalizar Pedido</h1>
+                <p>Complete o formulário abaixo para finalizar seu pedido. Nossa equipe entrará em contato para confirmar os detalhes e iniciar o desenvolvimento do seu kit.</p>
+                
+                <div class="form-tip">
+                    <p><strong>Dica:</strong> Quanto mais detalhes você fornecer sobre seu negócio, mais personalizado será o resultado final.</p>
+                </div>
+            </div>
+            
+            <form id="orderForm" action="https://formsubmit.co/kolibrasolutions@gmail.com" method="POST">
+                <!-- Campo oculto para identificar que é um pedido -->
+                <input type="hidden" name="_subject" value="Novo Pedido de Kit">
+                
+                <!-- Seção 1: Seleção do Kit -->
+                <div class="form-section">
+                    <h2>Selecione seu Kit</h2>
+                    
+                    <div class="form-group">
+                        <label for="kit_type">Tipo de Kit *</label>
+                        <select id="kit_type" name="kit_type" required onchange="updateKitSummary()">
+                            <option value="">Selecione uma opção</option>
+                            <option value="barbearia">Kit Barbearia</option>
+                            <option value="lanchonete">Kit Lanchonete</option>
+                            <option value="restaurante">Kit Restaurante</option>
+                            <option value="salao">Kit Salão de Beleza</option>
+                            <option value="loja">Kit Loja de Roupas</option>
+                            <option value="academia">Kit Academia</option>
+                        </select>
+                    </div>
+                    
+                    <div class="kit-summary" id="kitSummary">
+                        <h3>Resumo do Pedido</h3>
+                        <div class="kit-summary-item">
+                            <span class="item">Kit Selecionado:</span>
+                            <span class="value" id="summaryKitType">-</span>
+                        </div>
+                        <div class="kit-summary-item">
+                            <span class="item">Itens Incluídos:</span>
+                            <span class="value" id="summaryItems">-</span>
+                        </div>
+                        <div class="kit-summary-total">
+                            <span class="total-label">Valor Total:</span>
+                            <span class="price" id="summaryPrice">R$ 0,00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Seção 2: Informações Pessoais -->
+                <div class="form-section">
+                    <h2>Informações Pessoais</h2>
+                    
+                    <div class="form-group">
+                        <label for="name">Nome Completo *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telefone/WhatsApp *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Nome da Empresa (se houver)</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                </div>
+                
+                <!-- Seção 3: Detalhes do Negócio -->
+                <div class="form-section">
+                    <h2>Detalhes do Negócio</h2>
+                    
+                    <div class="form-group">
+                        <label for="business_description">Descreva brevemente seu negócio ou ideia *</label>
+                        <textarea id="business_description" name="business_description" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Estágio do seu negócio *</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="stage_idea" name="business_stage" value="idea" required>
+                                <label for="stage_idea">Apenas uma ideia</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="stage_planning" name="business_stage" value="planning">
+                                <label for="stage_planning">Em planejamento</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="stage_starting" name="business_stage" value="starting">
+                                <label for="stage_starting">Começando agora</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="stage_operating" name="business_stage" value="operating">
+                                <label for="stage_operating">Já em operação</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customization_notes">Detalhes de personalização (cores, estilo, preferências)</label>
+                        <textarea id="customization_notes" name="customization_notes" placeholder="Ex: Cores preferidas, estilo (moderno, clássico, minimalista), referências que você gosta, etc."></textarea>
+                    </div>
+                </div>
+                
+                <!-- Seção 4: Forma de Pagamento -->
+                <div class="form-section">
+                    <h2>Forma de Pagamento Preferida</h2>
+                    
+                    <div class="form-group">
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="payment_pix" name="payment_method" value="pix" required>
+                                <label for="payment_pix">PIX</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="payment_credit" name="payment_method" value="credit">
+                                <label for="payment_credit">Cartão de Crédito</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="payment_boleto" name="payment_method" value="boleto">
+                                <label for="payment_boleto">Boleto Bancário</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="payment_transfer" name="payment_method" value="transfer">
+                                <label for="payment_transfer">Transferência Bancária</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="checkbox-item terms-checkbox">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">Concordo com os Termos e Condições e autorizo o contato da KOLIBRA SOLUTIONS.</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-buttons">
+                    <a href="selecao-kit.html" class="btn secondary">Voltar para Kits</a>
+                    <button type="submit">Enviar Pedido</button>
+                </div>
+            </form>
+            
+            <!-- Mensagem de Sucesso (inicialmente oculta) -->
+            <div class="success-message" id="successMessage">
+                <div class="icon-container">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Pedido Enviado com Sucesso!</h2>
+                <p>Obrigado por escolher a KOLIBRA SOLUTIONS. Recebemos seu pedido e entraremos em contato em até 24 horas úteis para confirmar os detalhes e iniciar o desenvolvimento do seu kit.</p>
+                <p>Enquanto isso, que tal conhecer mais sobre nossos trabalhos?</p>
+                <div class="success-buttons">
+                    <a href="portfolio.html" class="cta-button">Ver Portfólio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateKitSummary() {
+            const kitType = document.getElementById('kit_type').value;
+            const summaryKitType = document.getElementById('summaryKitType');
+            const summaryItems = document.getElementById('summaryItems');
+            const summaryPrice = document.getElementById('summaryPrice');
+            
+            if (kitType === '') {
+                summaryKitType.textContent = '-';
+                summaryItems.textContent = '-';
+                summaryPrice.textContent = 'R$ 0,00';
+                return;
+            }
+            
+            // Definir os valores com base no tipo de kit selecionado
+            let kitName = '';
+            let kitItems = '';
+            let kitPrice = '';
+            
+            switch(kitType) {
+                case 'barbearia':
+                    kitName = 'Kit Barbearia';
+                    kitItems = 'Logo, Site Responsivo, Cartão Digital, Perfil Instagram, 8 Posts';
+                    kitPrice = 'R$ 997,00';
+                    break;
+                case 'lanchonete':
+                    kitName = 'Kit Lanchonete';
+                    kitItems = 'Logo, Cardápio Digital, Site com Pedido Online, Perfil Instagram, 8 Posts';
+                    kitPrice = 'R$ 1.197,00';
+                    break;
+                case 'restaurante':
+                    kitName = 'Kit Restaurante';
+                    kitItems = 'Logo, Cardápio Digital Premium, Site com Reservas, Perfil Instagram, 12 Posts';
+                    kitPrice = 'R$ 1.497,00';
+                    break;
+                case 'salao':
+                    kitName = 'Kit Salão de Beleza';
+                    kitItems = 'Logo, Site com Agendamento, Cartão Digital, Perfil Instagram, 10 Posts';
+                    kitPrice = 'R$ 1.297,00';
+                    break;
+                case 'loja':
+                    kitName = 'Kit Loja de Roupas';
+                    kitItems = 'Logo, Loja Virtual Básica, Etiquetas e Tags, Perfil Instagram, 10 Posts';
+                    kitPrice = 'R$ 1.397,00';
+                    break;
+                case 'academia':
+                    kitName = 'Kit Academia';
+                    kitItems = 'Logo, Site com Área de Membros, App de Treinos Básico, Perfil Instagram, 8 Posts';
+                    kitPrice = 'R$ 1.597,00';
+                    break;
+            }
+            
+            summaryKitType.textContent = kitName;
+            summaryItems.textContent = kitItems;
+            summaryPrice.textContent = kitPrice;
+        }
+        
+        // Adicionar um campo oculto com o resumo do pedido antes do envio
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            const kitType = document.getElementById('kit_type').value;
+            const summaryKitType = document.getElementById('summaryKitType').textContent;
+            const summaryItems = document.getElementById('summaryItems').textContent;
+            const summaryPrice = document.getElementById('summaryPrice').textContent;
+            
+            // Criar um campo oculto com o resumo do pedido
+            const orderSummary = document.createElement('input');
+            orderSummary.type = 'hidden';
+            orderSummary.name = 'order_summary';
+            orderSummary.value = `Kit: ${summaryKitType}\nItens: ${summaryItems}\nValor: ${summaryPrice}`;
+            
+            // Adicionar ao formulário
+            this.appendChild(orderSummary);
+        });
+    </script>
+<script src="js/menu-padronizado.js"></script>
+<script src="js/form-fix.js"></script>
+<script src="js/form-update.js"></script>
+<script src="js/emailjs-integration.js"></script>
+</body>
+</html>

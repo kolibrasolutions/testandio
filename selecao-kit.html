@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOLIBRA SOLUTIONS - Escolha seu Kit</title>
+    <meta name="description" content="Escolha o kit ideal para o seu tipo de negócio. Temos opções para barbearia, lanchonete, restaurante, salão de beleza e muito mais.">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <style>
+        :root {
+            --primary-color: #004494;
+            --secondary-color: #FF7F00;
+            --light-color: #ffffff;
+            --dark-color: #333333;
+            --gray-color: #f5f5f5;
+            --gray-dark: #666666;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            color: var(--gray-dark);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--secondary-color);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .mt-5 {
+            margin-top: 50px;
+        }
+        
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Botões */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #003370;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e67300;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 127, 0, 0.3);
+        }
+        
+        .btn-light {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-light:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-lg {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+        }
+        
+        /* Navegação */
+        .navbar {
+            background-color: var(--primary-color);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: block;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            color: var(--light-color);
+            font-weight: 500;
+        }
+        
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--secondary-color);
+        }
+        
+        .btn-nav {
+            background-color: var(--secondary-color);
+            color: var(--light-color) !important;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        
+        .btn-nav:hover {
+            background-color: #e67300;
+            color: var(--light-color) !important;
+        }
+        
+        .nav-toggle {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .nav-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-color);
+            margin: 5px 0;
+            transition: var(--transition);
+        }
+        
+        /* Header */
+        .kit-header {
+            padding: 150px 0 80px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0066cc 100%);
+            color: var(--light-color);
+            text-align: center;
+        }
+        
+        .kit-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--light-color);
+        }
+        
+        .kit-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Kit Grid */
+        .kit-section {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .kit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .kit-card {
+            background-color: var(--light-color);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+        }
+        
+        .kit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .kit-icon {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--gray-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .kit-icon i {
+            font-size: 60px;
+            color: var(--secondary-color);
+            transition: transform 0.5s ease;
+        }
+        
+        .kit-card:hover .kit-icon i {
+            transform: scale(1.1);
+        }
+        
+        .kit-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .kit-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            text-align: center;
+        }
+        
+        .kit-description {
+            font-size: 0.95rem;
+            color: var(--gray-dark);
+            margin-bottom: 25px;
+            text-align: center;
+            flex-grow: 1;
+        }
+        
+        .kit-features {
+            margin-bottom: 25px;
+        }
+        
+        .kit-features li {
+            margin-bottom: 10px;
+            color: var(--gray-dark);
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .kit-features i {
+            color: var(--secondary-color);
+            margin-right: 10px;
+            margin-top: 5px;
+            font-size: 0.8rem;
+        }
+        
+        .kit-cta {
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        .kit-btn {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            transition: var(--transition);
+            width: 100%;
+        }
+        
+        .kit-btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+            color: var(--light-color);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #222;
+            color: var(--light-color);
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer p {
+            color: #bbb;
+            margin-bottom: 0;
+        }
+        
+        .footer a {
+            color: var(--secondary-color);
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Animações */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+        
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-5 {
+            animation-delay: 0.5s;
+        }
+        
+        .delay-6 {
+            animation-delay: 0.6s;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .kit-header h1 {
+                font-size: 2.3rem;
+            }
+            
+            .kit-header p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 0;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--primary-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: var(--transition);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            .nav-toggle {
+                display: block;
+            }
+            
+            .nav-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .nav-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+            
+            .kit-header {
+                padding: 120px 0 60px;
+            }
+            
+            .kit-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .kit-header h1 {
+                font-size: 2rem;
+            }
+            
+            .kit-title {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegação -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="img/LOGO COLOR.png" alt="KOLIBRA SOLUTIONS">
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="planos.html">Planos</a></li>
+                <li><a href="portfolio.html">Portfólio</a></li>
+                <li><a href="orcamento.html">Orçamento</a></li>
+                <li><a href="construtor.html" class="btn-nav">Construir Plano</a></li>
+            </ul>
+            
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Header -->
+    <header class="kit-header">
+        <div class="container">
+            <h1>Escolha o Kit Ideal para o Seu Negócio</h1>
+            <p>Soluções completas e personalizadas para diferentes tipos de empreendimentos</p>
+        </div>
+    </header>
+    
+    <!-- Kit Section -->
+    <section class="kit-section">
+        <div class="container">
+            <div class="kit-grid">
+                <!-- Barbearia -->
+                <div class="kit-card animate-fade-in delay-1">
+                    <div class="kit-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <div class="kit-content">
+                        <h3 class="kit-title">Barbearia</h3>
+                        <p class="kit-description">Kit completo para barbearias e salões masculinos</p>
+                        <ul class="kit-features">
+                            <li><i class="fas fa-check-circle"></i> Logo + Identidade Visual</li>
+                            <li><i class="fas fa-check-circle"></i> Site Responsivo</li>
+                            <li><i class="fas fa-check-circle"></i> Cartão Digital</li>
+                            <li><i class="fas fa-check-circle"></i> Perfil Instagram Otimizado</li>
+                            <li><i class="fas fa-check-circle"></i> 8 Posts para Redes Sociais</li>
+                        </ul>
+                        <div class="kit-cta">
+                            <a href="kolibra_kit_barbearia.html" class="kit-btn">Ver Kit Completo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lanchonete -->
+                <div class="kit-card animate-fade-in delay-2">
+                    <div class="kit-icon">
+                        <i class="fas fa-hamburger"></i>
+                    </div>
+                    <div class="kit-content">
+                        <h3 class="kit-title">Lanchonete</h3>
+                        <p class="kit-description">Kit completo para lanchonetes e fast-foods</p>
+                        <ul class="kit-features">
+                            <li><i class="fas fa-check-circle"></i> Logo + Identidade Visual</li>
+                            <li><i class="fas fa-check-circle"></i> Cardápio Digital</li>
+                            <li><i class="fas fa-check-circle"></i> Site com Pedido Online</li>
+                            <li><i class="fas fa-check-circle"></i> Perfil Instagram Otimizado</li>
+                            <li><i class="fas fa-check-circle"></i> 8 Posts para Redes Sociais</li>
+                        </ul>
+                        <div class="kit-cta">
+                            <a href="kolibra_kit_barbearia.html" class="kit-btn">Ver Kit Completo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Restaurante -->
+                <div class="kit-card animate-fade-in delay-3">
+                    <div class="kit-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="kit-content">
+                        <h3 class="kit-title">Restaurante</h3>
+                        <p class="kit-description">Kit completo para restaurantes e gastronomia</p>
+                        <ul class="kit-features">
+                            <li><i class="fas fa-check-circle"></i> Logo + Identidade Visual</li>
+                            <li><i class="fas fa-check-circle"></i> Cardápio Digital Premium</li>
+                            <li><i class="fas fa-check-circle"></i> Site com Reservas Online</li>
+                            <li><i class="fas fa-check-circle"></i> Perfil Instagram Otimizado</li>
+                            <li><i class="fas fa-check-circle"></i> 12 Posts para Redes Sociais</li>
+                        </ul>
+                        <div class="kit-cta">
+                            <a href="kolibra_kit_barbearia.html" class="kit-btn">Ver Kit Completo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Salão de Beleza -->
+                <div class="kit-card animate-fade-in delay-4">
+                    <div class="kit-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <div class="kit-content">
+                        <h3 class="kit-title">Salão de Beleza</h3>
+                        <p class="kit-description">Kit completo para salões de beleza e estética</p>
+                        <ul class="kit-features">
+                            <li><i class="fas fa-check-circle"></i> Logo + Identidade Visual</li>
+                            <li><i class="fas fa-check-circle"></i> Site com Agendamento</li>
+                            <li><i class="fas fa-check-circle"></i> Cartão Digital</li>
+                            <li><i class="fas fa-check-circle"></i> Perfil Instagram Otimizado</li>
+                            <li><i class="fas fa-check-circle"></i> 10 Posts para Redes Sociais</li>
+                        </ul>
+                        <div class="kit-cta">
+                            <a href="kolibra_kit_barbearia.html" class="kit-btn">Ver Kit Completo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Loja de Roupas -->
+                <div class="kit-card animate-fade-in delay-5">
+                    <div class="kit-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <div class="kit-content">
+                        <h3 class="kit-title">Loja de Roupas</h3>
+                        <p class="kit-description">Kit completo para lojas de vestuário e moda</p>
+                        <ul class="kit-features">
+                            <li><i class="fas fa-check-circle"></i> Logo + Identidade Visual</li>
+                            <li><i class="fas fa-check-circle"></i> Loja Virtual Básica</li>
+                            <li><i class="fas fa-check-circle"></i> Etiquetas e Tags</li>
+                            <li><i class="fas fa-check-circle"></i> Perfil Instagram Otimizado</li>
+                            <li><i class="fas fa-check-circle"></i> 10 Posts para Redes Sociais</li>
+                        </ul>
+                        <div class="kit-cta">
+                            <a href="kolibra_kit_barbearia.html" class="kit-btn">Ver Kit Completo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Academia -->
+                <div class="kit-card animate-fade-in delay-6">
+                    <div class="kit-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <div class="kit-content">
+                        <h3 class="kit-title">Academia</h3>
+                        <p class="kit-description">Kit completo para academias e estúdios fitness</p>
+                        <ul class="kit-features">
+                            <li><i class="fas fa-check-circle"></i> Logo + Identidade Visual</li>
+                            <li><i class="fas fa-check-circle"></i> Site com Área de Membros</li>
+                            <li><i class="fas fa-check-circle"></i> App de Treinos Básico</li>
+                            <li><i class="fas fa-check-circle"></i> Perfil Instagram Otimizado</li>
+                            <li><i class="fas fa-check-circle"></i> 8 Posts para Redes Sociais</li>
+                        </ul>
+                        <div class="kit-cta">
+                            <a href="kolibra_kit_barbearia.html" class="kit-btn">Ver Kit Completo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <p>Não encontrou o kit ideal para o seu negócio?</p>
+                <a href="formulario-problemas.html" class="btn btn-primary">Solicitar Kit Personalizado</a>
+                <a href="finalizar-pedido.html" class="btn btn-secondary" style="background-color: var(--secondary-color); color: var(--light-color); margin-left: 10px;">Finalizar Pedido</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 KOLIBRA SOLUTIONS. Todos os direitos reservados. <a href="index.html">Voltar para Home</a></p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Menu Mobile
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        navToggle.addEventListener('click', function() {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    </script>
+<script src="js/menu-padronizado.js"></script>
+<script src="js/form-fix.js"></script>
+<script src="js/form-update.js"></script>
+<script src="js/emailjs-integration.js"></script>
+</body>
+</html>

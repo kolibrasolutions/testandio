@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico de Problemas para Pequenos e Médios Negócios - Kolibra Solutions</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <style>
+        /* Estilos existentes mantidos... */
+        :root {
+            --primary-color: #004494;
+            --secondary-color: #FF7F00;
+            --light-color: #ffffff;
+            --dark-color: #333333;
+            --gray-color: #f5f5f5;
+            --gray-dark: #666666;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f5f5f5;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            color: var(--gray-dark);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--secondary-color);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        /* Navegação */
+        .navbar {
+            background-color: var(--primary-color);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: block;
+        }
+        
+        .logo img {
+            height: 70px;
+            width: auto;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            color: var(--light-color);
+            font-weight: 500;
+        }
+        
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--secondary-color);
+        }
+        
+        .btn-nav {
+            background-color: var(--secondary-color);
+            color: var(--light-color) !important;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        
+        .btn-nav:hover {
+            background-color: #e67300;
+            color: var(--light-color) !important;
+        }
+        
+        .nav-toggle {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .nav-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-color);
+            margin: 5px 0;
+            transition: var(--transition);
+        }
+        
+        /* Formulário de Diagnóstico */
+        .header-container {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0066cc 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 100px;
+        }
+
+        .header-container h1 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .header-container p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .progress {
+            height: 0.8rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            background-color: #e9ecef;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--secondary-color) 0%, #e67300 100%);
+            transition: width 0.5s ease;
+        }
+
+        .form-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .form-control, .form-select {
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            border: 1px solid #ced4da;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #86b7fe;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #003370;
+            border-color: #003370;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #e67300;
+            border-color: #e67300;
+        }
+
+        .problem-category {
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+        }
+
+        .problem-category h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .form-check {
+            margin-bottom: 0.75rem;
+        }
+
+        .form-check-label {
+            cursor: pointer;
+        }
+
+        .problem-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            background-color: #f8f9fa;
+            border-radius: 0.5rem;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .problem-item-ghost {
+            opacity: 0.5;
+        }
+
+        .priority-select {
+            width: 150px;
+        }
+
+        .problem-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .problem-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .priority-badge {
+            display: inline-block;
+            padding: 0.35rem 0.65rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 0.25rem;
+        }
+
+        .priority-high {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .priority-medium {
+            background-color: #ffc107;
+            color: var(--dark-color);
+        }
+
+        .priority-low {
+            background-color: #198754;
+            color: white;
+        }
+
+        .recommendation-box {
+            background-color: #e9f7fe;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            border-left: 4px solid #17a2b8;
+        }
+
+        .result-summary {
+            background-color: #f8f9fa;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .result-summary h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .result-summary p {
+            margin-bottom: 0.5rem;
+        }
+
+        .result-summary strong {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Novos estilos para melhorar a navegação */
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .section-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 20%;
+            position: relative;
+        }
+
+        .section-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 1rem;
+            right: -50%;
+            width: 100%;
+            height: 2px;
+            background-color: #e9ecef;
+            z-index: 1;
+        }
+
+        .section-step.active:not(:last-child)::after,
+        .section-step.completed:not(:last-child)::after {
+            background-color: var(--primary-color);
+        }
+
+        .step-circle {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--dark-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .section-step.active .step-circle {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .section-step.completed .step-circle {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .step-label {
+            font-size: 0.8rem;
+            text-align: center;
+            color: var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+
+        .section-step.active .step-label {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .section-step.completed .step-label {
+            color: var(--secondary-color);
+        }
+
+        .section-info {
+            background-color: #e9f7fe;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #17a2b8;
+        }
+
+        .section-info p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Estilos para a lista de soluções */
+        .solutions-container {
+            margin-top: 2rem;
+        }
+
+        .solution-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #17a2b8;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .solution-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #17a2b8;
+        }
+
+        .solution-card p {
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+
+        .solution-card .badge {
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .solution-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .solution-price {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #222;
+            color: var(--light-color);
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer p {
+            color: #bbb;
+            margin-bottom: 0;
+        }
+        
+        .footer a {
+            color: var(--secondary-color);
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .section-step {
+                width: 33.33%;
+            }
+            
+            .section-step:nth-child(n+4) {
+                display: none;
+            }
+            
+            .problem-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .problem-item > div:last-child {
+                margin-top: 1rem;
+                width: 100%;
+            }
+            
+            .form-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .form-navigation .btn {
+                width: 100%;
+            }
+            
+            .navbar {
+                padding: 15px 0;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--primary-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: var(--transition);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            .nav-toggle {
+                display: block;
+            }
+            
+            .nav-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .nav-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegação -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="img/LOGO COLOR.png" alt="KOLIBRA SOLUTIONS">
+            </a>
+            
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="planos.html">Planos</a></li>
+                <li><a href="portfolio.html">Portfólio</a></li>
+                <li><a href="orcamento.html" class="btn-nav">Orçamento</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Header -->
+    <header class="header-container">
+        <div class="container">
+            <h1>Diagnóstico de Problemas</h1>
+            <p>Identifique os principais desafios do seu negócio e receba recomendações personalizadas</p>
+        </div>
+    </header>
+    
+    <!-- Formulário de Diagnóstico -->
+    <div class="container">
+        <div class="form-container">
+            <form id="diagnosticForm" action="https://formsubmit.co/kolibrasolutions@gmail.com" method="POST">
+                <!-- Campo oculto para redirecionamento após envio -->
+                <input type="hidden" name="_next" value="https://kolibrasolutions.vercel.app/obrigado.html">
+                
+                <!-- Campo oculto para assunto do e-mail -->
+                <input type="hidden" name="_subject" value="Novo diagnóstico de problemas solicitado">
+                
+                <!-- Indicador de Seções -->
+                <div class="section-indicator">
+                    <div class="section-step active" data-step="1">
+                        <div class="step-circle">1</div>
+                        <div class="step-label">Informações</div>
+                    </div>
+                    <div class="section-step" data-step="2">
+                        <div class="step-circle">2</div>
+                        <div class="step-label">Problemas</div>
+                    </div>
+                    <div class="section-step" data-step="3">
+                        <div class="step-circle">3</div>
+                        <div class="step-label">Priorização</div>
+                    </div>
+                    <div class="section-step" data-step="4">
+                        <div class="step-circle">4</div>
+                        <div class="step-label">Soluções</div>
+                    </div>
+                    <div class="section-step" data-step="5">
+                        <div class="step-circle">5</div>
+                        <div class="step-label">Finalizar</div>
+                    </div>
+                </div>
+                
+                <!-- Barra de Progresso -->
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                
+                <!-- Seção 1: Informações do Negócio -->
+                <div class="section active" id="section1">
+                    <h2 class="section-title">Informações do Negócio</h2>
+                    
+                    <div class="section-info">
+                        <p>Preencha as informações básicas sobre o seu negócio para que possamos entender melhor o contexto dos problemas.</p>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="businessName" class="form-label">Nome da Empresa *</label>
+                            <input type="text" class="form-control" id="businessName" name="business_name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="businessType" class="form-label">Tipo de Negócio *</label>
+                            <select class="form-select" id="businessType" name="business_type" required>
+                                <option value="" selected disabled>Selecione...</option>
+                                <option value="retail">Varejo</option>
+                                <option value="service">Prestação de Serviços</option>
+                                <option value="food">Alimentação</option>
+                                <option value="beauty">Beleza e Estética</option>
+                                <option value="health">Saúde</option>
+                                <option value="education">Educação</option>
+                                <option value="technology">Tecnologia</option>
+                                <option value="other">Outro</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="businessSize" class="form-label">Tamanho da Empresa *</label>
+                            <select class="form-select" id="businessSize" name="business_size" required>
+                                <option value="" selected disabled>Selecione...</option>
+                                <option value="micro">Microempresa (até 9 funcionários)</option>
+                                <option value="small">Pequena Empresa (10-49 funcionários)</option>
+                                <option value="medium">Média Empresa (50-99 funcionários)</option>
+                                <option value="large">Grande Empresa (100+ funcionários)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="businessTime" class="form-label">Tempo de Existência *</label>
+                            <select class="form-select" id="businessTime" name="business_time" required>
+                                <option value="" selected disabled>Selecione...</option>
+                                <option value="less_than_1">Menos de 1 ano</option>
+                                <option value="1_to_3">1 a 3 anos</option>
+                                <option value="3_to_5">3 a 5 anos</option>
+                                <option value="5_to_10">5 a 10 anos</option>
+                                <option value="more_than_10">Mais de 10 anos</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="contactName" class="form-label">Nome do Responsável *</label>
+                            <input type="text" class="form-control" id="contactName" name="contact_name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="contactEmail" class="form-label">E-mail de Contato *</label>
+                            <input type="email" class="form-control" id="contactEmail" name="contact_email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="contactPhone" class="form-label">Telefone de Contato *</label>
+                            <input type="tel" class="form-control" id="contactPhone" name="contact_phone" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="businessLocation" class="form-label">Localização *</label>
+                            <input type="text" class="form-control" id="businessLocation" name="business_location" placeholder="Cidade/Estado" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="businessDescription" class="form-label">Descrição do Negócio *</label>
+                        <textarea class="form-control" id="businessDescription" name="business_description" rows="3" placeholder="Descreva brevemente o seu negócio, produtos/serviços oferecidos e público-alvo" required></textarea>
+                    </div>
+                    
+                    <div class="form-navigation">
+                        <div></div>
+                        <button type="button" class="btn btn-primary next-btn" data-next="2">Próximo</button>
+                    </div>
+                </div>
+                
+                <!-- Seção 2: Identificação de Problemas -->
+                <div class="section" id="section2">
+                    <h2 class="section-title">Identificação de Problemas</h2>
+                    
+                    <div class="section-info">
+                        <p>Selecione os problemas que sua empresa enfrenta atualmente. Você poderá priorizar esses problemas na próxima etapa.</p>
+                    </div>
+                    
+                    <div class="problem-category">
+                        <h3>Marketing e Vendas</h3>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="low_visibility" id="problem_low_visibility" name="problems[]">
+                            <label class="form-check-label" for="problem_low_visibility">
+                                Baixa visibilidade online
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="few_leads" id="problem_few_leads" name="problems[]">
+                            <label class="form-check-label" for="problem_few_leads">
+                                Poucos leads/clientes potenciais
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="low_conversion" id="problem_low_conversion" name="problems[]">
+                            <label class="form-check-label" for="problem_low_conversion">
+                                Baixa taxa de conversão
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="ineffective_social_media" id="problem_ineffective_social_media" name="problems[]">
+                            <label class="form-check-label" for="problem_ineffective_social_media">
+                                Redes sociais ineficientes
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="no_marketing_strategy" id="problem_no_marketing_strategy" name="problems[]">
+                            <label class="form-check-label" for="problem_no_marketing_strategy">
+                                Ausência de estratégia de marketing
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="problem-category">
+                        <h3>Identidade Visual e Branding</h3>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="outdated_logo" id="problem_outdated_logo" name="problems[]">
+                            <label class="form-check-label" for="problem_outdated_logo">
+                                Logo desatualizada ou amadora
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="inconsistent_visual" id="problem_inconsistent_visual" name="problems[]">
+                            <label class="form-check-label" for="problem_inconsistent_visual">
+                                Identidade visual inconsistente
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="weak_brand" id="problem_weak_brand" name="problems[]">
+                            <label class="form-check-label" for="problem_weak_brand">
+                                Marca fraca ou pouco reconhecida
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="no_brand_guidelines" id="problem_no_brand_guidelines" name="problems[]">
+                            <label class="form-check-label" for="problem_no_brand_guidelines">
+                                Ausência de manual de identidade visual
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="problem-category">
+                        <h3>Presença Digital</h3>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="no_website" id="problem_no_website" name="problems[]">
+                            <label class="form-check-label" for="problem_no_website">
+                                Não possui site ou site desatualizado
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="poor_seo" id="problem_poor_seo" name="problems[]">
+                            <label class="form-check-label" for="problem_poor_seo">
+                                SEO fraco (não aparece nas buscas)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="no_ecommerce" id="problem_no_ecommerce" name="problems[]">
+                            <label class="form-check-label" for="problem_no_ecommerce">
+                                Ausência de e-commerce ou loja online
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="poor_user_experience" id="problem_poor_user_experience" name="problems[]">
+                            <label class="form-check-label" for="problem_poor_user_experience">
+                                Experiência do usuário ruim no site
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="problem-category">
+                        <h3>Gestão e Processos</h3>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="inefficient_processes" id="problem_inefficient_processes" name="problems[]">
+                            <label class="form-check-label" for="problem_inefficient_processes">
+                                Processos internos ineficientes
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="poor_customer_service" id="problem_poor_customer_service" name="problems[]">
+                            <label class="form-check-label" for="problem_poor_customer_service">
+                                Atendimento ao cliente deficiente
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="high_costs" id="problem_high_costs" name="problems[]">
+                            <label class="form-check-label" for="problem_high_costs">
+                                Custos operacionais elevados
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="team_management" id="problem_team_management" name="problems[]">
+                            <label class="form-check-label" for="problem_team_management">
+                                Dificuldades na gestão de equipe
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="otherProblems" class="form-label">Outros Problemas</label>
+                        <textarea class="form-control" id="otherProblems" name="other_problems" rows="3" placeholder="Descreva outros problemas não listados acima"></textarea>
+                    </div>
+                    
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-outline-primary prev-btn" data-prev="1">Anterior</button>
+                        <button type="button" class="btn btn-primary next-btn" data-next="3">Próximo</button>
+                    </div>
+                </div>
+                
+                <!-- Seção 3: Priorização de Problemas -->
+                <div class="section" id="section3">
+                    <h2 class="section-title">Priorização de Problemas</h2>
+                    
+                    <div class="section-info">
+                        <p>Defina a prioridade dos problemas selecionados. Isso nos ajudará a focar nas soluções mais urgentes para o seu negócio.</p>
+                    </div>
+                    
+                    <div id="priorityContainer">
+                        <!-- Os problemas selecionados serão adicionados aqui dinamicamente -->
+                        <div class="text-center py-4">
+                            <p>Selecione pelo menos um problema na etapa anterior.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-outline-primary prev-btn" data-prev="2">Anterior</button>
+                        <button type="button" class="btn btn-primary next-btn" data-next="4">Próximo</button>
+                    </div>
+                </div>
+                
+                <!-- Seção 4: Soluções Recomendadas -->
+                <div class="section" id="section4">
+                    <h2 class="section-title">Soluções Recomendadas</h2>
+                    
+                    <div class="section-info">
+                        <p>Com base nos problemas identificados, estas são algumas soluções que podemos oferecer para o seu negócio.</p>
+                    </div>
+                    
+                    <div id="solutionsContainer" class="solutions-container">
+                        <!-- As soluções serão adicionadas aqui dinamicamente -->
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="additionalInfo" class="form-label">Informações Adicionais</label>
+                        <textarea class="form-control" id="additionalInfo" name="additional_info" rows="3" placeholder="Compartilhe informações adicionais que possam nos ajudar a entender melhor suas necessidades"></textarea>
+                    </div>
+                    
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-outline-primary prev-btn" data-prev="3">Anterior</button>
+                        <button type="button" class="btn btn-primary next-btn" data-next="5">Próximo</button>
+                    </div>
+                </div>
+                
+                <!-- Seção 5: Finalização -->
+                <div class="section" id="section5">
+                    <h2 class="section-title">Finalizar Diagnóstico</h2>
+                    
+                    <div class="section-info">
+                        <p>Revise as informações e finalize o diagnóstico para receber nossas recomendações personalizadas.</p>
+                    </div>
+                    
+                    <div class="result-summary">
+                        <h3>Resumo do Diagnóstico</h3>
+                        <p><strong>Empresa:</strong> <span id="summary_business"></span></p>
+                        <p><strong>Responsável:</strong> <span id="summary_contact"></span></p>
+                        <p><strong>Problemas Prioritários:</strong></p>
+                        <ul id="summary_problems">
+                            <!-- Os problemas prioritários serão adicionados aqui -->
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="preferredContact" class="form-label">Forma de Contato Preferida</label>
+                        <select class="form-select" id="preferredContact" name="preferred_contact">
+                            <option value="email" selected>E-mail</option>
+                            <option value="phone">Telefone</option>
+                            <option value="whatsapp">WhatsApp</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="termsCheck" required>
+                        <label class="form-check-label" for="termsCheck">
+                            Concordo em receber o diagnóstico e propostas de soluções da KOLIBRA SOLUTIONS
+                        </label>
+                    </div>
+                    
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-outline-primary prev-btn" data-prev="4">Anterior</button>
+                        <button type="submit" class="btn btn-secondary">Enviar Diagnóstico</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 KOLIBRA SOLUTIONS. Todos os direitos reservados.</p>
+            <p>Soluções inovadoras para o crescimento do seu negócio.</p>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navegação Mobile
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (navToggle) {
+                navToggle.addEventListener('click', function() {
+                    navToggle.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Navegação entre seções
+            const sections = document.querySelectorAll('.section');
+            const progressBar = document.querySelector('.progress-bar');
+            const nextButtons = document.querySelectorAll('.next-btn');
+            const prevButtons = document.querySelectorAll('.prev-btn');
+            const sectionSteps = document.querySelectorAll('.section-step');
+            
+            // Função para mostrar uma seção específica
+            function showSection(sectionNumber) {
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                document.getElementById(`section${sectionNumber}`).classList.add('active');
+                
+                // Atualizar barra de progresso
+                const progress = (sectionNumber / sections.length) * 100;
+                progressBar.style.width = `${progress}%`;
+                progressBar.setAttribute('aria-valuenow', progress);
+                
+                // Atualizar indicador de seção
+                sectionSteps.forEach(step => {
+                    const stepNumber = parseInt(step.getAttribute('data-step'));
+                    step.classList.remove('active', 'completed');
+                    
+                    if (stepNumber === sectionNumber) {
+                        step.classList.add('active');
+                    } else if (stepNumber < sectionNumber) {
+                        step.classList.add('completed');
+                    }
+                });
+                
+                // Rolar para o topo do formulário
+                document.querySelector('.form-container').scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            // Botões de próximo
+            nextButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const nextSection = parseInt(this.getAttribute('data-next'));
+                    
+                    // Validar campos da seção atual antes de avançar
+                    const currentSection = parseInt(this.closest('.section').id.replace('section', ''));
+                    if (validateSection(currentSection)) {
+                        
+                        // Se estiver na seção 2 (problemas), gerar itens de prioridade
+                        if (currentSection === 2) {
+                            generatePriorityItems();
+                        }
+                        
+                        // Se estiver na seção 3 (priorização), gerar soluções
+                        if (currentSection === 3) {
+                            generateSolutions();
+                        }
+                        
+                        // Se estiver na seção 4 (soluções), gerar resumo
+                        if (currentSection === 4) {
+                            generateSummary();
+                        }
+                        
+                        showSection(nextSection);
+                    }
+                });
+            });
+            
+            // Botões de anterior
+            prevButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const prevSection = parseInt(this.getAttribute('data-prev'));
+                    showSection(prevSection);
+                });
+            });
+            
+            // Validação de seções
+            function validateSection(sectionNumber) {
+                const section = document.getElementById(`section${sectionNumber}`);
+                const requiredFields = section.querySelectorAll('[required]');
+                let isValid = true;
+                
+                requiredFields.forEach(field => {
+                    if (!field.value) {
+                        field.classList.add('is-invalid');
+                        isValid = false;
+                    } else {
+                        field.classList.remove('is-invalid');
+                    }
+                });
+                
+                // Validações específicas por seção
+                if (sectionNumber === 2) {
+                    const selectedProblems = section.querySelectorAll('input[type="checkbox"]:checked');
+                    if (selectedProblems.length === 0) {
+                        alert('Selecione pelo menos um problema para continuar.');
+                        isValid = false;
+                    }
+                }
+                
+                return isValid;
+            }
+            
+            // Gerar itens de prioridade com base nos problemas selecionados
+            function generatePriorityItems() {
+                const priorityContainer = document.getElementById('priorityContainer');
+                const checkboxes = document.querySelectorAll('input[type="checkbox"][name="problems[]"]:checked');
+                
+                if (checkboxes.length === 0) {
+                    priorityContainer.innerHTML = `
+                        <div class="text-center py-4">
+                            <p>Selecione pelo menos um problema na etapa anterior.</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                priorityContainer.innerHTML = '';
+                
+                checkboxes.forEach((checkbox, index) => {
+                    const label = checkbox.nextElementSibling.textContent.trim();
+                    const value = checkbox.value;
+                    
+                    const problemItem = document.createElement('div');
+                    problemItem.className = 'problem-item';
+                    problemItem.innerHTML = `
+                        <div>
+                            <strong>${index + 1}. ${label}</strong>
+                        </div>
+                        <div>
+                            <select class="form-select priority-select" name="priority_${value}">
+                                <option value="high">Alta Prioridade</option>
+                                <option value="medium" selected>Média Prioridade</option>
+                                <option value="low">Baixa Prioridade</option>
+                            </select>
+                        </div>
+                    `;
+                    
+                    priorityContainer.appendChild(problemItem);
+                });
+            }
+            
+            // Gerar soluções com base nos problemas selecionados
+            function generateSolutions() {
+                const solutionsContainer = document.getElementById('solutionsContainer');
+                const checkboxes = document.querySelectorAll('input[type="checkbox"][name="problems[]"]:checked');
+                
+                if (checkboxes.length === 0) {
+                    solutionsContainer.innerHTML = `
+                        <div class="text-center py-4">
+                            <p>Nenhum problema selecionado para gerar soluções.</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                solutionsContainer.innerHTML = '';
+                
+                // Mapeamento de problemas para soluções
+                const solutionsMap = {
+                    'low_visibility': {
+                        title: 'Estratégia de Marketing Digital',
+                        description: 'Desenvolvimento de estratégia completa de marketing digital para aumentar a visibilidade online da sua empresa.',
+                        tags: ['SEO', 'Redes Sociais', 'Google Ads'],
+                        price: 'A partir de R$ 1.200,00'
+                    },
+                    'few_leads': {
+                        title: 'Funil de Vendas Otimizado',
+                        description: 'Criação de funil de vendas otimizado para captar mais leads e aumentar as conversões.',
+                        tags: ['Landing Pages', 'Email Marketing', 'CRM'],
+                        price: 'A partir de R$ 1.500,00'
+                    },
+                    'low_conversion': {
+                        title: 'Otimização de Conversão',
+                        description: 'Análise e otimização do processo de vendas para aumentar a taxa de conversão.',
+                        tags: ['CRO', 'UX/UI', 'Analytics'],
+                        price: 'A partir de R$ 1.800,00'
+                    },
+                    'ineffective_social_media': {
+                        title: 'Gestão de Redes Sociais',
+                        description: 'Planejamento, criação e gestão de conteúdo para suas redes sociais.',
+                        tags: ['Conteúdo', 'Engajamento', 'Análise'],
+                        price: 'A partir de R$ 900,00/mês'
+                    },
+                    'no_marketing_strategy': {
+                        title: 'Plano de Marketing Completo',
+                        description: 'Desenvolvimento de plano de marketing completo alinhado aos objetivos do seu negócio.',
+                        tags: ['Estratégia', 'Posicionamento', 'Branding'],
+                        price: 'A partir de R$ 2.500,00'
+                    },
+                    'outdated_logo': {
+                        title: 'Redesign de Logo',
+                        description: 'Criação de nova identidade visual moderna e alinhada ao posicionamento da sua marca.',
+                        tags: ['Design', 'Branding', 'Identidade'],
+                        price: 'A partir de R$ 800,00'
+                    },
+                    'inconsistent_visual': {
+                        title: 'Manual de Identidade Visual',
+                        description: 'Desenvolvimento de manual completo de identidade visual para garantir consistência em todos os pontos de contato.',
+                        tags: ['Branding', 'Design', 'Padronização'],
+                        price: 'A partir de R$ 1.500,00'
+                    },
+                    'weak_brand': {
+                        title: 'Estratégia de Branding',
+                        description: 'Desenvolvimento de estratégia de branding para fortalecer e posicionar sua marca no mercado.',
+                        tags: ['Posicionamento', 'Valores', 'Comunicação'],
+                        price: 'A partir de R$ 2.000,00'
+                    },
+                    'no_brand_guidelines': {
+                        title: 'Manual de Marca',
+                        description: 'Criação de manual de marca completo com diretrizes de uso e aplicações.',
+                        tags: ['Branding', 'Padronização', 'Comunicação'],
+                        price: 'A partir de R$ 1.200,00'
+                    },
+                    'no_website': {
+                        title: 'Desenvolvimento de Website',
+                        description: 'Criação de site profissional, responsivo e otimizado para conversões.',
+                        tags: ['Web Design', 'UX/UI', 'Responsivo'],
+                        price: 'A partir de R$ 2.500,00'
+                    },
+                    'poor_seo': {
+                        title: 'Otimização SEO',
+                        description: 'Estratégia completa de SEO para melhorar o posicionamento do seu site nos mecanismos de busca.',
+                        tags: ['Keywords', 'Conteúdo', 'Link Building'],
+                        price: 'A partir de R$ 1.200,00'
+                    },
+                    'no_ecommerce': {
+                        title: 'Loja Virtual',
+                        description: 'Desenvolvimento de e-commerce completo para vender seus produtos online.',
+                        tags: ['E-commerce', 'Pagamentos', 'Logística'],
+                        price: 'A partir de R$ 3.500,00'
+                    },
+                    'poor_user_experience': {
+                        title: 'Redesign UX/UI',
+                        description: 'Redesign da experiência do usuário e interface do seu site para melhorar a usabilidade e conversões.',
+                        tags: ['UX/UI', 'Usabilidade', 'Conversão'],
+                        price: 'A partir de R$ 2.000,00'
+                    },
+                    'inefficient_processes': {
+                        title: 'Consultoria de Processos',
+                        description: 'Análise e otimização dos processos internos para aumentar a eficiência operacional.',
+                        tags: ['Processos', 'Eficiência', 'Gestão'],
+                        price: 'A partir de R$ 2.500,00'
+                    },
+                    'poor_customer_service': {
+                        title: 'Sistema de Atendimento ao Cliente',
+                        description: 'Implementação de sistema de atendimento ao cliente eficiente e integrado.',
+                        tags: ['CRM', 'Atendimento', 'Satisfação'],
+                        price: 'A partir de R$ 1.800,00'
+                    },
+                    'high_costs': {
+                        title: 'Análise de Custos e Otimização',
+                        description: 'Análise detalhada dos custos operacionais e estratégias para redução.',
+                        tags: ['Custos', 'Eficiência', 'Economia'],
+                        price: 'A partir de R$ 2.000,00'
+                    },
+                    'team_management': {
+                        title: 'Sistema de Gestão de Equipe',
+                        description: 'Implementação de sistema de gestão de equipe para melhorar a produtividade e comunicação.',
+                        tags: ['Gestão', 'Produtividade', 'Comunicação'],
+                        price: 'A partir de R$ 1.500,00'
+                    }
+                };
+                
+                // Adicionar soluções com base nos problemas selecionados
+                checkboxes.forEach(checkbox => {
+                    const value = checkbox.value;
+                    const solution = solutionsMap[value];
+                    
+                    if (solution) {
+                        const solutionCard = document.createElement('div');
+                        solutionCard.className = 'solution-card';
+                        
+                        let tagsHTML = '';
+                        solution.tags.forEach(tag => {
+                            tagsHTML += `<span class="badge bg-primary">${tag}</span> `;
+                        });
+                        
+                        solutionCard.innerHTML = `
+                            <h3>${solution.title}</h3>
+                            <p>${solution.description}</p>
+                            <div>${tagsHTML}</div>
+                            <div class="solution-footer">
+                                <div class="solution-price">${solution.price}</div>
+                                <div>
+                                    <input type="checkbox" class="form-check-input" id="solution_${value}" name="selected_solutions[]" value="${value}" checked>
+                                    <label class="form-check-label" for="solution_${value}">Incluir na proposta</label>
+                                </div>
+                            </div>
+                        `;
+                        
+                        solutionsContainer.appendChild(solutionCard);
+                    }
+                });
+                
+                // Adicionar solução personalizada
+                const customSolution = document.createElement('div');
+                customSolution.className = 'solution-card';
+                customSolution.innerHTML = `
+                    <h3>Solução Personalizada</h3>
+                    <p>Desenvolvemos uma solução completamente personalizada para atender às necessidades específicas do seu negócio.</p>
+                    <div>
+                        <span class="badge bg-secondary">Personalizado</span>
+                        <span class="badge bg-secondary">Consultoria</span>
+                        <span class="badge bg-secondary">Sob Medida</span>
+                    </div>
+                    <div class="solution-footer">
+                        <div class="solution-price">Preço sob consulta</div>
+                        <div>
+                            <input type="checkbox" class="form-check-input" id="solution_custom" name="selected_solutions[]" value="custom">
+                            <label class="form-check-label" for="solution_custom">Incluir na proposta</label>
+                        </div>
+                    </div>
+                `;
+                
+                solutionsContainer.appendChild(customSolution);
+            }
+            
+            // Gerar resumo para a seção final
+            function generateSummary() {
+                const businessName = document.getElementById('businessName').value;
+                const contactName = document.getElementById('contactName').value;
+                const summaryBusiness = document.getElementById('summary_business');
+                const summaryContact = document.getElementById('summary_contact');
+                const summaryProblems = document.getElementById('summary_problems');
+                
+                summaryBusiness.textContent = businessName;
+                summaryContact.textContent = contactName;
+                
+                // Listar problemas prioritários
+                summaryProblems.innerHTML = '';
+                const prioritySelects = document.querySelectorAll('.priority-select');
+                
+                prioritySelects.forEach(select => {
+                    const problemItem = select.closest('.problem-item');
+                    const problemText = problemItem.querySelector('strong').textContent.substring(3); // Remover o número e ponto
+                    const priority = select.value;
+                    
+                    const priorityClass = priority === 'high' ? 'priority-high' : 
+                                         priority === 'medium' ? 'priority-medium' : 'priority-low';
+                    
+                    const priorityText = priority === 'high' ? 'Alta' : 
+                                        priority === 'medium' ? 'Média' : 'Baixa';
+                    
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                        ${problemText} - <span class="priority-badge ${priorityClass}">${priorityText}</span>
+                    `;
+                    
+                    summaryProblems.appendChild(listItem);
+                });
+            }
+            
+            // Envio do formulário
+            const diagnosticForm = document.getElementById('diagnosticForm');
+            
+            diagnosticForm.addEventListener('submit', function(e) {
+                // Validar a seção final
+                if (!validateSection(5)) {
+                    e.preventDefault();
+                }
+                
+                // Adicionar campo oculto com resumo do diagnóstico
+                const formData = new FormData(diagnosticForm);
+                const diagnosticSummary = {
+                    business: {
+                        name: formData.get('business_name'),
+                        type: formData.get('business_type'),
+                        size: formData.get('business_size'),
+                        time: formData.get('business_time'),
+                        location: formData.get('business_location'),
+                        description: formData.get('business_description')
+                    },
+                    contact: {
+                        name: formData.get('contact_name'),
+                        email: formData.get('contact_email'),
+                        phone: formData.get('contact_phone'),
+                        preferred: formData.get('preferred_contact')
+                    },
+                    problems: Array.from(document.querySelectorAll('input[type="checkbox"][name="problems[]"]:checked')).map(checkbox => {
+                        const value = checkbox.value;
+                        const priority = document.querySelector(`select[name="priority_${value}"]`)?.value || 'medium';
+                        return { problem: value, priority: priority };
+                    }),
+                    solutions: Array.from(document.querySelectorAll('input[type="checkbox"][name="selected_solutions[]"]:checked')).map(checkbox => checkbox.value)
+                };
+                
+                // Criar campo oculto para o resumo
+                const summaryField = document.createElement('input');
+                summaryField.type = 'hidden';
+                summaryField.name = 'diagnostic_summary';
+                summaryField.value = JSON.stringify(diagnosticSummary);
+                diagnosticForm.appendChild(summaryField);
+            });
+        });
+    </script>
+<script src="js/menu-padronizado.js"></script>
+<script src="js/form-fix.js"></script>
+<script src="js/form-update.js"></script>
+<script src="js/emailjs-integration.js"></script>
+</body>
+</html>

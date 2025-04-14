@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - KOLIBRA SOLUTIONS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="img/LOGO COLOR.png" type="image/png">
+    <style>
+        :root {
+            --primary-color: #004494;
+            --secondary-color: #FF7F00;
+            --light-color: #ffffff;
+            --dark-color: #333333;
+            --gray-color: #f5f5f5;
+            --gray-dark: #666666;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            color: var(--gray-dark);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--secondary-color);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .mt-5 {
+            margin-top: 50px;
+        }
+        
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Botões */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #003370;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e67300;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 127, 0, 0.3);
+        }
+        
+        .btn-light {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-light:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-sm {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* Navegação */
+        .navbar {
+            background-color: var(--primary-color);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: block;
+        }
+        
+        .logo img {
+            height: 70px;
+            width: auto;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            color: var(--light-color);
+            font-weight: 500;
+        }
+        
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--secondary-color);
+        }
+        
+        .btn-nav {
+            background-color: var(--secondary-color);
+            color: var(--light-color) !important;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        
+        .btn-nav:hover {
+            background-color: #e67300;
+            color: var(--light-color) !important;
+        }
+        
+        .nav-toggle {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .nav-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-color);
+            margin: 5px 0;
+            transition: var(--transition);
+        }
+        
+        /* Header da Página */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0066cc 100%);
+            color: var(--light-color);
+            padding: 150px 0 100px;
+            position: relative;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.8rem;
+            color: var(--light-color);
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .header-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        
+        .header-wave svg {
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 70px;
+        }
+        
+        /* Filtro de Projetos */
+        .portfolio-filter {
+            padding: 50px 0 30px;
+            background-color: var(--light-color);
+        }
+        
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background-color: var(--gray-color);
+            border: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--gray-dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+        }
+        
+        /* Galeria de Projetos */
+        .portfolio-gallery {
+            padding: 0 0 80px;
+            background-color: var(--light-color);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .portfolio-image {
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+        }
+        
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-image img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 68, 148, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .overlay-content {
+            text-align: center;
+            padding: 20px;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover .overlay-content {
+            transform: translateY(0);
+        }
+        
+        .overlay-content h3 {
+            color: var(--light-color);
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .overlay-content p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 15px;
+        }
+        
+        /* Modais de Projetos */
+        .portfolio-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            position: relative;
+            background-color: var(--light-color);
+            margin: 50px auto;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: var(--light-color);
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+        }
+        
+        .modal-close:hover {
+            color: var(--secondary-color);
+        }
+        
+        .modal-body {
+            padding: 0;
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0066cc 100%);
+            color: var(--light-color);
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .modal-header h2 {
+            color: var(--light-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .project-category {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .project-gallery {
+            padding: 40px;
+            background-color: var(--gray-color);
+        }
+        
+        .main-image {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .main-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .thumbnail-images {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .thumbnail-images img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        
+        .thumbnail-images img:hover {
+            transform: scale(1.05);
+        }
+        
+        .project-details {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .details-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .details-column ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .details-column ul li i {
+            color: var(--secondary-color);
+            margin-right: 10px;
+        }
+        
+        .results-list li {
+            font-size: 1.1rem;
+        }
+        
+        .results-list li strong {
+            color: var(--primary-color);
+        }
+        
+        .project-cta {
+            padding: 0 40px 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        /* Animações */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0066cc 100%);
+            color: var(--light-color);
+            text-align: center;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            color: var(--light-color);
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .cta-buttons .btn-outline {
+            border-color: var(--light-color);
+            color: var(--light-color);
+        }
+        
+        .cta-buttons .btn-outline:hover {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #222;
+            color: var(--light-color);
+            padding: 70px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo img {
+            height: 70px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .footer-col h4 {
+            color: var(--light-color);
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 30px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-col ul li a {
+            color: #bbb;
+            transition: var(--transition);
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .footer-col ul li i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .footer-social {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+        
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--light-color);
+            transition: var(--transition);
+        }
+        
+        .footer-social a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-bottom p {
+            color: #999;
+            margin-bottom: 0;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 1200px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .footer-logo {
+                text-align: center;
+            }
+            
+            .footer-social {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+            
+            .cta-content h2 {
+                font-size: 2.2rem;
+            }
+            
+            .footer-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .project-details {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 0;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--primary-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: var(--transition);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            .nav-toggle {
+                display: block;
+            }
+            
+            .nav-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .nav-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+            
+            .page-header h1 {
+                font-size: 2.3rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .thumbnail-images {
+                grid-template-columns: 1fr;
+            }
+            
+            .thumbnail-images img {
+                height: 200px;
+            }
+            
+            .project-cta {
+                flex-direction: column;
+            }
+            
+            .project-cta .btn {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .filter-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-btn {
+                width: 100%;
+                max-width: 250px;
+                margin-bottom: 10px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                margin: 20px auto;
+            }
+            
+            .modal-header {
+                padding: 30px 20px;
+            }
+            
+            .modal-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .project-gallery, .project-details {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegação -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/LOGO COLOR.png" alt="KOLIBRA SOLUTIONS">
+                </a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="planos.html">Planos</a></li>
+                <li><a href="portfolio.html" class="active">Portfólio</a></li>
+                <li><a href="construtor.html" class="btn-nav">Construir Plano</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header da Página -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Nosso Portfólio</h1>
+            <p>Conheça alguns dos projetos que transformaram negócios</p>
+        </div>
+        <div class="header-wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Filtro de Projetos -->
+    <section class="portfolio-filter">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="sites">Sites</button>
+                <button class="filter-btn" data-filter="identidade">Identidade Visual</button>
+                <button class="filter-btn" data-filter="redes">Redes Sociais</button>
+                <button class="filter-btn" data-filter="marketing">Marketing</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria de Projetos -->
+    <section class="portfolio-gallery">
+        <div class="container">
+            <div class="gallery-grid">
+                <!-- Projeto 1: Bronzella Glow -->
+                <div class="portfolio-item animate-on-scroll" data-category="sites">
+                    <div class="portfolio-image">
+                        <img src="img/portfolio/bronzella.jpg" alt="Bronzella Glow">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>Bronzella Glow</h3>
+                                <p>Site E-commerce</p>
+                                <a href="#project-bronzella" class="btn btn-light btn-sm portfolio-view">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projeto 2: Studio Pilates -->
+                <div class="portfolio-item animate-on-scroll" data-category="sites identidade">
+                    <div class="portfolio-image">
+                        <img src="img/portfolio/pilates.jpg" alt="Studio Pilates">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>Studio Pilates</h3>
+                                <p>Site + Identidade Visual</p>
+                                <a href="#project-pilates" class="btn btn-light btn-sm portfolio-view">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projeto 3: Consultório Odontológico -->
+                <div class="portfolio-item animate-on-scroll" data-category="sites marketing">
+                    <div class="portfolio-image">
+                        <img src="img/portfolio/odonto.jpg" alt="Consultório Odontológico">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>Dr. Sorriso</h3>
+                                <p>Site + Marketing Digital</p>
+                                <a href="#project-odonto" class="btn btn-light btn-sm portfolio-view">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projeto 4: Café Aroma -->
+                <div class="portfolio-item animate-on-scroll" data-category="identidade">
+                    <div class="portfolio-image">
+                        <img src="img/portfolio/cafe.jpg" alt="Café Aroma">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>Café Aroma</h3>
+                                <p>Identidade Visual Completa</p>
+                                <a href="#project-cafe" class="btn btn-light btn-sm portfolio-view">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projeto 5: Boutique Fashion -->
+                <div class="portfolio-item animate-on-scroll" data-category="redes identidade">
+                    <div class="portfolio-image">
+                        <img src="img/portfolio/boutique.jpg" alt="Boutique Fashion">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>Boutique Elegance</h3>
+                                <p>Gestão de Redes Sociais</p>
+                                <a href="#project-boutique" class="btn btn-light btn-sm portfolio-view">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projeto 6: Restaurante Sabor -->
+                <div class="portfolio-item animate-on-scroll" data-category="sites redes marketing">
+                    <div class="portfolio-image">
+                        <img src="img/portfolio/restaurante.jpg" alt="Restaurante Sabor">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>Restaurante Sabor</h3>
+                                <p>Site + Redes + Marketing</p>
+                                <a href="#project-restaurante" class="btn btn-light btn-sm portfolio-view">Ver Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modais de Projetos -->
+    <!-- Projeto 1: Bronzella Glow -->
+    <div class="portfolio-modal" id="project-bronzella">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <div class="modal-header">
+                    <h2>Bronzella Glow</h2>
+                    <p class="project-category">E-commerce de Produtos para Bronzeamento</p>
+                </div>
+                
+                <div class="project-gallery">
+                    <div class="main-image">
+                        <img src="img/portfolio/bronzella-full.jpg" alt="Bronzella Glow Website">
+                    </div>
+                    <div class="thumbnail-images">
+                        <img src="img/portfolio/bronzella-thumb1.jpg" alt="Bronzella Detalhe 1">
+                        <img src="img/portfolio/bronzella-thumb2.jpg" alt="Bronzella Detalhe 2">
+                        <img src="img/portfolio/bronzella-thumb3.jpg" alt="Bronzella Detalhe 3">
+                    </div>
+                </div>
+                
+                <div class="project-details">
+                    <div class="details-column">
+                        <h3>O Desafio</h3>
+                        <p>A Bronzella Glow precisava de um site de e-commerce para vender seus produtos de bronzeamento natural, com foco em uma experiência de usuário intuitiva e design que transmitisse a essência da marca.</p>
+                        
+                        <h3>Nossa Solução</h3>
+                        <p>Desenvolvemos um site responsivo com e-commerce completo, incluindo catálogo de produtos, carrinho de compras e integração com meios de pagamento. O design foi criado para refletir a identidade solar e natural da marca.</p>
+                    </div>
+                    
+                    <div class="details-column">
+                        <h3>Serviços Realizados</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Desenvolvimento de E-commerce</li>
+                            <li><i class="fas fa-check"></i> Design Responsivo</li>
+                            <li><i class="fas fa-check"></i> Otimização SEO</li>
+                            <li><i class="fas fa-check"></i> Integração com Meios de Pagamento</li>
+                            <li><i class="fas fa-check"></i> Configuração de Rastreamento de Pedidos</li>
+                        </ul>
+                        
+                        <h3>Resultados</h3>
+                        <ul class="results-list">
+                            <li><i class="fas fa-chart-line"></i> <strong>70%</strong> de aumento nas vendas online</li>
+                            <li><i class="fas fa-users"></i> <strong>45%</strong> de aumento no tráfego do site</li>
+                            <li><i class="fas fa-shopping-cart"></i> <strong>25%</strong> de aumento na taxa de conversão</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="project-cta">
+                    <a href="https://bronzellaglow.vercel.app/" target="_blank" class="btn btn-primary">Visitar Site</a>
+                    <a href="construtor.html" class="btn btn-outline">Quero um Projeto Similar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projeto 2: Studio Pilates -->
+    <div class="portfolio-modal" id="project-pilates">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <div class="modal-header">
+                    <h2>Studio Pilates</h2>
+                    <p class="project-category">Site e Identidade Visual para Studio de Pilates</p>
+                </div>
+                
+                <div class="project-gallery">
+                    <div class="main-image">
+                        <img src="img/portfolio/pilates-full.jpg" alt="Studio Pilates Website">
+                    </div>
+                    <div class="thumbnail-images">
+                        <img src="img/portfolio/pilates-thumb1.jpg" alt="Pilates Detalhe 1">
+                        <img src="img/portfolio/pilates-thumb2.jpg" alt="Pilates Detalhe 2">
+                        <img src="img/portfolio/pilates-thumb3.jpg" alt="Pilates Detalhe 3">
+                    </div>
+                </div>
+                
+                <div class="project-details">
+                    <div class="details-column">
+                        <h3>O Desafio</h3>
+                        <p>O Studio Pilates precisava de uma identidade visual completa e um site que transmitisse os valores de bem-estar, saúde e equilíbrio, além de permitir o agendamento de aulas online.</p>
+                        
+                        <h3>Nossa Solução</h3>
+                        <p>Criamos uma identidade visual moderna e clean, com elementos que remetem ao movimento e equilíbrio. O site foi desenvolvido com foco na experiência do usuário, facilitando o agendamento de aulas e apresentando os benefícios do método Pilates.</p>
+                    </div>
+                    
+                    <div class="details-column">
+                        <h3>Serviços Realizados</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Criação de Logo e Identidade Visual</li>
+                            <li><i class="fas fa-check"></i> Desenvolvimento de Site Responsivo</li>
+                            <li><i class="fas fa-check"></i> Sistema de Agendamento Online</li>
+                            <li><i class="fas fa-check"></i> Material Gráfico para o Estúdio</li>
+                            <li><i class="fas fa-check"></i> Otimização SEO Local</li>
+                        </ul>
+                        
+                        <h3>Resultados</h3>
+                        <ul class="results-list">
+                            <li><i class="fas fa-user-plus"></i> <strong>40%</strong> de aumento em novos alunos</li>
+                            <li><i class="fas fa-calendar-check"></i> <strong>65%</strong> dos agendamentos feitos online</li>
+                            <li><i class="fas fa-map-marker-alt"></i> <strong>Top 3</strong> nas buscas locais por "pilates"</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="project-cta">
+                    <a href="#" class="btn btn-primary">Visitar Site</a>
+                    <a href="construtor.html" class="btn btn-outline">Quero um Projeto Similar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projeto 3: Consultório Odontológico -->
+    <div class="portfolio-modal" id="project-odonto">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <div class="modal-header">
+                    <h2>Dr. Sorriso</h2>
+                    <p class="project-category">Site e Marketing Digital para Consultório Odontológico</p>
+                </div>
+                
+                <div class="project-gallery">
+                    <div class="main-image">
+                        <img src="img/portfolio/odonto-full.jpg" alt="Dr. Sorriso Website">
+                    </div>
+                    <div class="thumbnail-images">
+                        <img src="img/portfolio/odonto-thumb1.jpg" alt="Odonto Detalhe 1">
+                        <img src="img/portfolio/odonto-thumb2.jpg" alt="Odonto Detalhe 2">
+                        <img src="img/portfolio/odonto-thumb3.jpg" alt="Odonto Detalhe 3">
+                    </div>
+                </div>
+                
+                <div class="project-details">
+                    <div class="details-column">
+                        <h3>O Desafio</h3>
+                        <p>O consultório Dr. Sorriso precisava aumentar sua base de pacientes e destacar-se em um mercado competitivo, além de facilitar o agendamento de consultas.</p>
+                        
+                        <h3>Nossa Solução</h3>
+                        <p>Desenvolvemos um site institucional com sistema de agendamento online e implementamos uma estratégia de marketing digital focada em SEO local e campanhas segmentadas no Google Ads.</p>
+                    </div>
+                    
+                    <div class="details-column">
+                        <h3>Serviços Realizados</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Desenvolvimento de Site Responsivo</li>
+                            <li><i class="fas fa-check"></i> Sistema de Agendamento Online</li>
+                            <li><i class="fas fa-check"></i> Otimização SEO Local</li>
+                            <li><i class="fas fa-check"></i> Campanhas no Google Ads</li>
+                            <li><i class="fas fa-check"></i> Gestão de Perfil no Google Meu Negócio</li>
+                        </ul>
+                        
+                        <h3>Resultados</h3>
+                        <ul class="results-list">
+                            <li><i class="fas fa-user-plus"></i> <strong>60%</strong> de aumento em novos pacientes</li>
+                            <li><i class="fas fa-phone"></i> <strong>35%</strong> de redução em chamadas para agendamento</li>
+                            <li><i class="fas fa-search"></i> <strong>Top 3</strong> nas buscas locais por "dentista"</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="project-cta">
+                    <a href="#" class="btn btn-primary">Visitar Site</a>
+                    <a href="construtor.html" class="btn btn-outline">Quero um Projeto Similar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projeto 4: Café Aroma -->
+    <div class="portfolio-modal" id="project-cafe">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <div class="modal-header">
+                    <h2>Café Aroma</h2>
+                    <p class="project-category">Identidade Visual para Cafeteria Artesanal</p>
+                </div>
+                
+                <div class="project-gallery">
+                    <div class="main-image">
+                        <img src="img/portfolio/cafe-full.jpg" alt="Café Aroma Branding">
+                    </div>
+                    <div class="thumbnail-images">
+                        <img src="img/portfolio/cafe-thumb1.jpg" alt="Café Detalhe 1">
+                        <img src="img/portfolio/cafe-thumb2.jpg" alt="Café Detalhe 2">
+                        <img src="img/portfolio/cafe-thumb3.jpg" alt="Café Detalhe 3">
+                    </div>
+                </div>
+                
+                <div class="project-details">
+                    <div class="details-column">
+                        <h3>O Desafio</h3>
+                        <p>O Café Aroma precisava de uma identidade visual que transmitisse a essência artesanal e acolhedora da cafeteria, diferenciando-a das grandes redes.</p>
+                        
+                        <h3>Nossa Solução</h3>
+                        <p>Desenvolvemos uma identidade visual completa com elementos que remetem ao aroma e ao processo artesanal de preparo do café, utilizando cores quentes e texturas orgânicas.</p>
+                    </div>
+                    
+                    <div class="details-column">
+                        <h3>Serviços Realizados</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Criação de Logo</li>
+                            <li><i class="fas fa-check"></i> Manual de Identidade Visual</li>
+                            <li><i class="fas fa-check"></i> Papelaria Completa</li>
+                            <li><i class="fas fa-check"></i> Design de Cardápio</li>
+                            <li><i class="fas fa-check"></i> Embalagens Personalizadas</li>
+                            <li><i class="fas fa-check"></i> Sinalização Interna</li>
+                        </ul>
+                        
+                        <h3>Resultados</h3>
+                        <ul class="results-list">
+                            <li><i class="fas fa-star"></i> <strong>Reconhecimento</strong> da marca na região</li>
+                            <li><i class="fas fa-camera"></i> <strong>Aumento</strong> de compartilhamentos nas redes sociais</li>
+                            <li><i class="fas fa-heart"></i> <strong>Fortalecimento</strong> da conexão emocional com clientes</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="project-cta">
+                    <a href="#" class="btn btn-primary">Ver Projeto Completo</a>
+                    <a href="construtor.html" class="btn btn-outline">Quero um Projeto Similar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projeto 5: Boutique Fashion -->
+    <div class="portfolio-modal" id="project-boutique">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <div class="modal-header">
+                    <h2>Boutique Elegance</h2>
+                    <p class="project-category">Gestão de Redes Sociais para Loja de Roupas</p>
+                </div>
+                
+                <div class="project-gallery">
+                    <div class="main-image">
+                        <img src="img/portfolio/boutique-full.jpg" alt="Boutique Elegance Social Media">
+                    </div>
+                    <div class="thumbnail-images">
+                        <img src="img/portfolio/boutique-thumb1.jpg" alt="Boutique Detalhe 1">
+                        <img src="img/portfolio/boutique-thumb2.jpg" alt="Boutique Detalhe 2">
+                        <img src="img/portfolio/boutique-thumb3.jpg" alt="Boutique Detalhe 3">
+                    </div>
+                </div>
+                
+                <div class="project-details">
+                    <div class="details-column">
+                        <h3>O Desafio</h3>
+                        <p>A Boutique Elegance precisava aumentar sua presença digital e gerar mais vendas através das redes sociais, com conteúdo que destacasse a qualidade e exclusividade de suas peças.</p>
+                        
+                        <h3>Nossa Solução</h3>
+                        <p>Desenvolvemos uma estratégia completa de gestão de redes sociais, com produção de conteúdo visual de alta qualidade, planejamento editorial e campanhas segmentadas para o público-alvo da boutique.</p>
+                    </div>
+                    
+                    <div class="details-column">
+                        <h3>Serviços Realizados</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Produção de Conteúdo Visual</li>
+                            <li><i class="fas fa-check"></i> Planejamento Editorial</li>
+                            <li><i class="fas fa-check"></i> Gestão de Instagram e Facebook</li>
+                            <li><i class="fas fa-check"></i> Campanhas de Anúncios</li>
+                            <li><i class="fas fa-check"></i> Relatórios de Desempenho</li>
+                        </ul>
+                        
+                        <h3>Resultados</h3>
+                        <ul class="results-list">
+                            <li><i class="fas fa-users"></i> <strong>120%</strong> de aumento em seguidores</li>
+                            <li><i class="fas fa-heart"></i> <strong>85%</strong> de aumento em engajamento</li>
+                            <li><i class="fas fa-shopping-bag"></i> <strong>40%</strong> de aumento em vendas online</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="project-cta">
+                    <a href="#" class="btn btn-primary">Ver Instagram</a>
+                    <a href="construtor.html" class="btn btn-outline">Quero um Projeto Similar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projeto 6: Restaurante Sabor -->
+    <div class="portfolio-modal" id="project-restaurante">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <div class="modal-header">
+                    <h2>Restaurante Sabor</h2>
+                    <p class="project-category">Estratégia Digital Completa para Restaurante</p>
+                </div>
+                
+                <div class="project-gallery">
+                    <div class="main-image">
+                        <img src="img/portfolio/restaurante-full.jpg" alt="Restaurante Sabor Website">
+                    </div>
+                    <div class="thumbnail-images">
+                        <img src="img/portfolio/restaurante-thumb1.jpg" alt="Restaurante Detalhe 1">
+                        <img src="img/portfolio/restaurante-thumb2.jpg" alt="Restaurante Detalhe 2">
+                        <img src="img/portfolio/restaurante-thumb3.jpg" alt="Restaurante Detalhe 3">
+                    </div>
+                </div>
+                
+                <div class="project-details">
+                    <div class="details-column">
+                        <h3>O Desafio</h3>
+                        <p>O Restaurante Sabor precisava de uma presença digital completa para aumentar sua visibilidade, atrair novos clientes e implementar um sistema de delivery próprio.</p>
+                        
+                        <h3>Nossa Solução</h3>
+                        <p>Desenvolvemos uma estratégia digital completa, incluindo site responsivo com cardápio online e sistema de pedidos, gestão de redes sociais e campanhas de marketing local.</p>
+                    </div>
+                    
+                    <div class="details-column">
+                        <h3>Serviços Realizados</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Desenvolvimento de Site Responsivo</li>
+                            <li><i class="fas fa-check"></i> Sistema de Pedidos Online</li>
+                            <li><i class="fas fa-check"></i> Gestão de Redes Sociais</li>
+                            <li><i class="fas fa-check"></i> Campanhas de Marketing Local</li>
+                            <li><i class="fas fa-check"></i> Produção de Conteúdo Visual</li>
+                        </ul>
+                        
+                        <h3>Resultados</h3>
+                        <ul class="results-list">
+                            <li><i class="fas fa-utensils"></i> <strong>30%</strong> de aumento em reservas</li>
+                            <li><i class="fas fa-motorcycle"></i> <strong>50%</strong> de aumento em pedidos delivery</li>
+                            <li><i class="fas fa-map-marker-alt"></i> <strong>Top 5</strong> nas buscas locais por "restaurante"</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="project-cta">
+                    <a href="#" class="btn btn-primary">Visitar Site</a>
+                    <a href="construtor.html" class="btn btn-outline">Quero um Projeto Similar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Pronto para transformar seu negócio?</h2>
+                <p>Escolha o plano ideal ou construa uma solução personalizada para suas necessidades.</p>
+                <div class="cta-buttons">
+                    <a href="construtor.html" class="btn btn-primary">Construir Meu Plano</a>
+                    <a href="segmentacao.html" class="btn btn-outline">Ver Opções</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/LOGO COLOR.png" alt="KOLIBRA SOLUTIONS">
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Navegação</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="planos.html">Planos</a></li>
+                            <li><a href="portfolio.html">Portfólio</a></li>
+                            <li><a href="construtor.html">Construtor de Planos</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Serviços</h4>
+                        <ul>
+                            <li><a href="planos.html#websites">Sites</a></li>
+                            <li><a href="planos.html#branding">Identidade Visual</a></li>
+                            <li><a href="planos.html#social">Redes Sociais</a></li>
+                            <li><a href="planos.html#marketing">Marketing Digital</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Contato</h4>
+                        <ul>
+                            <li><i class="fas fa-envelope"></i> contato@kolibra.com.br</li>
+                            <li><i class="fas fa-phone"></i> (11) 99999-9999</li>
+                            <li><i class="fas fa-map-marker-alt"></i> São Paulo, SP</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 KOLIBRA SOLUTIONS. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Menu Mobile
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        navToggle.addEventListener('click', function() {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Filtro de Projetos
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filterValue = this.dataset.filter;
+                
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all' || item.dataset.category.includes(filterValue)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Modais de Projetos
+        const portfolioViews = document.querySelectorAll('.portfolio-view');
+        const portfolioModals = document.querySelectorAll('.portfolio-modal');
+        const modalCloses = document.querySelectorAll('.modal-close');
+        
+        portfolioViews.forEach(view => {
+            view.addEventListener('click', function(e) {
+                e.preventDefault();
+                const modalId = this.getAttribute('href');
+                document.querySelector(modalId).style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        modalCloses.forEach(close => {
+            close.addEventListener('click', function() {
+                portfolioModals.forEach(modal => {
+                    modal.style.display = 'none';
+                });
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        window.addEventListener('click', function(e) {
+            portfolioModals.forEach(modal => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+        
+        // Animação ao Scroll
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        
+        function checkScroll() {
+            animateElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+        
+        // Galeria de Imagens nos Modais
+        const thumbnails = document.querySelectorAll('.thumbnail-images img');
+        
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                const mainImage = this.closest('.project-gallery').querySelector('.main-image img');
+                const thumbSrc = this.getAttribute('src');
+                const mainSrc = mainImage.getAttribute('src');
+                
+                mainImage.setAttribute('src', thumbSrc);
+                this.setAttribute('src', mainSrc);
+            });
+        });
+    </script>
+<script src="js/menu-padronizado.js"></script>
+<script src="js/form-fix.js"></script>
+<script src="js/form-update.js"></script>
+<script src="js/emailjs-integration.js"></script>
+</body>
+</html>

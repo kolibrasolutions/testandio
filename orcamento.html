@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOLIBRA SOLUTIONS - Orçamento</title>
+    <style>
+        :root {
+            --primary-color: #004494;
+            --secondary-color: #FF7F00;
+            --light-color: #ffffff;
+            --dark-color: #333333;
+            --gray-color: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--gray-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: var(--primary-color);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo img {
+            max-width: 150px;
+            height: auto;
+        }
+        
+        .quote-container {
+            display: flex;
+            gap: 30px;
+        }
+        
+        @media (max-width: 992px) {
+            .quote-container {
+                flex-direction: column;
+            }
+        }
+        
+        .form-container {
+            flex: 2;
+            background-color: var(--light-color);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .info-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(0, 68, 148, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-size: 24px;
+        }
+        
+        .info-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .info-text {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .info-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .info-link:hover {
+            color: #e67300;
+        }
+        
+        .form-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .form-steps::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #e0e0e0;
+            z-index: 1;
+        }
+        
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-number {
+            width: 30px;
+            height: 30px;
+            background-color: #e0e0e0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .step-text {
+            font-size: 14px;
+            color: #999;
+            transition: all 0.3s ease;
+        }
+        
+        .step.active .step-number {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+        }
+        
+        .step.active .step-text {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .form-step {
+            display: none;
+        }
+        
+        .form-step.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        
+        p {
+            margin-bottom: 30px;
+            color: #666;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 68, 148, 0.1);
+        }
+        
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 600px) {
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+        }
+        
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .radio-item {
+            display: flex;
+            align-items: center;
+            min-width: 150px;
+        }
+        
+        .radio-item input[type="radio"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+        }
+        
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #003370;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--dark-color);
+            border: 1px solid #ddd;
+        }
+        
+        .btn-outline:hover {
+            background-color: #f5f5f5;
+            transform: translateY(-2px);
+        }
+        
+        .terms-checkbox {
+            margin-top: 20px;
+        }
+        
+        .terms-checkbox a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .terms-checkbox a:hover {
+            text-decoration: underline;
+        }
+        
+        .success-message {
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .success-message.active {
+            display: block;
+        }
+        
+        .success-icon {
+            font-size: 64px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .success-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .price-summary {
+            background-color: var(--gray-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        
+        .price-items {
+            margin-bottom: 20px;
+        }
+        
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .price-item:last-child {
+            border-bottom: none;
+        }
+        
+        .total-price {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 18px;
+            padding-top: 15px;
+            border-top: 2px solid var(--primary-color);
+        }
+        
+        .price-note {
+            font-size: 12px;
+            color: #999;
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="img/LOGO COLOR.png" alt="KOLIBRA SOLUTIONS">
+        </div>
+        
+        <div class="quote-container">
+            <div class="form-container">
+                <div class="form-steps">
+                    <div class="step active" data-step="1">
+                        <span class="step-number">1</span>
+                        <span class="step-text">Informações Básicas</span>
+                    </div>
+                    <div class="step" data-step="2">
+                        <span class="step-number">2</span>
+                        <span class="step-text">Detalhes do Projeto</span>
+                    </div>
+                    <div class="step" data-step="3">
+                        <span class="step-number">3</span>
+                        <span class="step-text">Orçamento</span>
+                    </div>
+                </div>
+                
+                <form id="quoteForm" class="quote-form" action="https://formsubmit.co/kolibrasolutions@gmail.com" method="POST">
+                    <!-- Campo oculto para redirecionamento após envio -->
+                    <input type="hidden" name="_next" value="https://kolibrasolutions.vercel.app/obrigado.html">
+                    
+                    <!-- Campo oculto para assunto do e-mail -->
+                    <input type="hidden" name="_subject" value="Novo pedido de orçamento enviado">
+                    
+                    <!-- Passo 1: Informações Básicas -->
+                    <div class="form-step active" id="step1">
+                        <h2>Informações Básicas</h2>
+                        <p>Conte-nos um pouco sobre você e seu negócio</p>
+                        
+                        <div class="form-group">
+                            <label for="name">Nome Completo *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Telefone/WhatsApp *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company">Nome da Empresa</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="segment">Segmento de Atuação</label>
+                            <select id="segment" name="segment">
+                                <option value="">Selecione uma opção</option>
+                                <option value="comercio">Comércio</option>
+                                <option value="servicos">Serviços</option>
+                                <option value="saude">Saúde</option>
+                                <option value="educacao">Educação</option>
+                                <option value="alimentacao">Alimentação</option>
+                                <option value="beleza">Beleza e Estética</option>
+                                <option value="tecnologia">Tecnologia</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-buttons">
+                            <div></div> <!-- Espaço vazio para manter o layout -->
+                            <button type="button" class="btn btn-primary next-step">Próximo</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Passo 2: Detalhes do Projeto -->
+                    <div class="form-step" id="step2">
+                        <h2>Detalhes do Projeto</h2>
+                        <p>Conte-nos mais sobre o que você precisa</p>
+                        
+                        <div class="form-group">
+                            <label>Tipo de Projeto *</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="project_branding" name="project_type[]" value="branding">
+                                    <label for="project_branding">Identidade Visual/Logo</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="project_website" name="project_type[]" value="website">
+                                    <label for="project_website">Website</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="project_ecommerce" name="project_type[]" value="ecommerce">
+                                    <label for="project_ecommerce">E-commerce</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="project_social" name="project_type[]" value="social">
+                                    <label for="project_social">Redes Sociais</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="project_print" name="project_type[]" value="print">
+                                    <label for="project_print">Material Impresso</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="project_app" name="project_type[]" value="app">
+                                    <label for="project_app">Aplicativo</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="project_marketing" name="project_type[]" value="marketing">
+                                    <label for="project_marketing">Marketing Digital</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="project_other" name="project_type[]" value="other">
+                                    <label for="project_other">Outro</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="project_description">Descreva brevemente o projeto *</label>
+                            <textarea id="project_description" name="project_description" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Você já possui algum material existente?</label>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="existing_yes" name="existing_material" value="yes">
+                                    <label for="existing_yes">Sim</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="existing_no" name="existing_material" value="no">
+                                    <label for="existing_no">Não</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="existing_partial" name="existing_material" value="partial">
+                                    <label for="existing_partial">Parcialmente</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="timeline">Prazo desejado para conclusão</label>
+                            <select id="timeline" name="timeline">
+                                <option value="">Selecione uma opção</option>
+                                <option value="urgent">Urgente (até 7 dias)</option>
+                                <option value="short">Curto (15-30 dias)</option>
+                                <option value="medium">Médio (1-2 meses)</option>
+                                <option value="long">Longo (3+ meses)</option>
+                                <option value="flexible">Flexível</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="budget_range">Faixa de orçamento aproximada</label>
+                            <select id="budget_range" name="budget_range">
+                                <option value="">Selecione uma opção</option>
+                                <option value="up_to_1000">Até R$ 1.000</option>
+                                <option value="1000_to_3000">R$ 1.000 a R$ 3.000</option>
+                                <option value="3000_to_5000">R$ 3.000 a R$ 5.000</option>
+                                <option value="5000_to_10000">R$ 5.000 a R$ 10.000</option>
+                                <option value="above_10000">Acima de R$ 10.000</option>
+                                <option value="not_sure">Não tenho certeza</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-buttons">
+                            <button type="button" class="btn btn-outline prev-step">Voltar</button>
+                            <button type="button" class="btn btn-primary next-step">Próximo</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Passo 3: Orçamento -->
+                    <div class="form-step" id="step3">
+                        <h2>Orçamento</h2>
+                        <p>Revise as informações e finalize seu pedido de orçamento</p>
+                        
+                        <div class="form-group">
+                            <label>Como você nos encontrou?</label>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="source_google" name="source" value="google">
+                                    <label for="source_google">Google</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="source_social" name="source" value="social">
+                                    <label for="source_social">Redes Sociais</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="source_referral" name="source" value="referral">
+                                    <label for="source_referral">Indicação</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="source_other" name="source" value="other">
+                                    <label for="source_other">Outro</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="price-summary">
+                                <h3>Resumo do Orçamento</h3>
+                                <div class="price-items" id="price_items">
+                                    <!-- Itens de preço serão adicionados dinamicamente -->
+                                </div>
+                                <div class="total-price">
+                                    <span class="total-label">Total Estimado:</span>
+                                    <span class="total-value" id="total_price">R$ 0,00</span>
+                                </div>
+                                <p class="price-note">* Este é um orçamento preliminar. O valor final pode variar de acordo com os detalhes específicos do projeto.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="additional_comments">Comentários Adicionais</label>
+                            <textarea id="additional_comments" name="additional_comments" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="checkbox-item terms-checkbox">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <label for="terms">Concordo com os <a href="#" target="_blank">Termos e Condições</a> e autorizo o contato da KOLIBRA SOLUTIONS.</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-buttons">
+                            <button type="button" class="btn btn-outline prev-step">Voltar</button>
+                            <button type="submit" class="btn btn-primary">Enviar Orçamento</button>
+                        </div>
+                    </div>
+                </form>
+                
+                <!-- Mensagem de Sucesso (inicialmente oculta) -->
+                <div class="success-message" id="successMessage">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h2>Orçamento Enviado com Sucesso!</h2>
+                    <p>Obrigado por entrar em contato com a KOLIBRA SOLUTIONS. Recebemos seu pedido de orçamento e entraremos em contato em até 24 horas úteis.</p>
+                    <p>Enquanto isso, que tal conhecer mais sobre nossos trabalhos?</p>
+                    <div class="success-buttons">
+                        <a href="portfolio.html" class="btn btn-outline">Ver Portfólio</a>
+                        <a href="index.html" class="btn btn-primary">Voltar para Home</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="info-title">Tempo de Resposta</h3>
+                    <p class="info-text">Respondemos todos os pedidos de orçamento em até 24 horas úteis.</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3 class="info-title">Contato Direto</h3>
+                    <p class="info-text">Prefere falar diretamente conosco?</p>
+                    <a href="tel:+5511999999999" class="info-link">(11) 99999-9999</a>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="info-title">E-mail</h3>
+                    <p class="info-text">Envie suas dúvidas diretamente para:</p>
+                    <a href="mailto:contato@kolibrasolutions.com" class="info-link">contato@kolibrasolutions.com</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navegação entre etapas
+            const steps = document.querySelectorAll('.step');
+            const formSteps = document.querySelectorAll('.form-step');
+            const nextButtons = document.querySelectorAll('.next-step');
+            const prevButtons = document.querySelectorAll('.prev-step');
+            
+            nextButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Encontrar a etapa atual
+                    const currentStep = document.querySelector('.form-step.active');
+                    const currentStepNumber = parseInt(currentStep.id.replace('step', ''));
+                    const nextStepNumber = currentStepNumber + 1;
+                    
+                    // Validar campos obrigatórios na etapa atual
+                    const requiredFields = currentStep.querySelectorAll('[required]');
+                    let isValid = true;
+                    
+                    requiredFields.forEach(field => {
+                        if (!field.value) {
+                            isValid = false;
+                            field.classList.add('invalid');
+                        } else {
+                            field.classList.remove('invalid');
+                        }
+                    });
+                    
+                    if (!isValid) {
+                        alert('Por favor, preencha todos os campos obrigatórios.');
+                        return;
+                    }
+                    
+                    // Avançar para a próxima etapa
+                    currentStep.classList.remove('active');
+                    document.getElementById(`step${nextStepNumber}`).classList.add('active');
+                    
+                    // Atualizar indicadores de etapa
+                    steps.forEach(step => step.classList.remove('active'));
+                    document.querySelector(`.step[data-step="${nextStepNumber}"]`).classList.add('active');
+                    
+                    // Se for a última etapa, atualizar o resumo de preços
+                    if (nextStepNumber === 3) {
+                        updatePriceSummary();
+                    }
+                    
+                    // Rolar para o topo do formulário
+                    document.querySelector('.form-container').scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+            
+            prevButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Encontrar a etapa atual
+                    const currentStep = document.querySelector('.form-step.active');
+                    const currentStepNumber = parseInt(currentStep.id.replace('step', ''));
+                    const prevStepNumber = currentStepNumber - 1;
+                    
+                    // Voltar para a etapa anterior
+                    currentStep.classList.remove('active');
+                    document.getElementById(`step${prevStepNumber}`).classList.add('active');
+                    
+                    // Atualizar indicadores de etapa
+                    steps.forEach(step => step.classList.remove('active'));
+                    document.querySelector(`.step[data-step="${prevStepNumber}"]`).classList.add('active');
+                    
+                    // Rolar para o topo do formulário
+                    document.querySelector('.form-container').scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+            
+            // Função para atualizar o resumo de preços
+            function updatePriceSummary() {
+                const priceItems = document.getElementById('price_items');
+                const totalPrice = document.getElementById('total_price');
+                
+                // Limpar itens existentes
+                priceItems.innerHTML = '';
+                
+                let total = 0;
+                
+                // Verificar tipos de projeto selecionados
+                const projectTypes = document.querySelectorAll('input[name="project_type[]"]:checked');
+                
+                if (projectTypes.length === 0) {
+                    // Se nenhum tipo de projeto foi selecionado
+                    const item = document.createElement('div');
+                    item.className = 'price-item';
+                    item.innerHTML = `
+                        <span class="item-name">Orçamento Personalizado</span>
+                        <span class="item-price">A definir</span>
+                    `;
+                    priceItems.appendChild(item);
+                    
+                    totalPrice.textContent = 'A definir';
+                } else {
+                    // Adicionar itens com base nos tipos de projeto selecionados
+                    projectTypes.forEach(type => {
+                        let itemName = '';
+                        let itemPrice = 0;
+                        
+                        switch(type.value) {
+                            case 'branding':
+                                itemName = 'Identidade Visual/Logo';
+                                itemPrice = 1500;
+                                break;
+                            case 'website':
+                                itemName = 'Website';
+                                itemPrice = 3000;
+                                break;
+                            case 'ecommerce':
+                                itemName = 'E-commerce';
+                                itemPrice = 5000;
+                                break;
+                            case 'social':
+                                itemName = 'Redes Sociais';
+                                itemPrice = 1200;
+                                break;
+                            case 'print':
+                                itemName = 'Material Impresso';
+                                itemPrice = 800;
+                                break;
+                            case 'app':
+                                itemName = 'Aplicativo';
+                                itemPrice = 8000;
+                                break;
+                            case 'marketing':
+                                itemName = 'Marketing Digital';
+                                itemPrice = 2500;
+                                break;
+                            case 'other':
+                                itemName = 'Outro Serviço';
+                                itemPrice = 1000;
+                                break;
+                        }
+                        
+                        const item = document.createElement('div');
+                        item.className = 'price-item';
+                        item.innerHTML = `
+                            <span class="item-name">${itemName}</span>
+                            <span class="item-price">R$ ${itemPrice.toFixed(2)}</span>
+                        `;
+                        priceItems.appendChild(item);
+                        
+                        total += itemPrice;
+                    });
+                    
+                    totalPrice.textContent = `R$ ${total.toFixed(2)}`;
+                }
+            }
+            
+            // Manipular envio do formulário
+            const form = document.getElementById('quoteForm');
+            
+            form.addEventListener('submit', function(e) {
+                // Adicionar um campo oculto com o resumo do orçamento
+                const priceItems = document.querySelectorAll('.price-item');
+                const totalPrice = document.getElementById('total_price').textContent;
+                
+                let priceSummary = 'Resumo do Orçamento:\n';
+                priceItems.forEach(item => {
+                    const itemName = item.querySelector('.item-name').textContent;
+                    const itemPrice = item.querySelector('.item-price').textContent;
+                    priceSummary += `${itemName}: ${itemPrice}\n`;
+                });
+                priceSummary += `Total: ${totalPrice}`;
+                
+                const summaryField = document.createElement('input');
+                summaryField.type = 'hidden';
+                summaryField.name = 'price_summary';
+                summaryField.value = priceSummary;
+                form.appendChild(summaryField);
+            });
+        });
+    </script>
+<script src="js/menu-padronizado.js"></script>
+<script src="js/form-fix.js"></script>
+<script src="js/form-update.js"></script>
+<script src="js/emailjs-integration.js"></script>
+</body>
+</html>
