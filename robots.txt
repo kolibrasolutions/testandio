@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.kolibrasolutions.com.br/sitemap.xml
+
+# Diretórios e arquivos para não indexar
+Disallow: /emailjs/
+Disallow: /.git/
+Disallow: /php/

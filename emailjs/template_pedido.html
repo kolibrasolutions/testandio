@@ -1,0 +1,93 @@
+<!-- Template para o formulário de Pedido -->
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #004494; border-radius: 5px;">
+  <div style="background-color: #004494; padding: 15px; text-align: center; border-radius: 5px 5px 0 0;">
+    <h1 style="color: white; margin: 0; font-size: 24px;">Novo Pedido de Kit</h1>
+  </div>
+  
+  <div style="padding: 20px; background-color: #f9f9f9;">
+    <p style="font-size: 16px; color: #333; margin-bottom: 20px;">
+      Um novo pedido de kit foi enviado através do site Kolibra Solutions.
+    </p>
+    
+    <div style="margin-bottom: 30px;">
+      <h2 style="color: #004494; font-size: 18px; border-bottom: 2px solid #FF7F00; padding-bottom: 10px;">
+        Seleção do Kit
+      </h2>
+      
+      <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+        <tr>
+          <td style="padding: 8px; border-bottom: 1px solid #ddd; width: 40%; font-weight: bold;">Tipo de Kit:</td>
+          <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{kit_type}}</td>
+        </tr>
+      </table>
+    </div>
+    
+    <div style="margin-bottom: 30px;">
+      <h2 style="color: #004494; font-size: 18px; border-bottom: 2px solid #FF7F00; padding-bottom: 10px;">
+        Informações Pessoais
+      </h2>
+      
+      <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+        <tr>
+          <td style="padding: 8px; border-bottom: 1px solid #ddd; width: 40%; font-weight: bold;">Nome:</td>
+          <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{name}}</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border-bottom: 1px solid #ddd; font-weight: bold;">Email:</td>
+          <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{email}}</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border-bottom: 1px solid #ddd; font-weight: bold;">Telefone:</td>
+          <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{phone}}</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border-bottom: 1px solid #ddd; font-weight: bold;">Empresa:</td>
+          <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{company}}</td>
+        </tr>
+      </table>
+    </div>
+    
+    <div style="margin-bottom: 30px;">
+      <h2 style="color: #004494; font-size: 18px; border-bottom: 2px solid #FF7F00; padding-bottom: 10px;">
+        Detalhes do Negócio
+      </h2>
+      
+      <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+        <tr>
+          <td style="padding: 8px; border-bottom: 1px solid #ddd; width: 40%; font-weight: bold;">Descrição do Negócio:</td>
+          <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{business_description}}</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border-bottom: 1px solid #ddd; font-weight: bold;">Estágio do Negócio:</td>
+          <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{business_stage}}</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border-bottom: 1px solid #ddd; font-weight: bold;">Detalhes de Personalização:</td>
+          <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{customization_notes}}</td>
+        </tr>
+      </table>
+    </div>
+    
+    <div style="margin-bottom: 30px;">
+      <h2 style="color: #004494; font-size: 18px; border-bottom: 2px solid #FF7F00; padding-bottom: 10px;">
+        Forma de Pagamento
+      </h2>
+      
+      <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+        <tr>
+          <td style="padding: 8px; border-bottom: 1px solid #ddd; width: 40%; font-weight: bold;">Método de Pagamento:</td>
+          <td style="padding: 8px; border-bottom: 1px solid #ddd;">{{payment_method}}</td>
+        </tr>
+      </table>
+    </div>
+    
+    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 14px; color: #666;">
+      <p><strong>Data e Hora:</strong> {{date_time}}</p>
+      <p><strong>URL da Página:</strong> {{page_url}}</p>
+    </div>
+  </div>
+  
+  <div style="background-color: #f0f0f0; padding: 15px; text-align: center; border-radius: 0 0 5px 5px; font-size: 14px; color: #666;">
+    <p>Este e-mail foi enviado automaticamente pelo site Kolibra Solutions.</p>
+  </div>
+</div>
