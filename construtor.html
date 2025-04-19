@@ -38,8 +38,6 @@
     
     <!-- Preload de recursos críticos -->
     <link rel="preload" href="img/logo-new.png" as="image">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1483,19 +1481,22 @@
     
     <!-- JavaScript -->
     <script>
+        // Navegação mobile
         document.addEventListener('DOMContentLoaded', function() {
             // Navegação mobile
             const navToggle = document.getElementById('navToggle');
             const navMenu = document.querySelector('.nav-menu');
             
-            navToggle.addEventListener('click', function() {
-                navToggle.classList.toggle('active');
-                navMenu.classList.toggle('active');
-                
-                // Acessibilidade - atualiza o estado expandido
-                const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-                navToggle.setAttribute('aria-expanded', !isExpanded);
-            });
+            if (navToggle) {
+                navToggle.addEventListener('click', function() {
+                    navToggle.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    
+                    // Acessibilidade - atualiza o estado expandido
+                    const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+                    navToggle.setAttribute('aria-expanded', !isExpanded);
+                });
+            }
             
             // Categorias de serviços
             const categoryHeaders = document.querySelectorAll('.category-header');
@@ -1710,30 +1711,32 @@
             // Formulário de contato
             const planBuilderForm = document.getElementById('planBuilderForm');
             
-            planBuilderForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Coleta os dados do formulário
-                const formData = {
-                    name: document.getElementById('name').value,
-                    email: document.getElementById('email').value,
-                    phone: document.getElementById('phone').value,
-                    company: document.getElementById('company').value,
-                    message: document.getElementById('message').value,
-                    plan: selectedPlan ? selectedPlan.name : 'Nenhum plano selecionado',
-                    services: selectedServices.map(service => service.name).join(', '),
-                    total: document.getElementById('totalPrice').textContent,
-                    paymentMethod: document.querySelector('input[name="payment_method"]:checked').value
-                };
-                
-                // Se houver serviços de suporte, adiciona a periodicidade
-                if (selectedServices.some(service => service.isSupport)) {
-                    formData.supportPeriod = document.querySelector('input[name="support_period"]:checked').value;
-                }
-                
-                // Envia o formulário por email
-                sendEmail(formData);
-            });
+            if (planBuilderForm) {
+                planBuilderForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Coleta os dados do formulário
+                    const formData = {
+                        name: document.getElementById('name').value,
+                        email: document.getElementById('email').value,
+                        phone: document.getElementById('phone').value,
+                        company: document.getElementById('company').value,
+                        message: document.getElementById('message').value,
+                        plan: selectedPlan ? selectedPlan.name : 'Nenhum plano selecionado',
+                        services: selectedServices.map(service => service.name).join(', '),
+                        total: document.getElementById('totalPrice').textContent,
+                        paymentMethod: document.querySelector('input[name="payment_method"]:checked').value
+                    };
+                    
+                    // Se houver serviços de suporte, adiciona a periodicidade
+                    if (selectedServices.some(service => service.isSupport)) {
+                        formData.supportPeriod = document.querySelector('input[name="support_period"]:checked').value;
+                    }
+                    
+                    // Envia o formulário por email
+                    sendEmail(formData);
+                });
+            }
             
             // Função para enviar o email
             function sendEmail(formData) {
@@ -1761,45 +1764,47 @@
             // Configuração do botão do WhatsApp
             const whatsappButton = document.getElementById('whatsappButton');
             
-            whatsappButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Coleta os dados para a mensagem
-                const name = document.getElementById('name').value || 'Cliente';
-                const email = document.getElementById('email').value || 'Não informado';
-                const phone = document.getElementById('phone').value || 'Não informado';
-                const company = document.getElementById('company').value || 'Não informado';
-                const message = document.getElementById('message').value || 'Não informado';
-                const plan = selectedPlan ? selectedPlan.name : 'Nenhum plano selecionado';
-                const services = selectedServices.map(service => service.name).join(', ') || 'Nenhum serviço selecionado';
-                const total = document.getElementById('totalPrice').textContent;
-                const paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
-                
-                // Constrói a mensagem para o WhatsApp
-                let whatsappMessage = `Olá, gostaria de solicitar um orçamento para o seguinte pacote:\n\n`;
-                whatsappMessage += `*Nome:* ${name}\n`;
-                whatsappMessage += `*Email:* ${email}\n`;
-                whatsappMessage += `*Telefone:* ${phone}\n`;
-                whatsappMessage += `*Empresa:* ${company}\n\n`;
-                whatsappMessage += `*Plano Base:* ${plan}\n`;
-                whatsappMessage += `*Serviços Adicionais:* ${services}\n`;
-                whatsappMessage += `*Valor Total:* ${total}\n`;
-                whatsappMessage += `*Forma de Pagamento:* ${paymentMethod}\n\n`;
-                
-                // Se houver serviços de suporte, adiciona a periodicidade
-                if (selectedServices.some(service => service.isSupport)) {
-                    const supportPeriod = document.querySelector('input[name="support_period"]:checked').value;
-                    whatsappMessage += `*Periodicidade do Suporte:* ${supportPeriod}\n\n`;
-                }
-                
-                whatsappMessage += `*Mensagem Adicional:* ${message}\n`;
-                
-                // Codifica a mensagem para URL
-                const encodedMessage = encodeURIComponent(whatsappMessage);
-                
-                // Abre o WhatsApp com a mensagem
-                window.open(`https://wa.me/5535999796570?text=${encodedMessage}`, '_blank');
-            });
+            if (whatsappButton) {
+                whatsappButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Coleta os dados para a mensagem
+                    const name = document.getElementById('name').value || 'Cliente';
+                    const email = document.getElementById('email').value || 'Não informado';
+                    const phone = document.getElementById('phone').value || 'Não informado';
+                    const company = document.getElementById('company').value || 'Não informado';
+                    const message = document.getElementById('message').value || 'Não informado';
+                    const plan = selectedPlan ? selectedPlan.name : 'Nenhum plano selecionado';
+                    const services = selectedServices.map(service => service.name).join(', ') || 'Nenhum serviço selecionado';
+                    const total = document.getElementById('totalPrice').textContent;
+                    const paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
+                    
+                    // Constrói a mensagem para o WhatsApp
+                    let whatsappMessage = `Olá, gostaria de solicitar um orçamento para o seguinte pacote:\n\n`;
+                    whatsappMessage += `*Nome:* ${name}\n`;
+                    whatsappMessage += `*Email:* ${email}\n`;
+                    whatsappMessage += `*Telefone:* ${phone}\n`;
+                    whatsappMessage += `*Empresa:* ${company}\n\n`;
+                    whatsappMessage += `*Plano Base:* ${plan}\n`;
+                    whatsappMessage += `*Serviços Adicionais:* ${services}\n`;
+                    whatsappMessage += `*Valor Total:* ${total}\n`;
+                    whatsappMessage += `*Forma de Pagamento:* ${paymentMethod}\n\n`;
+                    
+                    // Se houver serviços de suporte, adiciona a periodicidade
+                    if (selectedServices.some(service => service.isSupport)) {
+                        const supportPeriod = document.querySelector('input[name="support_period"]:checked').value;
+                        whatsappMessage += `*Periodicidade do Suporte:* ${supportPeriod}\n\n`;
+                    }
+                    
+                    whatsappMessage += `*Mensagem Adicional:* ${message}\n`;
+                    
+                    // Codifica a mensagem para URL
+                    const encodedMessage = encodeURIComponent(whatsappMessage);
+                    
+                    // Abre o WhatsApp com a mensagem
+                    window.open(`https://wa.me/35999796570?text=${encodedMessage}`, '_blank');
+                });
+            }
         });
     </script>
 </body>
