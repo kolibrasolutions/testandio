@@ -751,6 +751,7 @@
             margin-top: 30px;
             padding-top: 30px;
             border-top: 2px solid var(--gray-color);
+            display: none; /* Inicialmente oculto */
         }
         
         .contact-form h4 {
@@ -844,6 +845,68 @@
             color: white;
             transform: translateY(-3px);
             box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
+        }
+        
+        /* Modal de Sucesso */
+        .success-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .success-modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .modal-icon {
+            font-size: 4rem;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .modal-message {
+            margin-bottom: 25px;
+            color: var(--gray-dark);
+        }
+        
+        .modal-close {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 10px 25px;
+            border-radius: 5px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .modal-close:hover {
+            background-color: #003370;
+            transform: translateY(-3px);
         }
         
         /* Footer */
@@ -1387,11 +1450,11 @@
                     </div>
                     
                     <!-- Botão WhatsApp -->
-                    <a href="#" id="whatsappButton" class="whatsapp-btn" target="_blank">
+                    <button id="whatsappButton" class="whatsapp-btn">
                         <i class="fab fa-whatsapp"></i> Solicitar via WhatsApp
-                    </a>
+                    </button>
                     
-                    <!-- Formulário de Contato -->
+                    <!-- Formulário de Contato (inicialmente oculto) -->
                     <form id="planBuilderForm" class="contact-form">
                         <h4>Seus Dados</h4>
                         <div class="form-group">
@@ -1418,12 +1481,24 @@
                             <input type="checkbox" id="terms" name="terms" required>
                             <label for="terms">Concordo com os <a href="#">Termos e Condições</a> e autorizo o contato da KOLIBRA SOLUTIONS.</label>
                         </div>
-                        <button type="submit" class="btn btn-secondary submit-btn">Solicitar Pacote Personalizado</button>
+                        <button type="submit" class="btn btn-secondary submit-btn">Enviar Solicitação</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
+    
+    <!-- Modal de Sucesso -->
+    <div id="successModal" class="success-modal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 class="modal-title">Solicitação Enviada com Sucesso!</h3>
+            <p class="modal-message">Recebemos seu pedido e entraremos em contato em breve para dar continuidade ao seu projeto.</p>
+            <button class="modal-close" id="closeModal">Fechar</button>
+        </div>
+    </div>
     
     <!-- Footer -->
     <footer class="footer">
@@ -1479,12 +1554,20 @@
         </div>
     </footer>
     
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("user_your_emailjs_user_id"); // Substitua pelo seu User ID do EmailJS
+        })();
+    </script>
+    
     <!-- JavaScript -->
     <script>
         // Navegação mobile
         document.addEventListener('DOMContentLoaded', function() {
             // Navegação mobile
-            const navToggle = document.getElementById('navToggle');
+            const navToggle = document.querySelector('.nav-toggle');
             const navMenu = document.querySelector('.nav-menu');
             
             if (navToggle) {
@@ -1513,7 +1596,7 @@
             const selectedPlanElement = document.getElementById('selectedPlan');
             const basePlanPriceElement = document.getElementById('basePlanPrice');
             
-            let selectedPlan = null;
+            window.selectedPlan = null;
             let basePlanPrice = 0;
             
             planOptions.forEach(option => {
@@ -1528,7 +1611,7 @@
                     const planName = this.querySelector('h4').textContent;
                     const planPrice = parseFloat(this.dataset.price);
                     
-                    selectedPlan = {
+                    window.selectedPlan = {
                         name: planName,
                         price: planPrice
                     };
@@ -1554,7 +1637,7 @@
             const additionalServicesPriceElement = document.getElementById('additionalServicesPrice');
             const supportPeriodOptionsElement = document.getElementById('supportPeriodOptions');
             
-            let selectedServices = [];
+            window.selectedServices = [];
             let additionalServicesPrice = 0;
             
             addServiceButtons.forEach(button => {
@@ -1566,11 +1649,11 @@
                     const isSupport = serviceItem.dataset.support === 'true';
                     
                     // Verifica se o serviço já está selecionado
-                    const serviceIndex = selectedServices.findIndex(service => service.id === serviceId);
+                    const serviceIndex = window.selectedServices.findIndex(service => service.id === serviceId);
                     
                     if (serviceIndex === -1) {
                         // Adiciona o serviço
-                        selectedServices.push({
+                        window.selectedServices.push({
                             id: serviceId,
                             name: serviceName,
                             price: servicePrice,
@@ -1586,13 +1669,13 @@
                         }
                     } else {
                         // Remove o serviço
-                        selectedServices.splice(serviceIndex, 1);
+                        window.selectedServices.splice(serviceIndex, 1);
                         
                         // Desmarca o botão
                         this.classList.remove('added');
                         
                         // Verifica se ainda há algum serviço de suporte selecionado
-                        const hasSupport = selectedServices.some(service => service.isSupport);
+                        const hasSupport = window.selectedServices.some(service => service.isSupport);
                         if (!hasSupport) {
                             supportPeriodOptionsElement.classList.remove('active');
                         }
@@ -1608,14 +1691,14 @@
             
             // Função para atualizar a lista de serviços selecionados
             function updateSelectedServices() {
-                if (selectedServices.length === 0) {
+                if (window.selectedServices.length === 0) {
                     selectedServicesElement.innerHTML = `<div class="no-services">Nenhum serviço adicionado</div>`;
                     additionalServicesPrice = 0;
                 } else {
                     let servicesHTML = '';
                     additionalServicesPrice = 0;
                     
-                    selectedServices.forEach(service => {
+                    window.selectedServices.forEach(service => {
                         servicesHTML += `
                             <div class="selected-service-item" data-service="${service.id}">
                                 <div class="selected-service-info">
@@ -1640,13 +1723,13 @@
             // Função para remover um serviço
             window.removeService = function(serviceId) {
                 // Encontra o índice do serviço
-                const serviceIndex = selectedServices.findIndex(service => service.id === serviceId);
+                const serviceIndex = window.selectedServices.findIndex(service => service.id === serviceId);
                 
                 if (serviceIndex !== -1) {
-                    const isSupport = selectedServices[serviceIndex].isSupport;
+                    const isSupport = window.selectedServices[serviceIndex].isSupport;
                     
                     // Remove o serviço
-                    selectedServices.splice(serviceIndex, 1);
+                    window.selectedServices.splice(serviceIndex, 1);
                     
                     // Desmarca o botão
                     const serviceButton = document.querySelector(`.service-item[data-service="${serviceId}"] .btn-add-service`);
@@ -1656,7 +1739,7 @@
                     
                     // Verifica se ainda há algum serviço de suporte selecionado
                     if (isSupport) {
-                        const hasSupport = selectedServices.some(service => service.isSupport);
+                        const hasSupport = window.selectedServices.some(service => service.isSupport);
                         if (!hasSupport) {
                             supportPeriodOptionsElement.classList.remove('active');
                         }
@@ -1684,7 +1767,7 @@
                 let total = basePlanPrice;
                 
                 // Adiciona o preço dos serviços adicionais
-                selectedServices.forEach(service => {
+                window.selectedServices.forEach(service => {
                     if (service.isSupport) {
                         // Aplica desconto conforme a periodicidade selecionada
                         const supportPeriod = document.querySelector('input[name="support_period"]:checked').value;
@@ -1708,104 +1791,31 @@
                 document.getElementById('totalPrice').textContent = `R$ ${total.toFixed(2)}`;
             }
             
-            // Formulário de contato
-            const planBuilderForm = document.getElementById('planBuilderForm');
-            
-            if (planBuilderForm) {
-                planBuilderForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Coleta os dados do formulário
-                    const formData = {
-                        name: document.getElementById('name').value,
-                        email: document.getElementById('email').value,
-                        phone: document.getElementById('phone').value,
-                        company: document.getElementById('company').value,
-                        message: document.getElementById('message').value,
-                        plan: selectedPlan ? selectedPlan.name : 'Nenhum plano selecionado',
-                        services: selectedServices.map(service => service.name).join(', '),
-                        total: document.getElementById('totalPrice').textContent,
-                        paymentMethod: document.querySelector('input[name="payment_method"]:checked').value
-                    };
-                    
-                    // Se houver serviços de suporte, adiciona a periodicidade
-                    if (selectedServices.some(service => service.isSupport)) {
-                        formData.supportPeriod = document.querySelector('input[name="support_period"]:checked').value;
-                    }
-                    
-                    // Envia o formulário por email
-                    sendEmail(formData);
-                });
-            }
-            
-            // Função para enviar o email
-            function sendEmail(formData) {
-                // Aqui você pode implementar o envio do email
-                // Por exemplo, usando EmailJS ou enviando para um endpoint de backend
-                
-                // Simulação de envio bem-sucedido
-                alert('Seu pacote personalizado foi enviado com sucesso! Em breve entraremos em contato.');
-                planBuilderForm.reset();
-                
-                // Limpa a seleção de serviços
-                selectedServices = [];
-                updateSelectedServices();
-                
-                // Limpa a seleção de plano
-                planOptions.forEach(opt => opt.classList.remove('selected'));
-                selectedPlanElement.innerHTML = `<div class="no-services">Nenhum plano selecionado</div>`;
-                basePlanPrice = 0;
-                basePlanPriceElement.textContent = `R$ 0.00`;
-                
-                // Atualiza o preço total
-                updateTotalPrice();
-            }
-            
-            // Configuração do botão do WhatsApp
+            // Botão WhatsApp e Formulário
             const whatsappButton = document.getElementById('whatsappButton');
+            const contactForm = document.getElementById('planBuilderForm');
             
             if (whatsappButton) {
                 whatsappButton.addEventListener('click', function(e) {
                     e.preventDefault();
                     
-                    // Coleta os dados para a mensagem
-                    const name = document.getElementById('name').value || 'Cliente';
-                    const email = document.getElementById('email').value || 'Não informado';
-                    const phone = document.getElementById('phone').value || 'Não informado';
-                    const company = document.getElementById('company').value || 'Não informado';
-                    const message = document.getElementById('message').value || 'Não informado';
-                    const plan = selectedPlan ? selectedPlan.name : 'Nenhum plano selecionado';
-                    const services = selectedServices.map(service => service.name).join(', ') || 'Nenhum serviço selecionado';
-                    const total = document.getElementById('totalPrice').textContent;
-                    const paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
-                    
-                    // Constrói a mensagem para o WhatsApp
-                    let whatsappMessage = `Olá, gostaria de solicitar um orçamento para o seguinte pacote:\n\n`;
-                    whatsappMessage += `*Nome:* ${name}\n`;
-                    whatsappMessage += `*Email:* ${email}\n`;
-                    whatsappMessage += `*Telefone:* ${phone}\n`;
-                    whatsappMessage += `*Empresa:* ${company}\n\n`;
-                    whatsappMessage += `*Plano Base:* ${plan}\n`;
-                    whatsappMessage += `*Serviços Adicionais:* ${services}\n`;
-                    whatsappMessage += `*Valor Total:* ${total}\n`;
-                    whatsappMessage += `*Forma de Pagamento:* ${paymentMethod}\n\n`;
-                    
-                    // Se houver serviços de suporte, adiciona a periodicidade
-                    if (selectedServices.some(service => service.isSupport)) {
-                        const supportPeriod = document.querySelector('input[name="support_period"]:checked').value;
-                        whatsappMessage += `*Periodicidade do Suporte:* ${supportPeriod}\n\n`;
+                    // Verifica se há um plano selecionado
+                    if (!window.selectedPlan) {
+                        alert('Por favor, selecione um plano base antes de continuar.');
+                        return;
                     }
                     
-                    whatsappMessage += `*Mensagem Adicional:* ${message}\n`;
+                    // Mostra o formulário
+                    contactForm.style.display = 'block';
                     
-                    // Codifica a mensagem para URL
-                    const encodedMessage = encodeURIComponent(whatsappMessage);
-                    
-                    // Abre o WhatsApp com a mensagem
-                    window.open(`https://wa.me/35999796570?text=${encodedMessage}`, '_blank');
+                    // Rola até o formulário
+                    contactForm.scrollIntoView({ behavior: 'smooth' });
                 });
             }
         });
     </script>
+    
+    <!-- Script de envio de formulário -->
+    <script src="js/form-submit.js"></script>
 </body>
 </html>
