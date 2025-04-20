@@ -977,27 +977,7 @@
     <!-- Scripts personalizados -->
     <script src="js/menu-padronizado.js"></script>
     <script src="js/diagnostico-whatsapp.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Navegação Mobile
-            const navToggle = document.querySelector('.nav-toggle');
-            const navMenu = document.querySelector('.nav-menu');
-            
-            if (navToggle) {
-                navToggle.addEventListener('click', function() {
-                    navToggle.classList.toggle('active');
-                    navMenu.classList.toggle('active');
-                });
-            }
-            
-            // Navegação entre seções
-            const sections = document.querySelectorAll('.section');
-            const progressBar = document.querySelector('.progress-bar');
-            const nextButtons = document.querySelectorAll('.next-btn');
-            const prevButtons = document.querySelectorAll('.prev-btn');
-            const sectionSteps = document.querySelectorAll('.section-step');
-            
-            // Função para mostrar uma seção específica
+    <!-- Removido script duplicado que causava conflitos -->
             function showSection(sectionNumber) {
                 sections.forEach(section => {
                     section.classList.remove('active');

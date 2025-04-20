@@ -10,19 +10,50 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Mostrar uma seção específica
     function showSection(sectionNumber) {
+        console.log('Mostrando seção:', sectionNumber);
+        
         sections.forEach(section => {
             section.classList.remove('active');
         });
         
-        document.getElementById(`section${sectionNumber}`).classList.add('active');
+        // Ajuste para lidar com a seção 5 (após remover a seção 3)
+        let targetSection = document.getElementById(`section${sectionNumber}`);
+        if (!targetSection && sectionNumber === 3) {
+            targetSection = document.getElementById('section5');
+        }
+        
+        if (targetSection) {
+            targetSection.classList.add('active');
+        } else {
+            console.error('Seção não encontrada:', sectionNumber);
+        }
         
         // Atualizar a barra de progresso
         const progressBar = document.querySelector('.progress-bar');
         if (progressBar) {
-            const progress = (sectionNumber / sections.length) * 100;
+            // Ajuste para 3 etapas
+            let progress;
+            if (sectionNumber === 1) progress = 33;
+            else if (sectionNumber === 2) progress = 66;
+            else progress = 100;
+            
             progressBar.style.width = `${progress}%`;
             progressBar.setAttribute('aria-valuenow', progress);
         }
+        
+        // Atualizar indicadores de etapa
+        const sectionSteps = document.querySelectorAll('.section-step');
+        sectionSteps.forEach(step => {
+            const stepNumber = parseInt(step.getAttribute('data-step'));
+            step.classList.remove('active', 'completed');
+            
+            // Ajuste para lidar com a seção 5 (após remover a seção 3)
+            if (stepNumber < sectionNumber || (stepNumber === 5 && sectionNumber === 3)) {
+                step.classList.add('completed');
+            } else if (stepNumber === sectionNumber || (stepNumber === 5 && sectionNumber === 3)) {
+                step.classList.add('active');
+            }
+        });
         
         // Rolar para o topo do formulário
         document.querySelector('.form-container').scrollIntoView({ behavior: 'smooth' });
@@ -68,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
     nextButtons.forEach(button => {
         button.addEventListener('click', function() {
             const nextSection = parseInt(this.getAttribute('data-next'));
+            console.log('Clique em próximo para seção:', nextSection);
             
             // Validar campos da seção atual antes de avançar
             const currentSection = parseInt(this.closest('.section').id.replace('section', ''));
@@ -76,14 +108,16 @@ document.addEventListener('DOMContentLoaded', function() {
             if (currentSection === 2) {
                 captureSelectedProblems();
                 
-                // Gerar resumo diretamente ao passar da seção 2 para a 5
-                if (nextSection === 5) {
-                    generateSummary();
-                }
+                // Gerar resumo ao passar da seção 2 para a 5 (ou 3 na nova numeração)
+                generateSummary();
             }
             
-            // Mostrar próxima seção
-            showSection(nextSection);
+            // Ajuste para lidar com a transição da seção 2 para a 5
+            if (currentSection === 2 && nextSection === 5) {
+                showSection(3); // Mostrar como seção 3 na nova numeração
+            } else {
+                showSection(nextSection);
+            }
         });
     });
     
@@ -91,12 +125,15 @@ document.addEventListener('DOMContentLoaded', function() {
     prevButtons.forEach(button => {
         button.addEventListener('click', function() {
             const prevSection = parseInt(this.getAttribute('data-prev'));
+            console.log('Clique em anterior para seção:', prevSection);
             showSection(prevSection);
         });
     });
     
     // Gerar resumo
     function generateSummary() {
+        console.log('Gerando resumo');
+        
         // Preencher informações da empresa e contato
         document.getElementById('summary_business').textContent = document.getElementById('businessName').value;
         document.getElementById('summary_contact').textContent = document.getElementById('contactName').value;
@@ -272,57 +309,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (problems && problems.length > 0) {
                         problems.forEach((problem, index) => {
                             message += `${index + 1}. ${problem.label}\n`;
-                        });
-                    } else {
-                        message += `Nenhum problema selecionado.\n`;
-                    }
-                } catch (e) {
-                    console.error('Erro ao recuperar problemas do localStorage direto:', e);
-                    message += `Nenhum problema selecionado.\n`;
-                }
-            } else {
-                message += `Nenhum problema selecionado.\n`;
-            }
-        }
-        
-        message += `\n`;
-        
-        // Outros problemas
-        const otherProblems = document.getElementById('otherProblems').value;
-        if (otherProblems) {
-            message += `*Outros Problemas:*\n${otherProblems}\n\n`;
-        }
-        
-        message += `Enviado via Formulário de Diagnóstico - KOLIBRA SOLUTIONS`;
-        
-        console.log('Mensagem formatada com abordagem direta:', message);
-        
-        // Retornar a mensagem decodificada ou codificada conforme solicitado
-        return decode ? message : encodeURIComponent(message);
-    }
-    
-    // Redirecionar para o WhatsApp
-    function redirectToWhatsApp(message) {
-        // Número de telefone para onde a mensagem será enviada (formato internacional)
-        const phoneNumber = '5535999796570';
-        
-        // URL do WhatsApp
-        const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
-        
-        // Redirecionar para o WhatsApp
-        window.location.href = whatsappURL;
-    }
-    
-    // Inicializar o formulário
-    showSection(1);
-});iorityText = 'Alta Prioridade';
-                            } else if (priority === 'low') {
-                                priorityText = 'Baixa Prioridade';
-                            } else {
-                                priorityText = 'Média Prioridade';
-                            }
-                            
-                            message += `${index + 1}. ${problem.label} - ${priorityText}\n`;
                         });
                     } else {
                         message += `Nenhum problema selecionado.\n`;
