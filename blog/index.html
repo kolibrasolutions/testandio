@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Kolibra - Conteúdo Educativo para Empreendedores</title>
+    <meta name="description" content="Blog da Kolibra Solutions com conteúdo educativo para empreendedores e profissionais autônomos. Dicas, tutoriais e estratégias para impulsionar seu negócio.">
+    <meta name="keywords" content="blog Kolibra, empreendedorismo, marketing digital, pequenos negócios, dicas para empreendedores">
+    <meta name="author" content="Kolibra Solutions">
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.kolibrasolutions.com.br/blog/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.kolibrasolutions.com.br/blog/">
+    <meta property="og:title" content="Blog Kolibra - Conteúdo Educativo para Empreendedores">
+    <meta property="og:description" content="Blog da Kolibra Solutions com conteúdo educativo para empreendedores e profissionais autônomos">
+    <meta property="og:image" content="https://www.kolibrasolutions.com.br/share-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Kolibra Solutions">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.kolibrasolutions.com.br/blog/">
+    <meta property="twitter:title" content="Blog Kolibra - Conteúdo Educativo para Empreendedores">
+    <meta property="twitter:description" content="Blog da Kolibra Solutions com conteúdo educativo para empreendedores e profissionais autônomos">
+    <meta property="twitter:image" content="https://www.kolibrasolutions.com.br/share-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/ico" href="../favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="../img/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="../img/favicon-64x64.png">
+    <link rel="apple-touch-icon" sizes="128x128" href="../img/favicon-128x128.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../img/favicon-152x152.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="../img/favicon-192x192.png">
+    
+    <!-- Preload de recursos críticos -->
+    <link rel="preload" href="../img/logo-new.png" as="image">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <style>
+        :root {
+            --primary-color: #004494;
+            --secondary-color: #FF7F00;
+            --light-color: #ffffff;
+            --dark-color: #333333;
+            --gray-color: #f5f5f5;
+            --gray-dark: #666666;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            color: var(--gray-dark);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--secondary-color);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .mt-5 {
+            margin-top: 50px;
+        }
+        
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Botões */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #003370;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e67300;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 127, 0, 0.3);
+        }
+        
+        /* Navegação */
+        .navbar {
+            background-color: var(--primary-color);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: block;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            color: var(--light-color);
+            font-weight: 500;
+        }
+        
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--secondary-color);
+        }
+        
+        .btn-nav {
+            background-color: var(--secondary-color);
+            color: var(--light-color) !important;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        
+        .btn-nav:hover {
+            background-color: #e67300;
+            color: var(--light-color) !important;
+        }
+        
+        .nav-toggle {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .nav-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-color);
+            margin: 5px 0;
+            transition: var(--transition);
+        }
+        
+        /* Breadcrumbs */
+        .breadcrumbs {
+            background-color: #f0f0f0;
+            padding: 10px 0;
+            margin-top: 80px;
+        }
+        
+        .breadcrumbs a, .breadcrumbs span {
+            color: var(--gray-dark);
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumbs a:hover {
+            color: var(--primary-color);
+        }
+        
+        .breadcrumbs span {
+            color: var(--primary-color);
+        }
+        
+        /* Blog Header */
+        .blog-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0066cc 100%);
+            color: var(--light-color);
+            padding: 80px 0 50px;
+            text-align: center;
+        }
+        
+        .blog-header h1 {
+            color: var(--light-color);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .blog-header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Blog Categories */
+        .blog-categories {
+            background-color: var(--gray-color);
+            padding: 30px 0;
+        }
+        
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .category-tab {
+            padding: 10px 20px;
+            background-color: var(--light-color);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .category-tab:hover, .category-tab.active {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+        }
+        
+        /* Blog Grid */
+        .blog-grid {
+            padding: 60px 0;
+        }
+        
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .post-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .post-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .post-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .post-card:hover .post-image img {
+            transform: scale(1.1);
+        }
+        
+        .post-content {
+            padding: 20px;
+        }
+        
+        .post-category {
+            display: inline-block;
+            background-color: rgba(0, 68, 148, 0.1);
+            color: var(--primary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .post-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .post-excerpt {
+            color: var(--gray-dark);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--gray-dark);
+        }
+        
+        .post-date {
+            display: flex;
+            align-items: center;
+        }
+        
+        .post-date i {
+            margin-right: 5px;
+            color: var(--secondary-color);
+        }
+        
+        .read-more {
+            color: var(--secondary-color);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .read-more i {
+            margin-left: 5px;
+            transition: var(--transition);
+        }
+        
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Featured Post */
+        .featured-post {
+            margin-bottom: 60px;
+            background-color: var(--light-color);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .featured-image {
+            height: 100%;
+            min-height: 400px;
+        }
+        
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .featured-content {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .featured-category {
+            display: inline-block;
+            background-color: rgba(255, 127, 0, 0.1);
+            color: var(--secondary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .featured-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .featured-excerpt {
+            margin-bottom: 25px;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            background-color: var(--primary-color);
+            padding: 60px 0;
+            color: var(--light-color);
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            color: var(--light-color);
+            margin-bottom: 15px;
+        }
+        
+        .newsletter p {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .newsletter-btn {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 5px 5px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .newsletter-btn:hover {
+            background-color: #e67300;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #1a1a1a;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-color);
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+        
+        .footer-title {
+            color: var(--light-color);
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+        
+        .footer-contact li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .footer-contact i {
+            color: var(--secondary-color);
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .featured-post {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-image {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--primary-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: var(--transition);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            .nav-toggle {
+                display: block;
+            }
+            
+            .posts-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-btn {
+                border-radius: 5px;
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .blog-header h1 {
+                font-size: 2rem;
+            }
+            
+            .featured-content {
+                padding: 30px 20px;
+            }
+            
+            .featured-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegação -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <img src="../img/logo-new.png" alt="KOLIBRA SOLUTIONS">
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="../index.html" id="menu-home">Home</a></li>
+                <li><a href="../portfolio.html" id="menu-portfolio">Portfólio</a></li>
+                <li><a href="index.html" id="menu-blog" class="active">Blog</a></li>
+                <li><a href="../construtor.html" id="menu-construtor" class="btn-nav">Construir Pacote</a></li>
+            </ul>
+            
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <a href="../index.html">Home</a> > <span>Blog</span>
+        </div>
+    </div>
+    
+    <!-- Blog Header -->
+    <header class="blog-header">
+        <div class="container">
+            <h1>Blog Kolibra</h1>
+            <p>Conteúdo educativo para empreendedores e profissionais autônomos que desejam impulsionar seus negócios com soluções digitais acessíveis.</p>
+        </div>
+    </header>
+    
+    <!-- Blog Categories -->
+    <section class="blog-categories">
+        <div class="container">
+            <div class="category-tabs">
+                <div class="category-tab active">Todos</div>
+                <div class="category-tab">Manicures e Pedicures</div>
+                <div class="category-tab">Terapeutas Holísticos</div>
+                <div class="category-tab">Marmitas Saudáveis</div>
+                <div class="category-tab">Marketing Digital</div>
+                <div class="category-tab">Empreendedorismo</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Blog Content -->
+    <section class="blog-grid">
+        <div class="container">
+            <!-- Featured Post -->
+            <div class="featured-post">
+                <div class="featured-image">
+                    <img src="https://via.placeholder.com/600x400" alt="Como iniciar um negócio de manicure com apenas R$500">
+                </div>
+                <div class="featured-content">
+                    <span class="featured-category">Manicures e Pedicures</span>
+                    <h2 class="featured-title">Como iniciar um negócio de manicure com apenas R$500</h2>
+                    <p class="featured-excerpt">Descubra como montar seu próprio negócio de manicure e pedicure com um investimento mínimo, incluindo lista de equipamentos essenciais, estratégias de marketing e dicas para conquistar seus primeiros clientes.</p>
+                    <a href="posts/manicures/como-iniciar-negocio-manicure.html" class="btn btn-secondary">Ler artigo completo</a>
+                </div>
+            </div>
+            
+            <!-- Posts Grid -->
+            <div class="posts-grid">
+                <!-- Post 1 -->
+                <div class="post-card">
+                    <div class="post-image">
+                        <img src="https://via.placeholder.com/350x200" alt="5 técnicas essenciais de massagem para terapeutas iniciantes">
+                    </div>
+                    <div class="post-content">
+                        <span class="post-category">Terapeutas Holísticos</span>
+                        <h3 class="post-title">5 técnicas essenciais de massagem para terapeutas iniciantes</h3>
+                        <p class="post-excerpt">Aprenda as técnicas fundamentais que todo terapeuta holístico deve dominar para oferecer um serviço de qualidade e conquistar clientes fiéis.</p>
+                        <div class="post-meta">
+                            <div class="post-date">
+                                <i class="far fa-calendar-alt"></i> 18 Abr 2025
+                            </div>
+                            <a href="posts/terapeutas/tecnicas-essenciais-massagem.html" class="read-more">Ler mais <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Post 2 -->
+                <div class="post-card">
+                    <div class="post-image">
+                        <img src="https://via.placeholder.com/350x200" alt="Guia completo para iniciar seu negócio de marmitas saudáveis">
+                    </div>
+                    <div class="post-content">
+                        <span class="post-category">Marmitas Saudáveis</span>
+                        <h3 class="post-title">Guia completo para iniciar seu negócio de marmitas saudáveis</h3>
+                        <p class="post-excerpt">Tudo o que você precisa saber para começar um negócio de marmitas fitness: equipamentos, precificação, cardápios e estratégias de venda.</p>
+                        <div class="post-meta">
+                            <div class="post-date">
+                                <i class="far fa-calendar-alt"></i> 15 Abr 2025
+                            </div>
+                            <a href="posts/marmitas/guia-negocio-marmitas-saudaveis.html" class="read-more">Ler mais <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Post 3 -->
+                <div class="post-card">
+                    <div class="post-image">
+                        <img src="https://via.placeholder.com/350x200" alt="Como criar uma identidade visual marcante para seu salão de beleza">
+                    </div>
+                    <div class="post-content">
+                        <span class="post-category">Manicures e Pedicures</span>
+                        <h3 class="post-title">Como criar uma identidade visual marcante para seu salão de beleza</h3>
+                        <p class="post-excerpt">Dicas práticas para desenvolver uma identidade visual profissional que destaque seu negócio e atraia mais clientes.</p>
+                        <div class="post-meta">
+                            <div class="post-date">
+                                <i class="far fa-calendar-alt"></i> 10 Abr 2025
+                            </div>
+                            <a href="posts/manicures/identidade-visual-salao.html" class="read-more">Ler mais <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Post 4 -->
+                <div class="post-card">
+                    <div class="post-image">
+                        <img src="https://via.placeholder.com/350x200" alt="Como montar um consultório de terapias holísticas com baixo investimento">
+                    </div>
+                    <div class="post-content">
+                        <span class="post-category">Terapeutas Holísticos</span>
+                        <h3 class="post-title">Como montar um consultório de terapias holísticas com baixo investimento</h3>
+                        <p class="post-excerpt">Guia passo a passo para criar um espaço acolhedor e profissional para atender seus clientes, mesmo com orçamento limitado.</p>
+                        <div class="post-meta">
+                            <div class="post-date">
+                                <i class="far fa-calendar-alt"></i> 5 Abr 2025
+                            </div>
+                            <a href="posts/terapeutas/montar-consultorio-baixo-investimento.html" class="read-more">Ler mais <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Post 5 -->
+                <div class="post-card">
+                    <div class="post-image">
+                        <img src="https://via.placeholder.com/350x200" alt="7 estratégias de marketing digital para vender mais marmitas">
+                    </div>
+                    <div class="post-content">
+                        <span class="post-category">Marmitas Saudáveis</span>
+                        <h3 class="post-title">7 estratégias de marketing digital para vender mais marmitas</h3>
+                        <p class="post-excerpt">Aprenda a usar as redes sociais, WhatsApp Business e outras ferramentas digitais para aumentar suas vendas de marmitas saudáveis.</p>
+                        <div class="post-meta">
+                            <div class="post-date">
+                                <i class="far fa-calendar-alt"></i> 1 Abr 2025
+                            </div>
+                            <a href="posts/marmitas/estrategias-marketing-marmitas.html" class="read-more">Ler mais <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Post 6 -->
+                <div class="post-card">
+                    <div class="post-image">
+                        <img src="https://via.placeholder.com/350x200" alt="Como precificar seus serviços de manicure e aumentar sua lucratividade">
+                    </div>
+                    <div class="post-content">
+                        <span class="post-category">Manicures e Pedicures</span>
+                        <h3 class="post-title">Como precificar seus serviços de manicure e aumentar sua lucratividade</h3>
+                        <p class="post-excerpt">Aprenda a calcular o valor justo para seus serviços, considerando custos, tempo e valor percebido pelo cliente.</p>
+                        <div class="post-meta">
+                            <div class="post-date">
+                                <i class="far fa-calendar-alt"></i> 28 Mar 2025
+                            </div>
+                            <a href="posts/manicures/precificacao-servicos-manicure.html" class="read-more">Ler mais <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Inscreva-se em nossa Newsletter</h2>
+            <p>Receba conteúdo exclusivo, dicas e novidades diretamente no seu e-mail.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Seu melhor e-mail" required>
+                <button type="submit" class="newsletter-btn">Inscrever-se</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="../img/logo-new.png" alt="KOLIBRA SOLUTIONS">
+                    </div>
+                    <p>Soluções tecnológicas acessíveis para impulsionar pequenos negócios com grande impacto.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/kolibrasolutions/" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/kolibrasolutions/" class="social-link" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.tiktok.com/@kolibrasolutions" class="social-link" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3 class="footer-title">Links Rápidos</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../portfolio.html">Portfólio</a></li>
+                        <li><a href="index.html">Blog</a></li>
+                        <li><a href="../construtor.html">Construir Pacote</a></li>
+                        <li><a href="../segmentacao.html">Escolha seu caminho</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3 class="footer-title">Categorias do Blog</h3>
+                    <ul>
+                        <li><a href="#">Manicures e Pedicures</a></li>
+                        <li><a href="#">Terapeutas Holísticos</a></li>
+                        <li><a href="#">Marmitas Saudáveis</a></li>
+                        <li><a href="#">Marketing Digital</a></li>
+                        <li><a href="#">Empreendedorismo</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3 class="footer-title">Contato</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Rua Julião Calixto de Abdala, 87<br>Muzambinho, MG, 37890-000</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>(35) 99979-6570</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>kolibrasolutions@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kolibra Solutions. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle Menu
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            navToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+            
+            // Category Tabs
+            const categoryTabs = document.querySelectorAll('.category-tab');
+            
+            categoryTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    categoryTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Aqui seria implementada a filtragem dos posts por categoria
+                    // Por enquanto, apenas visual
+                });
+            });
+            
+            // Newsletter Form
+            const newsletterForm = document.querySelector('.newsletter-form');
+            
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input').value;
+                
+                // Aqui seria implementado o envio do email para o sistema de newsletter
+                alert('Obrigado por se inscrever! Em breve você receberá nossos conteúdos exclusivos.');
+                this.reset();
+            });
+        });
+    </script>
+</body>
+</html>
