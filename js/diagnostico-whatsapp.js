@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.form-container').scrollIntoView({ behavior: 'smooth' });
     }
     
-    // SOLUÇÃO RADICAL: Interceptar diretamente os checkboxes para capturar seleções
+    // SOLUÇÃO DIRETA: Interceptar diretamente os checkboxes para capturar seleções
     const allCheckboxes = document.querySelectorAll('input[type="checkbox"][name="problems[]"]');
     allCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function() {
@@ -76,13 +76,10 @@ document.addEventListener('DOMContentLoaded', function() {
             if (currentSection === 2) {
                 captureSelectedProblems();
                 
-                // Gerar itens de prioridade
-                generatePriorityItems();
-            }
-            
-            // Se estiver na seção 3 (priorização), gerar resumo
-            if (currentSection === 3) {
-                generateSummary();
+                // Gerar resumo diretamente ao passar da seção 2 para a 5
+                if (nextSection === 5) {
+                    generateSummary();
+                }
             }
             
             // Mostrar próxima seção
@@ -98,90 +95,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Gerar itens de prioridade
-    function generatePriorityItems() {
-        const priorityContainer = document.getElementById('priorityContainer');
-        
-        // Limpar o container
-        priorityContainer.innerHTML = '';
-        
-        // Verificar se há problemas selecionados
-        if (window.selectedProblems.length === 0) {
-            priorityContainer.innerHTML = `
-                <div class="text-center py-4">
-                    <p>Selecione pelo menos um problema na etapa anterior.</p>
-                </div>
-            `;
-            return;
-        }
-        
-        // Criar um item para cada problema selecionado
-        window.selectedProblems.forEach(problem => {
-            const priorityItem = document.createElement('div');
-            priorityItem.className = 'priority-item';
-            
-            // Recuperar prioridade salva, se existir
-            const savedPriority = localStorage.getItem(`priority_${problem.value}`) || 'medium';
-            
-            priorityItem.innerHTML = `
-                <div class="problem-item">
-                    <div>
-                        <h4>${problem.label}</h4>
-                    </div>
-                    <div>
-                        <select class="form-select priority-select" id="priority_${problem.value}" data-problem="${problem.value}">
-                            <option value="high" ${savedPriority === 'high' ? 'selected' : ''}>Alta Prioridade</option>
-                            <option value="medium" ${savedPriority === 'medium' ? 'selected' : ''}>Média Prioridade</option>
-                            <option value="low" ${savedPriority === 'low' ? 'selected' : ''}>Baixa Prioridade</option>
-                        </select>
-                    </div>
-                </div>
-            `;
-            
-            priorityContainer.appendChild(priorityItem);
-        });
-        
-        // Adicionar event listeners para os selects de prioridade
-        const prioritySelects = document.querySelectorAll('.priority-select');
-        prioritySelects.forEach(select => {
-            select.addEventListener('change', function() {
-                const problemValue = this.getAttribute('data-problem');
-                const priority = this.value;
-                
-                // Salvar a prioridade no localStorage
-                localStorage.setItem(`priority_${problemValue}`, priority);
-            });
-        });
-    }
-    
     // Gerar resumo
     function generateSummary() {
         // Preencher informações da empresa e contato
         document.getElementById('summary_business').textContent = document.getElementById('businessName').value;
         document.getElementById('summary_contact').textContent = document.getElementById('contactName').value;
         
-        // Preencher problemas prioritários
+        // Preencher problemas selecionados
         const summaryProblems = document.getElementById('summary_problems');
         summaryProblems.innerHTML = '';
         
         // Usar a variável global para os problemas
-        window.selectedProblems.forEach(problem => {
-            // Recuperar a prioridade do localStorage
-            const priority = localStorage.getItem(`priority_${problem.value}`) || 'medium';
-            let priorityText = '';
-            
-            if (priority === 'high') {
-                priorityText = 'Alta Prioridade';
-            } else if (priority === 'low') {
-                priorityText = 'Baixa Prioridade';
-            } else {
-                priorityText = 'Média Prioridade';
-            }
-            
+        if (window.selectedProblems.length > 0) {
+            window.selectedProblems.forEach(problem => {
+                const li = document.createElement('li');
+                li.textContent = problem.label;
+                summaryProblems.appendChild(li);
+            });
+        } else {
             const li = document.createElement('li');
-            li.innerHTML = `${problem.label} - <span class="badge bg-${priority === 'high' ? 'danger' : priority === 'medium' ? 'warning' : 'success'}">${priorityText}</span>`;
+            li.textContent = 'Nenhum problema selecionado.';
             summaryProblems.appendChild(li);
-        });
+        }
     }
     
     // NOVA SOLUÇÃO: Adicionar botão para copiar mensagem e link para WhatsApp
@@ -304,8 +239,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Descrição do negócio
         message += `*Descrição do Negócio:*\n${document.getElementById('businessDescription').value}\n\n`;
         
-        // Problemas e prioridades - ABORDAGEM DIRETA
-        message += `*Problemas Prioritários:*\n`;
+        // Problemas selecionados - ABORDAGEM DIRETA
+        message += `*Problemas Selecionados:*\n`;
         
         // Verificar diretamente os checkboxes selecionados
         const checkboxes = document.querySelectorAll('input[type="checkbox"][name="problems[]"]:checked');
@@ -315,21 +250,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             checkboxes.forEach((checkbox, index) => {
                 const label = checkbox.nextElementSibling.textContent.trim();
-                const value = checkbox.value;
-                
-                // Recuperar a prioridade do localStorage
-                const priority = localStorage.getItem(`priority_${value}`) || 'medium';
-                let priorityText = '';
-                
-                if (priority === 'high') {
-                    priorityText = 'Alta Prioridade';
-                } else if (priority === 'low') {
-                    priorityText = 'Baixa Prioridade';
-                } else {
-                    priorityText = 'Média Prioridade';
-                }
-                
-                message += `${index + 1}. ${label} - ${priorityText}\n`;
+                message += `${index + 1}. ${label}\n`;
             });
         } 
         // Verificar a variável global como backup
@@ -337,19 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Usando problemas da variável global:', window.selectedProblems.length);
             
             window.selectedProblems.forEach((problem, index) => {
-                // Recuperar a prioridade do localStorage
-                const priority = localStorage.getItem(`priority_${problem.value}`) || 'medium';
-                let priorityText = '';
-                
-                if (priority === 'high') {
-                    priorityText = 'Alta Prioridade';
-                } else if (priority === 'low') {
-                    priorityText = 'Baixa Prioridade';
-                } else {
-                    priorityText = 'Média Prioridade';
-                }
-                
-                message += `${index + 1}. ${problem.label} - ${priorityText}\n`;
+                message += `${index + 1}. ${problem.label}\n`;
             });
         }
         // Verificar localStorage como último recurso
@@ -362,12 +271,51 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     if (problems && problems.length > 0) {
                         problems.forEach((problem, index) => {
-                            // Recuperar a prioridade do localStorage
-                            const priority = localStorage.getItem(`priority_${problem.value}`) || 'medium';
-                            let priorityText = '';
-                            
-                            if (priority === 'high') {
-                                priorityText = 'Alta Prioridade';
+                            message += `${index + 1}. ${problem.label}\n`;
+                        });
+                    } else {
+                        message += `Nenhum problema selecionado.\n`;
+                    }
+                } catch (e) {
+                    console.error('Erro ao recuperar problemas do localStorage direto:', e);
+                    message += `Nenhum problema selecionado.\n`;
+                }
+            } else {
+                message += `Nenhum problema selecionado.\n`;
+            }
+        }
+        
+        message += `\n`;
+        
+        // Outros problemas
+        const otherProblems = document.getElementById('otherProblems').value;
+        if (otherProblems) {
+            message += `*Outros Problemas:*\n${otherProblems}\n\n`;
+        }
+        
+        message += `Enviado via Formulário de Diagnóstico - KOLIBRA SOLUTIONS`;
+        
+        console.log('Mensagem formatada com abordagem direta:', message);
+        
+        // Retornar a mensagem decodificada ou codificada conforme solicitado
+        return decode ? message : encodeURIComponent(message);
+    }
+    
+    // Redirecionar para o WhatsApp
+    function redirectToWhatsApp(message) {
+        // Número de telefone para onde a mensagem será enviada (formato internacional)
+        const phoneNumber = '5535999796570';
+        
+        // URL do WhatsApp
+        const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
+        
+        // Redirecionar para o WhatsApp
+        window.location.href = whatsappURL;
+    }
+    
+    // Inicializar o formulário
+    showSection(1);
+});iorityText = 'Alta Prioridade';
                             } else if (priority === 'low') {
                                 priorityText = 'Baixa Prioridade';
                             } else {
