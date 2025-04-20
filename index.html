@@ -1,636 +1,314 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bronzella Glow - Produtos para Bronzeamento</title>
-    <meta name="description" content="Bronzella Glow - Produtos de alta qualidade para bronzeamento. Descubra nossa linha exclusiva para um bronzeado perfeito e duradouro.">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/cart.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Template Padrão - Site Moderno</title>
+    
+    <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
 </head>
 <body>
-    <!-- Cabeçalho -->
-    <header class="header">
+    <!-- Partículas -->
+    <div id="particles"></div>
+    
+    <!-- Navbar -->
+    <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <h1>Bronzella Glow</h1>
-                <span>Bronzeamento Perfeito</span>
-            </div>
-            <nav class="nav">
-                <button class="menu-toggle" aria-label="Abrir menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <ul class="menu">
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#produtos">Produtos</a></li>
-                    <li><a href="#qualidade">Qualidade</a></li>
-                    <li><a href="#sobre">Sobre Nós</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
-                <!-- Ícone do Carrinho -->
-                <div class="cart-icon">
-                    <i class="fas fa-shopping-cart"></i>
-                    <div class="cart-count">0</div>
+                <div class="rainbow-border">
+                    <img src="img/logo.png" alt="Logo" class="profile-img">
                 </div>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Banner Principal -->
-    <section id="inicio" class="banner">
-        <div class="container">
-            <div class="banner-content">
-                <h2>Descubra o Bronzeado Perfeito</h2>
-                <p>Produtos de alta qualidade para um bronzeado natural, duradouro e seguro</p>
-                <a href="#produtos" class="btn btn-primary">Ver Produtos</a>
-                <a href="https://wa.me/5535999796570" class="btn btn-whatsapp" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Comprar pelo WhatsApp
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Destaques -->
-    <section class="highlights">
-        <div class="container">
-            <div class="highlight-item">
-                <i class="fas fa-shield-alt"></i>
-                <h3>Produtos Seguros</h3>
-                <p>Dermatologicamente testados</p>
-            </div>
-            <div class="highlight-item">
-                <i class="fas fa-sun"></i>
-                <h3>Bronzeado Natural</h3>
-                <p>Resultados que parecem naturais</p>
-            </div>
-            <div class="highlight-item">
-                <i class="fas fa-truck"></i>
-                <h3>Entrega Rápida</h3>
-                <p>Para todo o Brasil</p>
-            </div>
-            <div class="highlight-item">
-                <i class="fas fa-leaf"></i>
-                <h3>Ingredientes Naturais</h3>
-                <p>Fórmulas com ativos naturais</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Produtos -->
-    <section id="produtos" class="products">
-        <div class="container">
-            <div class="section-header">
-                <h2>Nossos Produtos</h2>
-                <p>Conheça nossa linha exclusiva para um bronzeado perfeito</p>
+                <h1 class="neon-text">NOME DO SITE</h1>
             </div>
             
-            <div class="product-filters">
-                <button class="filter-btn active" data-filter="todos">Todos</button>
-                <button class="filter-btn" data-filter="ativadores">Ativadores</button>
-                <button class="filter-btn" data-filter="potencializadores">Potencializadores</button>
-                <!--<button class="filter-btn" data-filter="pos">Pós-Sol</button>
-                <button class="filter-btn" data-filter="autobronzeadores">Autobronzeadores</button> -->
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link active">Home</a></li>
+                <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                <li><a href="#features" class="nav-link">Serviços</a></li>
+                <li><a href="#produtos" class="nav-link">Produtos</a></li>
+                <li><a href="#contato" class="nav-link">Contato</a></li>
+            </ul>
+            
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-
-            <div class="product-grid">
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background"></div>
+        <div class="geometric-overlay"></div>
+        <div class="hero-content">
+            <h1 class="fade-in neon-text">Título Principal</h1>
+            <p class="fade-in delay-1">Subtítulo ou descrição breve do site.</p>
+            <div class="hero-buttons">
+                <a href="#produtos" class="btn-primary fade-in delay-2">Ver Produtos</a>
+                <a href="#contato" class="btn-secondary fade-in delay-3">Fale Conosco</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="neon-text">Nossos Serviços</h2>
+                <p>Descrição breve dos serviços oferecidos</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="feature-title">Serviço 1</h3>
+                    <p class="feature-description">Descrição breve do serviço oferecido.</p>
+                </div>
+                
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Serviço 2</h3>
+                    <p class="feature-description">Descrição breve do serviço oferecido.</p>
+                </div>
+                
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="feature-title">Serviço 3</h3>
+                    <p class="feature-description">Descrição breve do serviço oferecido.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sobre Section -->
+    <section class="sobre" id="sobre">
+        <div class="container">
+            <div class="sobre-content">
+                <div class="sobre-img animate-on-scroll">
+                    <img src="img/sobre.jpg" alt="Sobre Nós">
+                </div>
+                <div class="sobre-text animate-on-scroll">
+                    <h2>Sobre Nós</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
+                    <p>Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Produtos Section -->
+    <section class="produtos" id="produtos">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="neon-text">Nossos Produtos</h2>
+                <p>Conheça nossa linha de produtos</p>
+            </div>
+            
+            <div class="produtos-grid">
                 <!-- Produto 1 -->
-                <div class="product-card" data-category="ativadores">
-                    <div class="product-image">
-                        <img src="images/produto1.jpg" alt="Ametista UV I Ativador de Bronzeado - 900ML
-                        ">
-                        <!-- <div class="product-tag">Bestseller</div> -->
+                <div class="produto-card animate-on-scroll">
+                    <div class="produto-img">
+                        <img src="img/produtos/produto1.jpg" alt="Produto 1" class="lazy-image" data-src="img/produtos/produto1.jpg">
+                        <div class="produto-badge highlight-badge">-15%</div>
                     </div>
-                    <div class="product-info">
-                        <h3>Ametista UV I Ativador de Bronzeado - 900ML</h3>
-                        <p>AMETISTA UV I, é um ativador de bronzeado que deixa a pele uniformizada, dourada e
-                            hidratada entregando um bronzeado de forma mais rapida e saudável.</p>
-                        <div class="product-quantity">
-                            <label>Quantidade:</label>
-                            <div class="quantity-selector">
-                                <button class="minus">-</button>
-                                <input type="number" value="1" min="1" max="99">
-                                <button class="plus">+</button>
-                            </div>
+                    <div class="produto-content">
+                        <span class="produto-categoria">Categoria</span>
+                        <h3 class="produto-titulo">Nome do Produto 1</h3>
+                        <div class="produto-preco">
+                            <span class="preco-atual">R$ 149,90</span>
+                            <span class="preco-antigo">R$ 179,90</span>
                         </div>
-                        <div class="product-actions">
-                            <a href="#" class="btn-add-to-cart">
-                                <i class="fas fa-cart-plus"></i> Adicionar ao Orçamento
-                            </a>
-                            <a href="https://wa.me/5535999796570?text=Olá! Tenho interesse no Óleo Bronzeador Dourado" class="btn-product" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Comprar
-                            </a>
+                        <div class="produto-acoes">
+                            <a href="produtos/produto-detalhe.html?id=1" class="btn-produto">Ver Detalhes</a>
                         </div>
                     </div>
                 </div>
-
+                
                 <!-- Produto 2 -->
-                <div class="product-card" data-category="ativadores">
-                    <div class="product-image">
-                        <img src="images/produto2.jpg" alt="Ativador de Bronzeado Choco Paty - 850G">
-                        <!-- <div class="product-tag">Novo</div> -->
+                <div class="produto-card animate-on-scroll">
+                    <div class="produto-img">
+                        <img src="img/produtos/produto2.jpg" alt="Produto 2" class="lazy-image" data-src="img/produtos/produto2.jpg">
+                        <div class="produto-badge highlight-badge">NOVO</div>
                     </div>
-                    <div class="product-info">
-                        <h3>Ativador de Bronzeado Choco Paty - 850G</h3>
-                        <p>Ativador de Bronzeado com propriedades
-                            nutritivas do morango, chocolate ou pêssego, foram formulados
-                            com óleo de coco e ativos, d-pantenol e colágeno que deixarão
-                            seu corpo com um bronzeado radiante e sua pele hidratada, macia
-                            e suavemente perfumada.</p>
-                        <div class="product-quantity">
-                            <label>Quantidade:</label>
-                            <div class="quantity-selector">
-                                <button class="minus">-</button>
-                                <input type="number" value="1" min="1" max="99">
-                                <button class="plus">+</button>
-                            </div>
+                    <div class="produto-content">
+                        <span class="produto-categoria">Categoria</span>
+                        <h3 class="produto-titulo">Nome do Produto 2</h3>
+                        <div class="produto-preco">
+                            <span class="preco-atual">R$ 89,90</span>
                         </div>
-                        <div class="product-actions">
-                            <a href="#" class="btn-add-to-cart">
-                                <i class="fas fa-cart-plus"></i> Adicionar ao Orçamento
-                            </a>
-                            <a href="https://wa.me/5535999796570?text=Olá! Tenho interesse no Acelerador de Bronzeado" class="btn-product" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Comprar
-                            </a>
+                        <div class="produto-acoes">
+                            <a href="produtos/produto-detalhe.html?id=2" class="btn-produto">Ver Detalhes</a>
                         </div>
                     </div>
                 </div>
-
+                
                 <!-- Produto 3 -->
-                <div class="product-card" data-category="ativadores">
-                    <div class="product-image">
-                        <img src="images/produto3.jpg" alt="Ativador Morango Bronze - 850G">
+                <div class="produto-card animate-on-scroll">
+                    <div class="produto-img">
+                        <img src="img/produtos/produto3.jpg" alt="Produto 3" class="lazy-image" data-src="img/produtos/produto3.jpg">
                     </div>
-                    <div class="product-info">
-                        <h3>Ativador Morango Bronze - 850G</h3>
-                        <p>Ativador de bronzeado com propriedades
-                            nutritivas do morango, chocolate ou pêssego, foram formulados
-                            com óleo de coco e ativos, d-pantenol e colágeno que deixarão
-                            seu corpo com um bronzeado radiante e sua pele hidratada, macia
-                            e suavemente perfumada.</p>
-                        <div class="product-quantity">
-                            <label>Quantidade:</label>
-                            <div class="quantity-selector">
-                                <button class="minus">-</button>
-                                <input type="number" value="1" min="1" max="99">
-                                <button class="plus">+</button>
-                            </div>
+                    <div class="produto-content">
+                        <span class="produto-categoria">Categoria</span>
+                        <h3 class="produto-titulo">Nome do Produto 3</h3>
+                        <div class="produto-preco">
+                            <span class="preco-atual">R$ 79,90</span>
                         </div>
-                        <div class="product-actions">
-                            <a href="#" class="btn-add-to-cart">
-                                <i class="fas fa-cart-plus"></i> Adicionar ao Orçamento
-                            </a>
-                            <a href="https://wa.me/5535999796570?text=Olá! Tenho interesse no Hidratante Pós-Sol" class="btn-product" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Comprar
-                            </a>
+                        <div class="produto-acoes">
+                            <a href="produtos/produto-detalhe.html?id=3" class="btn-produto">Ver Detalhes</a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Produto 4 -->
-                <div class="product-card" data-category="Ativadores">
-                    <div class="product-image">
-                        <img src="images/produto4.jpg" alt="Ativador Pêssego Bronze - 850G">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ativador Pêssego Bronze - 850G</h3>
-                        <p>ativador de bronzeado com propriedades
-                            nutritivas do morango, chocolate ou pêssego, foram formulados
-                            com óleo de coco e ativos, d-pantenol e colágeno que deixarão
-                            seu corpo com um bronzeado radiante e sua pele hidratada, macia
-                            e suavemente perfumada.</p>
-                        <div class="product-quantity">
-                            <label>Quantidade:</label>
-                            <div class="quantity-selector">
-                                <button class="minus">-</button>
-                                <input type="number" value="1" min="1" max="99">
-                                <button class="plus">+</button>
-                            </div>
-                        </div>
-                        <div class="product-actions">
-                            <a href="#" class="btn-add-to-cart">
-                                <i class="fas fa-cart-plus"></i> Adicionar ao Orçamento
-                            </a>
-                            <a href="https://wa.me/5535999796570?text=Olá! Tenho interesse no Autobronzeador Spray" class="btn-product" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Comprar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Produto 5 -->
-                <div class="product-card" data-category="bronzeadores">
-                    <div class="product-image">
-                        <img src="images/produto5.jpg" alt="Protetor Solar com Bronzeador">
-                    </div>
-                    <div class="product-info">
-                        <h3>Protetor Solar com Bronzeador</h3>
-                        <p>Proteção FPS 30 com ação bronzeadora para um bronzeado seguro.</p>
-                        <div class="product-quantity">
-                            <label>Quantidade:</label>
-                            <div class="quantity-selector">
-                                <button class="minus">-</button>
-                                <input type="number" value="1" min="1" max="99">
-                                <button class="plus">+</button>
-                            </div>
-                        </div>
-                        <div class="product-actions">
-                            <a href="#" class="btn-add-to-cart">
-                                <i class="fas fa-cart-plus"></i> Adicionar ao Orçamento
-                            </a>
-                            <a href="https://wa.me/5535999796570?text=Olá! Tenho interesse no Protetor Solar com Bronzeador" class="btn-product" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Comprar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Produto 6 -->
-                <div class="product-card" data-category="aceleradores">
-                    <div class="product-image">
-                        <img src="images/produto6.jpg" alt="Cápsulas Aceleradoras">
-                        <div class="product-tag">Premium</div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Cápsulas Aceleradoras</h3>
-                        <p>Suplemento que prepara a pele para um bronzeado mais rápido e duradouro.</p>
-                        <div class="product-quantity">
-                            <label>Quantidade:</label>
-                            <div class="quantity-selector">
-                                <button class="minus">-</button>
-                                <input type="number" value="1" min="1" max="99">
-                                <button class="plus">+</button>
-                            </div>
-                        </div>
-                        <div class="product-actions">
-                            <a href="#" class="btn-add-to-cart">
-                                <i class="fas fa-cart-plus"></i> Adicionar ao Orçamento
-                            </a>
-                            <a href="https://wa.me/5500000000000?text=Olá! Tenho interesse nas Cápsulas Aceleradoras" class="btn-product" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Comprar
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Produto 7 -->
-                <div class="product-card" data-category="aceleradores">
-                    <div class="product-image">
-                        <img src="images/produto6.jpg" alt="Cápsulas Aceleradoras">
-                        <div class="product-tag">Premium</div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Cápsulas Aceleradorasadasdad</h3>
-                        <p>Suplemento que prepara a pele para um bronzeado mais rápido e duradouro.</p>
-                        <div class="product-quantity">
-                            <label>Quantidade:</label>
-                            <div class="quantity-selector">
-                                <button class="minus">-</button>
-                                <input type="number" value="1" min="1" max="99">
-                                <button class="plus">+</button>
-                            </div>
-                        </div>
-                        <div class="product-actions">
-                            <a href="#" class="btn-add-to-cart">
-                                <i class="fas fa-cart-plus"></i> Adicionar ao Orçamento
-                            </a>
-                            <a href="https://wa.me/5500000000000?text=Olá! Tenho interesse nas Cápsulas Aceleradoras" class="btn-product" target="_blank">
-                                <i class="fab fa-whatsapp"></i> Comprar
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 40px;">
+                <a href="produtos/vitrine.html" class="btn-primary">Ver Todos os Produtos</a>
             </div>
         </div>
     </section>
-
-    <!-- Qualidade -->
-    <section id="qualidade" class="quality">
+    
+    <!-- Contato Section -->
+    <section class="contato" id="contato">
         <div class="container">
-            <div class="section-header">
-                <h2>Qualidade Garantida</h2>
-                <p>Por que nossos produtos são referência no mercado</p>
-            </div>
-
-            <div class="quality-content">
-                <div class="quality-image">
-                    <img src="images/qualidade.jpg" alt="Qualidade Bronzella Glow">
-                </div>
-                <div class="quality-text">
-                    <div class="quality-item">
-                        <h3><i class="fas fa-flask"></i> Tecnologia Avançada</h3>
-                        <p>Utilizamos as mais avançadas tecnologias de bronzeamento para garantir resultados superiores e duradouros.</p>
-                    </div>
-                    <div class="quality-item">
-                        <h3><i class="fas fa-certificate"></i> Certificações</h3>
-                        <p>Todos os nossos produtos são certificados e aprovados pelos principais órgãos reguladores.</p>
-                    </div>
-                    <div class="quality-item">
-                        <h3><i class="fas fa-heart"></i> Sem Testes em Animais</h3>
-                        <p>Comprometidos com a ética, não realizamos testes em animais em nenhuma etapa de desenvolvimento.</p>
-                    </div>
-                    <div class="quality-item">
-                        <h3><i class="fas fa-check-circle"></i> Dermatologicamente Testado</h3>
-                        <p>Produtos testados e aprovados por dermatologistas, garantindo segurança para todos os tipos de pele.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Depoimentos -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <h2>O que Dizem Nossos Clientes</h2>
-                <p>Experiências reais com os produtos Bronzella Glow</p>
-            </div>
-
-            <div class="testimonial-slider">
-                <div class="testimonial-slide active">
-                    <div class="testimonial-content">
-                        <div class="testimonial-image">
-                            <img src="images/cliente1.jpg" alt="Depoimento Cliente">
-                        </div>
-                        <div class="testimonial-text">
-                            <p>"Uso os produtos da Bronzella Glow há mais de um ano e o resultado é incrível! Meu bronzeado fica uniforme e dura muito mais tempo."</p>
-                            <h4>Mariana Silva</h4>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        <div class="testimonial-image">
-                            <img src="images/cliente2.jpg" alt="Depoimento Cliente">
-                        </div>
-                        <div class="testimonial-text">
-                            <p>"Os produtos são simplesmente maravilhosos! Minha pele fica hidratada e o bronzeado é natural, sem manchas ou ressecamento."</p>
-                            <h4>Carlos Oliveira</h4>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        <div class="testimonial-image">
-                            <img src="images/cliente3.jpg" alt="Depoimento Cliente">
-                        </div>
-                        <div class="testimonial-text">
-                            <p>"Experimentei vários produtos para bronzeamento, mas os da Bronzella Glow são incomparáveis. Qualidade superior e resultados visíveis desde a primeira aplicação."</p>
-                            <h4>Juliana Costa</h4>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="testimonial-controls">
-                <div class="testimonial-prev"><i class="fas fa-chevron-left"></i></div>
-                <div class="testimonial-dots">
-                    <div class="dot active"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                </div>
-                <div class="testimonial-next"><i class="fas fa-chevron-right"></i></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sobre Nós -->
-    <section id="sobre" class="about">
-        <div class="container">
-            <div class="section-header">
-                <h2>Sobre a Bronzella Glow</h2>
-                <p>Conheça nossa história e compromisso com a qualidade</p>
-            </div>
-
-            <div class="about-content">
-                <div class="about-text">
-                    <p>A Bronzella Glow nasceu da paixão por criar produtos que proporcionam um bronzeado perfeito e saudável. Fundada em 2018, nossa empresa se dedica a desenvolver fórmulas inovadoras que combinam ingredientes naturais e tecnologia avançada.</p>
-                    <p>Nossa missão é oferecer produtos de alta qualidade que não apenas aceleram o bronzeamento, mas também cuidam da saúde da pele, proporcionando hidratação e proteção.</p>
-                    <p>Todos os nossos produtos são desenvolvidos por especialistas e passam por rigorosos testes de qualidade antes de chegarem até você. Não realizamos testes em animais e utilizamos embalagens sustentáveis, reafirmando nosso compromisso com o meio ambiente.</p>
-                    <a href="#contato" class="btn btn-primary">Entre em Contato</a>
-                </div>
-                <div class="about-image">
-                    <img src="images/sobre.jpg" alt="Sobre Bronzella Glow">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contato -->
-    <section id="contato" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2>Entre em Contato</h2>
-                <p>Estamos à disposição para atender você</p>
-            </div>
-
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Endereço</h3>
-                            <p>Rua coronel murça 56</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <div>
-                            <h3>Telefone</h3>
-                            <p>(11) 98290-1369 / (11) 93351-7039</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>E-mail</h3>
-                            <p>Bronzellaprodutoosbronzeamento@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-id-card"></i>
-                        <div>
-                            <h3>CNPJ</h3>
-                            <p>59681427/0001-45</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <h3>Horário de Atendimento</h3>
-                            <p>Segunda a Sexta: 9h às 18h<br>Sábado: 9h às 13h</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-whatsapp">
-                    <h3>Atendimento via WhatsApp</h3>
-                    <p>Para um atendimento mais rápido e personalizado, entre em contato pelo WhatsApp.</p>
-                    <a href="https://wa.me/5511982901369" class="btn-whatsapp-large" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Falar com um Consultor
-                    </a>
+            <div class="contato-content">
+                <div class="contato-info animate-on-scroll">
+                    <h2>Entre em Contato</h2>
+                    <p>Estamos à disposição para tirar suas dúvidas, receber sugestões ou agendar uma visita. Entre em contato conosco pelos canais abaixo:</p>
                     
-                    <div class="social-media">
-                        <h4>Siga-nos nas Redes Sociais</h4>
-                        <div class="social-icons">
-                            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
-                            <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <div class="contato-item">
+                        <div class="contato-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contato-text">
+                            <h4>Endereço</h4>
+                            <p>Rua Principal, 123 - Centro, Cidade - UF</p>
                         </div>
                     </div>
+                    
+                    <div class="contato-item">
+                        <div class="contato-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contato-text">
+                            <h4>Telefone</h4>
+                            <p><a href="tel:+5500000000000">(00) 0000-0000</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contato-item">
+                        <div class="contato-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contato-text">
+                            <h4>E-mail</h4>
+                            <p><a href="mailto:contato@exemplo.com">contato@exemplo.com</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contato-form animate-on-scroll">
+                    <h3>Envie uma Mensagem</h3>
+                    <form id="formulario-contato">
+                        <div class="form-group">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" id="nome" class="form-control" placeholder="Seu nome completo" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input type="email" id="email" class="form-control" placeholder="Seu e-mail" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telefone" class="form-label">Telefone</label>
+                            <input type="tel" id="telefone" class="form-control" placeholder="Seu telefone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="mensagem" class="form-label">Mensagem</label>
+                            <textarea id="mensagem" class="form-control" placeholder="Sua mensagem" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-form">Enviar Mensagem</button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- CTA -->
-    <section class="cta">
-        <div class="container">
-            <h2>Pronta para um Bronzeado Perfeito?</h2>
-            <p>Experimente os produtos Bronzella Glow e descubra a diferença de um bronzeado natural, uniforme e duradouro.</p>
-            <a href="#produtos" class="btn-cta">Ver Produtos</a>
-        </div>
-    </section>
-
+    
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <h2>Bronzella Glow</h2>
-                    <p>Bronzeamento Perfeito</p>
+                <div class="footer-about">
+                    <h3 class="neon-text">NOME DO SITE</h3>
+                    <p>Breve descrição sobre a empresa ou o site. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
+                
                 <div class="footer-links">
-                    <h3>Links Rápidos</h3>
+                    <h4>Links Rápidos</h4>
                     <ul>
-                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#features">Serviços</a></li>
                         <li><a href="#produtos">Produtos</a></li>
-                        <li><a href="#qualidade">Qualidade</a></li>
-                        <li><a href="#sobre">Sobre Nós</a></li>
                         <li><a href="#contato">Contato</a></li>
                     </ul>
                 </div>
+                
+                <div class="footer-produtos">
+                    <h4>Produtos</h4>
+                    <ul>
+                        <li><a href="produtos/vitrine.html">Todos os Produtos</a></li>
+                        <li><a href="produtos/categoria1.html">Categoria 1</a></li>
+                        <li><a href="produtos/categoria2.html">Categoria 2</a></li>
+                        <li><a href="produtos/categoria3.html">Categoria 3</a></li>
+                    </ul>
+                </div>
+                
                 <div class="footer-newsletter">
-                    <h3>Receba Novidades</h3>
-                    <p>Cadastre-se para receber ofertas exclusivas e dicas de bronzeamento.</p>
+                    <h4>Newsletter</h4>
+                    <p>Inscreva-se para receber novidades e promoções.</p>
+                    
                     <form class="newsletter-form">
-                        <input type="email" placeholder="Seu e-mail" required>
-                        <button type="submit">Cadastrar</button>
+                        <input type="email" class="newsletter-input" placeholder="Seu e-mail" required>
+                        <button type="submit" class="newsletter-btn"><i class="fas fa-paper-plane"></i></button>
                     </form>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>&copy; 2023 Bronzella Glow. Todos os direitos reservados.</p>
-                <div class="footer-terms">
-                    <a href="#">Termos de Uso</a>
-                    <a href="#">Política de Privacidade</a>
-                </div>
+                <p>&copy; 2025 Nome do Site. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
-
-    <!-- Carrinho de Compras -->
-    <div class="cart-overlay"></div>
-    <div class="cart-container">
-        <div class="cart-header">
-            <h3>Seu Orçamento</h3>
-            <div class="cart-close"><i class="fas fa-times"></i></div>
-        </div>
-        <div class="cart-items">
-            <!-- Itens do carrinho serão inseridos aqui via JavaScript -->
-        </div>
-        <div class="cart-empty">
-            <p>Seu orçamento está vazio.</p>
-            <p>Adicione produtos para gerar um orçamento.</p>
-        </div>
-        <div class="cart-footer">
-            <div class="cart-total">
-                <span>Total:</span>
-                <span class="cart-total-value">0 itens</span>
-            </div>
-            <div class="cart-buttons">
-                <div class="btn-checkout">Gerar Orçamento</div>
-                <div class="btn-continue">Continuar Comprando</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de Orçamento -->
-    <div class="quote-modal">
-        <div class="quote-content">
-            <div class="quote-header">
-                <h3>Finalizar Orçamento</h3>
-                <div class="quote-close"><i class="fas fa-times"></i></div>
-            </div>
-            <div class="quote-body">
-                <form class="quote-form">
-                    <div class="form-group">
-                        <label for="quote-name">Nome Completo*</label>
-                        <input type="text" id="quote-name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="quote-phone">Telefone*</label>
-                        <input type="tel" id="quote-phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="quote-email">E-mail</label>
-                        <input type="email" id="quote-email">
-                    </div>
-                    <div class="form-group">
-                        <label for="quote-message">Observações</label>
-                        <textarea id="quote-message" rows="3"></textarea>
-                    </div>
-                </form>
-                
-                <div class="quote-summary">
-                    <h4>Resumo do Orçamento</h4>
-                    <div class="quote-items">
-                        <!-- Itens do orçamento serão inseridos aqui via JavaScript -->
-                    </div>
-                    <div class="quote-total">
-                        <span>Total:</span>
-                        <span class="quote-total-value">0 itens</span>
-                    </div>
-                </div>
-            </div>
-            <div class="quote-footer">
-                <button class="btn-send-quote">
-                    <i class="fab fa-whatsapp"></i> Enviar Orçamento via WhatsApp
-                </button>
-            </div>
-        </div>
-    </div>
-
+    
     <!-- Scripts -->
-    <script src="js/script.js"></script>
-    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
 </body>
 </html>
