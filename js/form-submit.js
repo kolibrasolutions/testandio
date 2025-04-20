@@ -33,35 +33,53 @@ document.addEventListener('DOMContentLoaded', function() {
                 formData.supportPeriod = supportPeriodText;
             }
             
-            // Envia o email usando EmailJS
-            emailjs.send('service_kolibra', 'template_orcamento', {
-                from_name: formData.name,
-                from_email: formData.email,
-                from_phone: formData.phone,
-                company: formData.company,
-                message: formData.message,
-                plan: formData.plan,
-                services: formData.services,
-                total: formData.total,
-                payment_method: formData.paymentMethod,
-                support_period: formData.supportPeriod || 'N/A'
-            })
-            .then(function(response) {
-                console.log('Email enviado com sucesso!', response);
-                
-                // Oculta o formulário
-                planBuilderForm.style.display = 'none';
-                
-                // Mostra o modal de sucesso
-                document.getElementById('successModal').classList.add('active');
-                
-                // Limpa o formulário
-                planBuilderForm.reset();
-            })
-            .catch(function(error) {
-                console.error('Erro ao enviar email:', error);
-                alert('Ocorreu um erro ao enviar sua solicitação. Por favor, tente novamente ou entre em contato diretamente pelo WhatsApp (35) 99979-6570.');
-            });
+            // Mostrar indicador de carregamento
+            const submitBtn = planBuilderForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn ? submitBtn.textContent : "Enviar";
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = "Enviando...";
+            }
+            
+            // Removido envio por email conforme solicitado
+            console.log('Envio por email removido, redirecionando para WhatsApp');
+            
+            // Formatar mensagem para WhatsApp
+            let message = `*ORÇAMENTO - KOLIBRA SOLUTIONS*\n\n`;
+            message += `*Nome:* ${formData.name}\n`;
+            message += `*Email:* ${formData.email}\n`;
+            message += `*Telefone:* ${formData.phone}\n`;
+            message += `*Empresa:* ${formData.company}\n`;
+            message += `*Plano:* ${formData.plan}\n`;
+            message += `*Serviços:* ${formData.services}\n`;
+            message += `*Total:* ${formData.total}\n`;
+            message += `*Forma de Pagamento:* ${formData.paymentMethod}\n`;
+            
+            if (formData.supportPeriod) {
+                message += `*Periodicidade de Suporte:* ${formData.supportPeriod}\n`;
+            }
+            
+            if (formData.message) {
+                message += `\n*Mensagem:*\n${formData.message}\n`;
+            }
+            
+            // Número de telefone para onde a mensagem será enviada (formato internacional)
+            const phoneNumber = '5535999796570'; // Número da Kolibra
+            
+            // URL do WhatsApp
+            const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+            
+            // Oculta o formulário
+            planBuilderForm.style.display = 'none';
+            
+            // Mostra o modal de sucesso
+            document.getElementById('successModal').classList.add('active');
+            
+            // Limpa o formulário
+            planBuilderForm.reset();
+            
+            // Abre o WhatsApp em uma nova aba
+            window.open(whatsappURL, '_blank');
         });
     }
     

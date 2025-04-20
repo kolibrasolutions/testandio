@@ -43,7 +43,6 @@ function inserirMenuPadronizado() {
         case 'construtor.html':
             document.getElementById('menu-construtor').classList.add('active');
             break;
-        case 'planos.html':
         case 'orcamento.html':
         case 'segmentacao.html':
         case 'diagnostico.html':
@@ -79,17 +78,11 @@ function adicionarBreadcrumbs() {
     let breadcrumbHTML = '<div class="breadcrumbs"><div class="container"><a href="index.html">Home</a>';
     
     switch(paginaAtual) {
-        case 'planos.html':
-            breadcrumbHTML += ' > <span>Planos</span>';
-            break;
         case 'portfolio.html':
             breadcrumbHTML += ' > <span>Portfólio</span>';
             break;
         case 'orcamento.html':
             breadcrumbHTML += ' > <span>Orçamento</span>';
-            break;
-        case 'construtor.html':
-            breadcrumbHTML += ' > <span>Construtor de Plano</span>';
             break;
         case 'segmentacao.html':
             breadcrumbHTML += ' > <span>Escolha seu caminho</span>';
@@ -139,10 +132,68 @@ function adicionarEventoMenuMobile() {
     }
 }
 
+// Função para remover as faixas brancas onduladas das páginas secundárias no modo mobile
+function removerFaixasBrancasMobile() {
+    // Verifica se não estamos na página inicial
+    const paginaAtual = window.location.pathname.split('/').pop();
+    
+    if (paginaAtual !== 'index.html' && paginaAtual !== '') {
+        // Cria um estilo para ocultar as faixas onduladas em dispositivos móveis
+        const style = document.createElement('style');
+        style.textContent = `
+            @media (max-width: 768px) {
+                .hero-curve, 
+                svg[class*="hero-curve"], 
+                svg[class*="wave"],
+                .wave-divider,
+                [class*="wave-divider"],
+                [class*="wave-separator"] {
+                    display: none !important;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Também remove diretamente qualquer elemento SVG com classe hero-curve que possa existir
+        const waveElements = document.querySelectorAll('.hero-curve, svg[class*="hero-curve"], svg[class*="wave"], .wave-divider, [class*="wave-divider"], [class*="wave-separator"]');
+        waveElements.forEach(element => {
+            if (window.innerWidth <= 768) {
+                element.style.display = 'none';
+            }
+        });
+    }
+}
+
+// Função para incluir os scripts de formulário
+function incluirScriptsFormulario() {
+    // Verifica se há formulários na página
+    if (document.querySelector('form')) {
+        // Primeiro adiciona o script para desativar o envio por e-mail
+        const disableEmailScript = document.createElement('script');
+        disableEmailScript.src = 'js/disable-email-forms.js';
+        document.head.appendChild(disableEmailScript);
+        
+        // Depois adiciona o script para redirecionar para WhatsApp
+        // Pequeno atraso para garantir que o script de desativação seja executado primeiro
+        setTimeout(function() {
+            const whatsappScript = document.createElement('script');
+            whatsappScript.src = 'js/form-to-whatsapp.js';
+            document.body.appendChild(whatsappScript);
+            
+            // Por último, adiciona o script de teste para indicadores visuais
+            const testScript = document.createElement('script');
+            testScript.src = 'js/form-test.js';
+            document.body.appendChild(testScript);
+        }, 100);
+    }
+}
+
 // Executar as funções quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', function() {
     inserirMenuPadronizado();
     corrigirLinks();
     adicionarBreadcrumbs();
     adicionarEventoMenuMobile();
+    removerFaixasBrancasMobile(); // Adiciona a função para remover faixas brancas
+    incluirScriptsFormulario(); // Adiciona a função para incluir os scripts de formulário
 });
