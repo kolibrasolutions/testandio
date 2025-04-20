@@ -126,9 +126,23 @@ function adicionarBreadcrumbs() {
     }
 }
 
+// Função para adicionar funcionalidade ao botão hamburguer
+function adicionarEventoMenuMobile() {
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    }
+}
+
 // Executar as funções quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', function() {
     inserirMenuPadronizado();
     corrigirLinks();
     adicionarBreadcrumbs();
+    adicionarEventoMenuMobile();
 });
