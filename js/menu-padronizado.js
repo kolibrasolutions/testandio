@@ -9,6 +9,7 @@ const menuHTML = `
         <ul class="nav-menu">
             <li><a href="index.html" id="menu-home">Home</a></li>
             <li><a href="portfolio.html" id="menu-portfolio">Portfólio</a></li>
+            <li><a href="blog/index.html" id="menu-blog">Blog</a></li>
             <li><a href="construtor.html" id="menu-construtor" class="btn-nav">Construir Pacote</a></li>
         </ul>
         
