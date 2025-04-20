@@ -746,78 +746,7 @@
             margin-right: 10px;
         }
         
-        /* Formulário de Contato */
-        .contact-form {
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 2px solid var(--gray-color);
-            display: none; /* Inicialmente oculto */
-        }
-        
-        .contact-form h4 {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-        }
-        
-        .form-group {
-            margin-bottom: 15px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 0.9rem;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: var(--primary-color);
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(0, 68, 148, 0.1);
-        }
-        
-        .form-group textarea {
-            height: 100px;
-            resize: vertical;
-        }
-        
-        .form-check {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-        }
-        
-        .form-check input {
-            margin-right: 10px;
-            margin-top: 5px;
-        }
-        
-        .form-check label {
-            font-size: 0.85rem;
-            color: var(--gray-dark);
-        }
-        
-        .form-check a {
-            color: var(--primary-color);
-        }
-        
-        .form-check a:hover {
-            text-decoration: underline;
-        }
-        
-        .submit-btn {
-            width: 100%;
-            margin-top: 10px;
-        }
+        /* Estilos para o botão de WhatsApp - Sem formulário */
         
         /* Botão WhatsApp */
         .whatsapp-btn {
@@ -1453,36 +1382,6 @@
                     <button id="whatsappButton" class="whatsapp-btn">
                         <i class="fab fa-whatsapp"></i> Solicitar via WhatsApp
                     </button>
-                    
-                    <!-- Formulário de Contato (inicialmente oculto) -->
-                    <form id="planBuilderForm" class="contact-form">
-                        <h4>Seus Dados</h4>
-                        <div class="form-group">
-                            <label for="name">Nome Completo *</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">E-mail *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Telefone *</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="company">Empresa</label>
-                            <input type="text" id="company" name="company">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Mensagem Adicional</label>
-                            <textarea id="message" name="message" placeholder="Informe detalhes adicionais ou requisitos específicos para seu plano..."></textarea>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" id="terms" name="terms" required>
-                            <label for="terms">Concordo com os <a href="#">Termos e Condições</a> e autorizo o contato da KOLIBRA SOLUTIONS.</label>
-                        </div>
-                        <button type="submit" class="btn btn-secondary submit-btn">Enviar Solicitação</button>
-                    </form>
                 </div>
             </div>
         </div>
@@ -1783,27 +1682,8 @@
                 document.getElementById('totalPrice').textContent = `R$ ${total.toFixed(2)}`;
             }
             
-            // Botão WhatsApp e Formulário
-            const whatsappButton = document.getElementById('whatsappButton');
-            const contactForm = document.getElementById('planBuilderForm');
-            
-            if (whatsappButton) {
-                whatsappButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Verifica se há um plano selecionado
-                    if (!window.selectedPlan) {
-                        alert('Por favor, selecione um plano base antes de continuar.');
-                        return;
-                    }
-                    
-                    // Mostra o formulário
-                    contactForm.style.display = 'block';
-                    
-                    // Rola até o formulário
-                    contactForm.scrollIntoView({ behavior: 'smooth' });
-                });
-            }
+            // Botão WhatsApp - Redirecionamento direto
+            // O comportamento do botão agora é gerenciado pelo arquivo whatsapp-redirect.js
         });
     </script>
     

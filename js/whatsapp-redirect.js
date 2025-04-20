@@ -1,11 +1,10 @@
-// Script para redirecionamento para WhatsApp - versão simplificada e robusta
+// Script para redirecionamento direto para WhatsApp - versão atualizada sem formulário
 document.addEventListener('DOMContentLoaded', function() {
     // Botão de WhatsApp
     const whatsappButton = document.getElementById('whatsappButton');
-    const contactForm = document.getElementById('planBuilderForm');
     
-    // Mostrar formulário quando clicar no botão WhatsApp
-    if (whatsappButton && contactForm) {
+    // Redirecionar diretamente para WhatsApp quando clicar no botão
+    if (whatsappButton) {
         whatsappButton.addEventListener('click', function(e) {
             e.preventDefault();
             
@@ -15,27 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Mostra o formulário
-            contactForm.style.display = 'block';
-            
-            // Rola até o formulário
-            contactForm.scrollIntoView({ behavior: 'smooth' });
-        });
-    }
-    
-    // Formulário de contato
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
             try {
-                // Coleta os dados básicos do formulário
-                const name = document.getElementById('name').value || '';
-                const email = document.getElementById('email').value || '';
-                const phone = document.getElementById('phone').value || '';
-                const company = document.getElementById('company').value || 'Não informado';
-                const message = document.getElementById('message').value || '';
-                
                 // Coleta dados do plano e serviços com verificações de segurança
                 let planName = 'Plano não selecionado';
                 let servicesList = 'Nenhum serviço adicional';
@@ -97,10 +76,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Formata a mensagem para o WhatsApp
                 let whatsappMessage = `*Solicitação de Orçamento - Kolibra Solutions*\n\n`;
-                whatsappMessage += `*Nome:* ${name}\n`;
-                whatsappMessage += `*Email:* ${email}\n`;
-                whatsappMessage += `*Telefone:* ${phone}\n`;
-                whatsappMessage += `*Empresa:* ${company}\n\n`;
                 whatsappMessage += `*Plano Base:* ${planName}\n`;
                 whatsappMessage += `*Serviços Adicionais:* ${servicesList}\n`;
                 whatsappMessage += `*Forma de Pagamento:* ${paymentMethod}\n`;
@@ -110,12 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 whatsappMessage += `*Valor Total:* ${totalPrice}\n\n`;
-                
-                if (message) {
-                    whatsappMessage += `*Mensagem Adicional:*\n${message}\n\n`;
-                }
-                
-                whatsappMessage += `Aguardo retorno. Obrigado!`;
+                whatsappMessage += `Olá, gostaria de solicitar um orçamento para o pacote acima.`;
                 
                 // Codifica a mensagem para URL (limitando o tamanho para evitar problemas)
                 const maxLength = 1000; // WhatsApp tem limite de caracteres na URL
@@ -124,9 +94,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (encodedMessage.length > maxLength) {
                     // Se a mensagem for muito longa, simplifica
                     const shortMessage = `*Orçamento Kolibra Solutions*\n\n` +
-                        `*Nome:* ${name}\n` +
-                        `*Email:* ${email}\n` +
-                        `*Telefone:* ${phone}\n` +
                         `*Plano:* ${planName}\n` +
                         `*Valor Total:* ${totalPrice}`;
                     
@@ -141,18 +108,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     window.location.href = `https://wa.me/5535999796570?text=${encodedMessage}`;
                 }
                 
-                // Limpa o formulário
-                contactForm.reset();
-                
-                // Oculta o formulário após envio bem-sucedido
-                setTimeout(function() {
-                    contactForm.style.display = 'none';
-                }, 1000);
-                
                 return true;
             } catch (error) {
                 // Em caso de erro, oferece link direto para WhatsApp
-                console.error("Erro ao processar formulário:", error);
+                console.error("Erro ao processar dados do pacote:", error);
                 alert("Ocorreu um erro ao processar seu pedido. Clique em OK para entrar em contato direto pelo WhatsApp.");
                 window.location.href = "https://wa.me/5535999796570";
                 return false;

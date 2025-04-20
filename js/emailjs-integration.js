@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Identificar qual formulário é para personalizar o template
                     let templateId = "template_kolibra_default";
                     let serviceId = "service_kolibra";
+                    // E-mail do destinatário - direto para o e-mail do usuário
+                    let toEmail = "kolibrasolutions@gmail.com";
                     
                     // Verificar se é o formulário "Potencialize seu Negócio"
                     if (form.id === "problemsForm" || 
@@ -87,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         formData.form_name = form.id || "Formulário do site";
                         formData.page_url = window.location.href;
                         formData.date_time = new Date().toLocaleString();
+                        formData.to_email = toEmail; // Adicionar e-mail do destinatário
                         
                         // Adicionar nome do formulário para identificação no e-mail
                         if (form.id === "problemsForm") {
