@@ -296,13 +296,15 @@ section {
     min-height: 600px;
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('../images/banner.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: center top; /* Alterado para 'center top' para mostrar mais da parte superior */
+    /* ou use 'center center' para centralizar */
     display: flex;
     align-items: center;
     color: white;
     text-align: center;
     position: relative;
 }
+
 
 .banner-content {
     max-width: 800px;
