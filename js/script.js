@@ -71,7 +71,8 @@ function initProductFilter() {
             
             // Filtrar produtos
             productCards.forEach(card => {
-                if (filterValue === 'todos' || card.getAttribute('data-category') === filterValue) {
+                const cardCategories = card.getAttribute('data-category').split(' ');
+                if (filterValue === 'todos' || cardCategories.includes(filterValue)) {
                     card.style.display = 'block';
                     setTimeout(() => {
                         card.style.opacity = '1';
