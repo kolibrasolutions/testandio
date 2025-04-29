@@ -469,68 +469,6 @@ section {
     font-size: 0.95rem;
 }
 
-/* Quality */
-.quality {
-    background-color: var(--gray-light);
-    padding: var(--spacing-xl) 0;
-}
-
-.quality-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-lg);
-    align-items: center;
-}
-
-.quality-image {
-    border-radius: var(--border-radius-lg);
-    overflow: hidden;
-    box-shadow: var(--box-shadow);
-}
-
-.quality-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.quality-text {
-    display: grid;
-    gap: var(--spacing-md);
-}
-
-.quality-item {
-    background-color: white;
-    padding: var(--spacing-md);
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition-normal);
-}
-
-.quality-item:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--box-shadow-hover);
-}
-
-.quality-item h3 {
-    display: flex;
-    align-items: center;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: var(--dark);
-}
-
-.quality-item h3 i {
-    color: var(--primary-color);
-    margin-right: 10px;
-    font-size: 1.2rem;
-}
-
-.quality-item p {
-    color: var(--gray);
-    font-size: 0.95rem;
-}
-
 /* Testimonials */
 .testimonials {
     background-color: white;
@@ -1058,7 +996,7 @@ section {
     }
     
     .slideshow {
-        aspect-ratio: 16/9; /* Proporção widescreen para tablets */
+        aspect-ratio: 16/10; /* Proporção similar mantendo a mesma relação */
     }
     
     .slide-content h2 {
@@ -1117,7 +1055,7 @@ section {
 .slideshow {
     position: relative;
     width: 100%;
-    aspect-ratio: 1280/700; /* Proporção exata de 1280x700 */
+    aspect-ratio: 1280/800; /* Proporção exata de 1280x800 */
     overflow: hidden;
 }
 
@@ -1229,5 +1167,17 @@ section {
 
 .slideshow-dots .dot.active {
     background-color: white;
+}
+
+/* Remover toda a seção de estilos de qualidade */
+.quality {
+    display: none;
+}
+
+.quality-content,
+.quality-image,
+.quality-text,
+.quality-item {
+    display: none;
 }
 
