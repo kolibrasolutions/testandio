@@ -202,30 +202,24 @@ section {
     z-index: 1000;
     background-color: rgba(255, 255, 255, 0.95);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: var(--transition-normal);
     padding: 1rem 0;
 }
 
 .header .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 0 var(--spacing-md);
     position: relative;
-}
-
-.header.scrolled {
-    padding: 0.5rem 0;
-    background-color: white;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .logo {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    text-align: center;
 }
 
 .logo img {
@@ -242,14 +236,16 @@ section {
 }
 
 .nav {
+    position: absolute;
+    right: var(--spacing-md);
     display: flex;
     align-items: center;
-    margin-left: auto;
 }
 
 .menu {
     display: flex;
     gap: var(--spacing-md);
+    margin-right: var(--spacing-md);
 }
 
 .menu a {
@@ -258,27 +254,21 @@ section {
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    color: var(--primary-color);
 }
 
 .cart-icon {
-    margin-left: var(--spacing-md);
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
 }
 
 .menu-toggle {
     display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-}
-
-.menu-toggle span {
-    display: block;
-    height: 3px;
-    width: 100%;
-    background-color: var(--primary-color);
-    border-radius: 3px;
-    transition: var(--transition-normal);
 }
 
 /* Banner */
@@ -911,65 +901,56 @@ section {
 }
 
 @media (max-width: 768px) {
+    .header .container {
+        justify-content: space-between;
+    }
+
     .logo {
-        position: relative;
-        left: 0;
-        transform: none;
+        order: 2;
     }
-    
-    .logo img {
-        height: 35px;
+
+    .nav {
+        position: static;
+        order: 1;
     }
-    
-    .logo span {
-        font-size: 0.7rem;
+
+    .cart-icon {
+        order: 3;
     }
-    
+
+    .menu-toggle {
+        display: block;
+    }
+
     .menu {
-        position: fixed;
-        top: 70px;
+        position: absolute;
+        top: 100%;
         left: 0;
         width: 100%;
-        background-color: white;
+        background: white;
         flex-direction: column;
         gap: 0;
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        transform: translateY(-150%);
-        transition: var(--transition-normal);
+        margin: 0;
         padding: 0;
-        z-index: 999;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
     }
-    
+
     .menu.active {
         transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
     }
-    
+
     .menu a {
+        padding: 1rem;
+        border-bottom: 1px solid #eee;
         display: block;
-        padding: 15px var(--spacing-md);
-        border-bottom: 1px solid var(--gray-light);
+        text-align: center;
     }
-    
-    .menu a::after {
-        display: none;
-    }
-    
-    .menu-toggle {
-        display: flex;
-    }
-    
-    .menu-toggle.active span:nth-child(1) {
-        transform: translateY(9px) rotate(45deg);
-    }
-    
-    .menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-    }
-    
-    .menu-toggle.active span:nth-child(3) {
-        transform: translateY(-9px) rotate(-45deg);
-    }
-    
+
     .banner-content h2 {
         font-size: 2.5rem;
     }
@@ -1070,7 +1051,11 @@ section {
     }
     
     .logo img {
-        height: 30px;
+        height: 35px;
+    }
+
+    .logo span {
+        font-size: 0.7rem;
     }
 }
 
