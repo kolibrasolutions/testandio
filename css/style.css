@@ -396,20 +396,20 @@ section {
 
 .product-card {
     background-color: white;
-    border-radius: var(--border-radius-lg);
+    border-radius: var(--border-radius-md);
     overflow: hidden;
     box-shadow: var(--box-shadow);
     transition: var(--transition-normal);
 }
 
 .product-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
     box-shadow: var(--box-shadow-hover);
 }
 
 .product-image {
     position: relative;
-    height: 250px;
+    height: 200px;
     overflow: hidden;
 }
 
@@ -437,19 +437,20 @@ section {
 }
 
 .product-info {
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm);
 }
 
 .product-info h3 {
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     color: var(--dark);
+    font-size: 1rem;
 }
 
 .product-info p {
     color: var(--gray);
-    margin-bottom: 15px;
-    font-size: 0.95rem;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
 }
 
 /* Testimonials */
