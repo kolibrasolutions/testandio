@@ -1058,7 +1058,7 @@ section {
     }
     
     .slideshow {
-        aspect-ratio: 4/3; /* Proporção mais adequada para tablets */
+        aspect-ratio: 16/9; /* Proporção widescreen para tablets */
     }
     
     .slide-content h2 {
@@ -1100,7 +1100,7 @@ section {
     }
     
     .slideshow {
-        aspect-ratio: 1/1; /* Proporção quadrada para melhor visualização em smartphones */
+        aspect-ratio: 4/3; /* Proporção mais adequada para smartphones */
     }
     
     .slide-content h2 {
@@ -1117,7 +1117,7 @@ section {
 .slideshow {
     position: relative;
     width: 100%;
-    aspect-ratio: 1280/896; /* Mantém a proporção exata de 1280x896 */
+    aspect-ratio: 1280/700; /* Proporção exata de 1280x700 */
     overflow: hidden;
 }
 
