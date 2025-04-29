@@ -1087,3 +1087,121 @@ section {
         text-align: center;
     }
 }
+
+
+/* Slideshow */
+.slideshow {
+    height: 100vh;
+    min-height: 600px;
+    position: relative;
+    overflow: hidden;
+    color: white;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)); /* Overlay similar to original banner */
+    z-index: 1;
+}
+
+.slide-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.slide-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.slide-content p {
+    font-size: 1.2rem;
+    margin-bottom: var(--spacing-lg);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Slideshow Controls */
+.slideshow-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 var(--spacing-md);
+    z-index: 3;
+}
+
+.slideshow-controls button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color var(--transition-fast);
+}
+
+.slideshow-controls button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Slideshow Dots */
+.slideshow-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 3;
+}
+
+.slideshow-dots .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+
+.slideshow-dots .dot.active {
+    background-color: white;
+}
+

@@ -293,3 +293,86 @@ document.addEventListener('DOMContentLoaded', initApp);
     `;
     document.head.appendChild(style);
 })();
+
+
+// Slideshow Principal
+function initMainSlideshow() {
+    const slides = document.querySelectorAll("#inicio .slide");
+    // Check if slides exist before proceeding
+    if (!slides || slides.length === 0) {
+        console.log("Slideshow elements not found.");
+        return; 
+    }
+    const dots = document.querySelectorAll(".slideshow-dots .dot");
+    const prevBtn = document.querySelector(".slideshow-controls .prev");
+    const nextBtn = document.querySelector(".slideshow-controls .next");
+    let currentSlideIndex = 0;
+    const totalSlides = slides.length;
+    let slideInterval;
+
+    function showSlide(index) {
+        // Validate index
+        if (index < 0 || index >= totalSlides) {
+            console.error("Invalid slide index:", index);
+            return;
+        }
+        // Hide all slides
+        slides.forEach(slide => slide.classList.remove("active"));
+        // Deactivate all dots
+        dots.forEach(dot => dot.classList.remove("active"));
+
+        // Show the target slide and activate its dot
+        slides[index].classList.add("active");
+        if (dots[index]) { // Check if dot exists
+           dots[index].classList.add("active");
+        }
+        currentSlideIndex = index;
+    }
+
+    function nextSlide() {
+        const nextIndex = (currentSlideIndex + 1) % totalSlides;
+        showSlide(nextIndex);
+    }
+
+    function prevSlide() {
+        const prevIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+        showSlide(prevIndex);
+    }
+
+    function startSlideShow() {
+        stopSlideShow(); // Clear existing interval first
+        slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    }
+
+    function stopSlideShow() {
+        clearInterval(slideInterval);
+    }
+
+    // Event listeners for controls
+    if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+            nextSlide();
+            stopSlideShow(); // Stop auto-play on manual control
+        });
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener("click", () => {
+            prevSlide();
+            stopSlideShow(); // Stop auto-play on manual control
+        });
+    }
+
+    // Event listeners for dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+            showSlide(index);
+            stopSlideShow(); // Stop auto-play on manual control
+        });
+    });
+    
+    // Start slideshow
+    showSlide(0); // Show the first slide initially
+    startSlideShow();
+}
+
