@@ -1091,11 +1091,10 @@ section {
 
 /* Slideshow */
 .slideshow {
-    height: 100vh;
-    min-height: 600px;
     position: relative;
+    width: 100%;
     overflow: hidden;
-    color: white;
+    margin-top: 80px; /* Ajuste para compensar o header fixo */
 }
 
 .slide {
@@ -1104,20 +1103,17 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
     background-size: cover;
     background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    z-index: 1;
+    background-repeat: no-repeat;
+    min-height: 500px; /* Altura mínima para garantir que o conteúdo seja visível */
 }
 
 .slide.active {
     opacity: 1;
-    z-index: 2;
+    position: relative;
 }
 
 .slide::before {
@@ -1127,30 +1123,30 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)); /* Overlay similar to original banner */
+    background: rgba(0, 0, 0, 0.3);
     z-index: 1;
 }
 
 .slide-content {
     position: relative;
     z-index: 2;
+    color: white;
+    text-align: center;
+    padding: 2rem;
     max-width: 800px;
     margin: 0 auto;
-    padding: 0 var(--spacing-md);
 }
 
 .slide-content h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: var(--spacing-md);
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .slide-content p {
     font-size: 1.2rem;
-    margin-bottom: var(--spacing-lg);
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Slideshow Controls */
