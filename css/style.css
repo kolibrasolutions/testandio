@@ -172,25 +172,25 @@ section {
     align-items: center;
     justify-content: center;
     padding: 1rem 2rem;
-    border-radius: var(--border-radius-md);
-    background-color: var(--whatsapp);
+    background-color: #25d366;
     color: white;
-    font-weight: 600;
+    border-radius: var(--border-radius-md);
     font-size: 1.1rem;
-    transition: var(--transition-normal);
-    margin-top: var(--spacing-sm);
-    box-shadow: var(--box-shadow);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .btn-whatsapp-large i {
-    font-size: 1.4rem;
     margin-right: 10px;
+    font-size: 1.3rem;
 }
 
 .btn-whatsapp-large:hover {
-    background-color: #1da851;
-    transform: translateY(-3px);
-    box-shadow: var(--box-shadow-hover);
+    background-color: #22c35e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* Header */
@@ -870,20 +870,21 @@ section {
     right: 30px;
     width: 60px;
     height: 60px;
-    background-color: var(--whatsapp);
+    background-color: #25d366;
     color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.8rem;
+    font-size: 2rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     z-index: 999;
-    transition: var(--transition-normal);
+    transition: all 0.3s ease;
 }
 
 .whatsapp-float:hover {
     transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Responsividade */
@@ -1013,6 +1014,19 @@ section {
     .slide-content p {
         font-size: 1.1rem;
         line-height: 1.4;
+    }
+
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 1.7rem;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .btn-whatsapp-large {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
     }
 }
 
@@ -1212,5 +1226,15 @@ section {
 .quality-text,
 .quality-item {
     display: none;
+}
+
+.contact-item a {
+    color: var(--dark);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: var(--primary-color);
 }
 
