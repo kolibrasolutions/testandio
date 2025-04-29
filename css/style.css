@@ -220,7 +220,7 @@ section {
 }
 
 .logo img {
-    height: 35px;
+    height: 60px;
     width: auto;
     display: block;
 }
@@ -894,7 +894,7 @@ section {
     }
 
     .logo img {
-        height: 30px;
+        height: 45px;
     }
 
     .menu-toggle {
@@ -1030,7 +1030,7 @@ section {
     }
     
     .logo img {
-        height: 25px;
+        height: 35px;
     }
 }
 
