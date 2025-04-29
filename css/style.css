@@ -12,6 +12,7 @@
     --light: #fff9f0; /* Branco com tom quente */
     --gray-light: #f5f0e8; /* Cinza claro com tom quente */
     --gray: #a9a29a; /* Cinza médio */
+    --background-gray: #f8f8f8; /* Cinza suave para o fundo */
     
     /* Cores funcionais */
     --success: #4caf50; /* Verde para mensagens de sucesso */
@@ -42,6 +43,10 @@
 }
 
 /* Estilos Gerais */
+body {
+    background-color: var(--background-gray);
+}
+
 .container {
     width: 100%;
     max-width: 1200px;
