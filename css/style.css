@@ -395,7 +395,7 @@ section {
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(240px, 1fr));
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
     gap: var(--spacing-md);
     justify-content: center;
     margin: 0 auto;
@@ -407,7 +407,7 @@ section {
     overflow: hidden;
     box-shadow: var(--box-shadow);
     transition: var(--transition-normal);
-    max-width: 280px;
+    max-width: 220px;
     margin: 0 auto;
 }
 
@@ -906,7 +906,7 @@ section {
 /* Responsividade */
 @media (max-width: 1024px) {
     .product-grid {
-        grid-template-columns: repeat(2, minmax(220px, 1fr));
+        grid-template-columns: repeat(3, minmax(200px, 1fr));
         gap: var(--spacing-sm);
     }
     
@@ -1044,6 +1044,10 @@ section {
     .btn-whatsapp-large {
         padding: 0.8rem 1.5rem;
         font-size: 1rem;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(180px, 1fr));
     }
 }
 
