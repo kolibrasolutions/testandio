@@ -45,7 +45,7 @@
 /* Estilos Gerais */
 body {
     background-color: var(--background-gray);
-    padding-top: 80px; /* Add padding to offset fixed header */
+    /* padding-top: 80px; */ /* Add padding to offset fixed header */
 }
 
 .container {
